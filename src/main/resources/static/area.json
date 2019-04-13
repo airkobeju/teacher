@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Matemática",
+    "nivel": "Primaria"
+  },
+  {
+    "name": "Comunicación",
+    "nivel": "Primaria"
+  },
+  {
+    "name": "Inglés",
+    "nivel": "Primaria"
+  },
+  {
+    "name": "Personal Social",
+    "nivel": "Primaria"
+  },
+  {
+    "name": "Arte y Cultura",
+    "nivel": "Primaria"
+  },
+  {
+    "name": "Ciencia y Tecnología",
+    "nivel": "Primaria"
+  },
+  {
+    "name": "Educación Física",
+    "nivel": "Primaria"
+  },
+  {
+    "name": "Educación Religiosa",
+    "nivel": "Primaria"
+  },
+  {
+    "name": "Tutoría y orientación educativa",
+    "nivel": "Primaria"
+  },
+  {
+    "name": "Matemática",
+    "nivel": "Secundaria"
+  },
+  {
+    "name": "Comunicación",
+    "nivel": "Secundaria"
+  },
+  {
+    "name": "Inglés",
+    "nivel": "Secundaria"
+  },
+  {
+    "name": "Arte y Cultura",
+    "nivel": "Secundaria"
+  },
+  {
+    "name": "Ciencias Sociales",
+    "nivel": "Secundaria"
+  },
+  {
+    "name": "Desarrollo personal, ciudadanía y cívica",
+    "nivel": "Secundaria"
+  },
+  {
+    "name": "Educación Física",
+    "nivel": "Secundaria"
+  },
+  {
+    "name": "Educación Religiosa",
+    "nivel": "Secundaria"
+  },
+  {
+    "name": "Ciencia y tecnología",
+    "nivel": "Secundaria"
+  },
+  {
+    "name": "Educación para el Trabajo",
+    "nivel": "Secundaria"
+  },
+  {
+    "name": "~",
+    "nivel": "Secundaria"
+  }
+]

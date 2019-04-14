@@ -19,7 +19,7 @@ public class DatabaseResource {
     private CicloRepository cicloRepository;
     private AnyoLectivoRepository anyoLectivoRepository;
     private CompetenciaRepository competenciaRepository;
-
+    private CapacidadRepository capacidadRepository;
 
     private EvaluacionRepository evaluacionRepository;
 
@@ -29,6 +29,7 @@ public class DatabaseResource {
                             CicloRepository cicloRepository,
                             AnyoLectivoRepository anyoLectivoRepository,
                             CompetenciaRepository competenciaRepository,
+                            CapacidadRepository capacidadRepository,
                             EvaluacionRepository evaluacionRepository) {
         this.alumnoRepository = alumnoRepository;
         this.areaRepository = areaRepository;
@@ -36,19 +37,21 @@ public class DatabaseResource {
         this.cicloRepository = cicloRepository;
         this.anyoLectivoRepository = anyoLectivoRepository;
         this.competenciaRepository = competenciaRepository;
+        this.capacidadRepository = capacidadRepository;
 
         this.evaluacionRepository = evaluacionRepository;
     }
 
     @GetMapping("/star")
-    public List<Competencia> createMatrix() {
+    public List<Capacidad> createMatrix() {
 
         //initMatrixNivel();
         //initMatrixCiclo();
         //initMatrixArea();
         //initMatrixCompetencias();
+        initMatrixCapacidad();
 
-        return competenciaRepository.findAll();
+        return capacidadRepository.findAll();
     }
 
 
@@ -184,13 +187,13 @@ public class DatabaseResource {
         Area area_8 = areaRepository.findByCode(8);
         competencias.add(new Competencia(area_8,20,"Resuelve problemas de cantidad",
                 "Consiste en que el estudiante solucione problemas o plantee nuevos que le demanden construir y comprender las nociones de número," +
-                "de sistemas numéricos, sus operaciones y propiedades. Además dotar de significado a estos" +
-                "conocimientos en la situación y usarlos para representar o reproducir las relaciones entre sus" +
-                "datos y condiciones. Implica también discernir si la solución buscada requiere darse como una" +
-                "estimación o cálculo exacto, y para esto selecciona estrategias, procedimientos, unidades de" +
-                "medida y diversos recursos. El razonamiento lógico en esta competencia es usado cuando el" +
-                "estudiante hace comparaciones, explica a través de analogías, induce propiedades a partir de" +
-                "casos particulares o ejemplos, en el proceso de resolución del problema"));
+                        "de sistemas numéricos, sus operaciones y propiedades. Además dotar de significado a estos" +
+                        "conocimientos en la situación y usarlos para representar o reproducir las relaciones entre sus" +
+                        "datos y condiciones. Implica también discernir si la solución buscada requiere darse como una" +
+                        "estimación o cálculo exacto, y para esto selecciona estrategias, procedimientos, unidades de" +
+                        "medida y diversos recursos. El razonamiento lógico en esta competencia es usado cuando el" +
+                        "estudiante hace comparaciones, explica a través de analogías, induce propiedades a partir de" +
+                        "casos particulares o ejemplos, en el proceso de resolución del problema"));
         competencias.add(new Competencia(area_8,21,"Resuelve problemas de regularidad, equivalencia y cambio",
                 "Consiste en que el estudiante logre caracterizar equivalencias y generalizar regularidades y el " +
                         "cambio de una magnitud con respecto de otra, a través de reglas generales que le permitan " +
@@ -500,85 +503,353 @@ public class DatabaseResource {
          * Area_17: "Matemática sec"
          */
         Area area_17 = areaRepository.findByCode(17);
-        competencias.add(new Competencia(area_17,48,"Resuelve problemas de cantidad"));
-        competencias.add(new Competencia(area_17,49,"Resuelve problemas de regularidad, equivalencia y cambio"));
-        competencias.add(new Competencia(area_17,50,"Resuelve problemas de movimiento, forma y localización"));
-        competencias.add(new Competencia(area_17,51,"Resuelve problemas de gestión de datos e incertidumbre"));
+        competencias.add(new Competencia(area_17,48,"Resuelve problemas de cantidad",
+                "Consiste en que el estudiante solucione " +
+                        "problemas o plantee nuevos que le demanden construir y comprender las nociones de número, de " +
+                        "sistemas numéricos, sus operaciones y propiedades. Además dotar de significado a estos " +
+                        "conocimientos en la situación y usarlos para representar o reproducir las relaciones entre sus datos " +
+                        "y condiciones. Implica también discernir si la solución buscada requiere darse como una estimación " +
+                        "o cálculo exacto, y para esto selecciona estrategias, procedimientos, unidades de medida y diversos " +
+                        "recursos. El razonamiento lógico en esta competencia es usado cuando el estudiante hace " +
+                        "comparaciones, explica a través de analogías, induce propiedades a partir de casos particulares o " +
+                        "ejemplos, en el proceso de resolución del problema."));
+        competencias.add(new Competencia(area_17,49,"Resuelve problemas de regularidad, equivalencia y cambio",
+                "Consiste en que el estudiante logre caracterizar equivalencias y generalizar regularidades y el " +
+                        "cambio de una magnitud con respecto de otra, a través de reglas generales que le permitan " +
+                        "encontrar valores desconocidos, determinar restricciones y hacer predicciones sobre el " +
+                        "comportamiento de un fenómeno. Para esto plantea ecuaciones, inecuaciones y funciones, y usa " +
+                        "estrategias, procedimientos y propiedades para resolverlas, graficarlas o manipular expresiones " +
+                        "simbólicas. Así también razona de manera inductiva y deductiva, para determinar leyes generales " +
+                        "mediante varios ejemplos, propiedades y contraejemplos."));
+        competencias.add(new Competencia(area_17,50,"Resuelve problemas de movimiento, forma y localización",
+                "Consiste en que el estudiante se oriente y describa la posición y el movimiento de objetos y de sí mismo en el " +
+                        "espacio, visualizando, interpretando y relacionando las características de los objetos con formas " +
+                        "geométricas bidimensionales y tridimensionales. Implica que realice mediciones directas o " +
+                        "indirectas de la superficie, del perímetro, del volumen y de la capacidad de los objetos, y que logre " +
+                        "construir representaciones de las formas geométricas para diseñar objetos, planos y maquetas, " +
+                        "usando instrumentos, estrategias y procedimientos de construcción y medida. Además describa " +
+                        "trayectorias y rutas, usando sistemas de referencia y lenguaje geométrico."));
+        competencias.add(new Competencia(area_17,51,"Resuelve problemas de gestión de datos e incertidumbre",
+                "Consiste en que " +
+                        "el estudiante analice datos sobre un tema de interés o estudio o de situaciones aleatorias, que le " +
+                        "permita tomar decisiones, elaborar predicciones razonables y conclusiones respaldadas en la " +
+                        "información producida. Para ello, el estudiante recopila, organiza y representa datos que le dan " +
+                        "insumos para el análisis, interpretación e inferencia del comportamiento determinista o aleatorio " +
+                        "de los mismos usando medidas estadísticas y probabilísticas."));
 
         /**
          * Area_18: "Comunicación sec"
          */
         Area area_18 = areaRepository.findByCode(18);
-        competencias.add(new Competencia(area_18,52,"Se comunica oralmente en lengua materna"));
-        competencias.add(new Competencia(area_18,53,"Lee diversos tipos de textos escritos"));
-        competencias.add(new Competencia(area_18,54,"Escribe diversos tipos de textos"));
+        competencias.add(new Competencia(area_18,52,"Se comunica oralmente en lengua materna",
+                " Se define como una interacción dinámica entre uno o más interlocutores para expresar y comprender ideas y " +
+                        "emociones. Supone un proceso activo de construcción del sentido de los diversos tipos de textos " +
+                        "orales ya que el estudiante alterna los roles de hablante y oyente con el fin de lograr su propósito " +
+                        "comunicativo. " +
+                        "Esta competencia se asume como una práctica social donde el estudiante interactúa con distintos " +
+                        "individuos o comunidades socioculturales, ya sea de forma presencial o virtual. Al hacerlo, tiene " +
+                        "la posibilidad de usar el lenguaje oral de manera creativa y responsable, considerando la " +
+                        "repercusión de lo expresado o escuchado, y estableciendo una posición crítica con los medios de " +
+                        "comunicación audiovisuales. La comunicación oral es una herramienta fundamental para la " +
+                        "constitución de las identidades y el desarrollo personal."));
+        competencias.add(new Competencia(area_18,53,"Lee diversos tipos de textos escritos",
+                "Esta competencia se define como una interacción dinámica entre el lector, el texto y los contextos " +
+                        "socioculturales que enmarcan la lectura. Supone para el estudiante un proceso activo de " +
+                        "construcción del sentido, ya que el estudiante no solo decodifica o comprende la información " +
+                        "explícita de los textos que lee sino que es capaz de interpretarlos y establecer una posición sobre " +
+                        "ellos. Cuando el estudiante pone en juego está competencia utiliza saberes de distinto tipo y recursos " +
+                        "provenientes de su experiencia lectora y del mundo que lo rodea. Ello implica tomar conciencia " +
+                        "de la diversidad de propósitos que tiene la lectura, del uso que se hace de esta en distintos " +
+                        "ámbitos de la vida, del papel de la experiencia literaria en la formación de lectores y de las " +
+                        "relaciones intertextuales que se establecen entre los textos leídos. Esto es crucial en un mundo " +
+                        "donde las nuevas tecnologías y la multimodalidad han transformado los modos de leer. " +
+                        "Para construir el sentido de los textos que lee, es indispensable asumir la lectura como una " +
+                        "práctica social situada en distintos grupos o comunidades de lectores. Al involucrarse con la " +
+                        "lectura, el estudiante contribuye con su desarrollo personal, así como el de su propia comunidad, " +
+                        "además de conocer e interactuar con contextos socioculturales distintos al suyo."));
+        competencias.add(new Competencia(area_18,54,"Escribe diversos tipos de textos",
+                "Esta competencia se define como el uso del " +
+                        "lenguaje escrito para construir sentidos en el texto y comunicarlos a otros. Se trata de un " +
+                        "proceso reflexivo porque supone la adecuación y organización de los textos considerando los " +
+                        "contextos y el propósito comunicativo, así como la revisión permanente de lo escrito con la " +
+                        "finalidad de mejorarlo. " +
+                        "En esta competencia, el estudiante pone en juego saberes de distinto tipo y recursos " +
+                        "provenientes de su experiencia con el lenguaje escrito y del mundo que lo rodea. Utiliza el " +
+                        "sistema alfabético y un conjunto de convenciones de la escritura, así como diferentes estrategias " +
+                        "para ampliar ideas, enfatizar o matizar significados en los textos que escribe. Con ello, toma " +
+                        "conciencia de las posibilidades y limitaciones que ofrece el lenguaje, la comunicación y el " +
+                        "sentido. Esto es crucial en una época dominada por nuevas tecnologías que han transformado " +
+                        "la naturaleza de la comunicación escrita. " +
+                        "Para construir el sentido de los textos que escribe, es indispensable asumir la escritura como " +
+                        "una práctica social que permite participar en distintos grupos o comunidades socioculturales. " +
+                        "Además de participar en la vida social, esta competencia supone otros propósitos, como la " +
+                        "construcción de conocimientos o el uso estético el lenguaje. Al involucrarse con la escritura, se " +
+                        "ofrece la posibilidad de interactuar con otras personas empleando el lenguaje escrito de manera " +
+                        "creativa y responsable, teniendo en cuenta su repercusión en los demás."));
 
         /**
          * Area_19: "Inglés sec"
          */
         Area area_19 = areaRepository.findByCode(19);
-        competencias.add(new Competencia(area_19,55,"Se comunica oralmente en inglés como lengua extranjera"));
-        competencias.add(new Competencia(area_19,56,"Lee diversos tipos de textos en inglés como lengua extranjera"));
-        competencias.add(new Competencia(area_19,57,"Escribe diversos tipos de textos inglés como lengua extranjera"));
+        competencias.add(new Competencia(area_19,55,"Se comunica oralmente en inglés como lengua extranjera",
+                "se define como una interacción dinámica " +
+                        "entre uno o más interlocutores para expresar y comprender ideas y emociones. Supone un " +
+                        "proceso activo de construcción del sentido de los diversos tipos de textos orales ya que el " +
+                        "estudiante alterna los roles de hablante y oyente con el fin de lograr su propósito comunicativo. " +
+                        "En esta competencia, el estudiante pone en juego saberes de distinto tipo y recursos " +
+                        "provenientes del lenguaje oral y del mundo que lo rodea. Esto significa considerar los modos de " +
+                        "cortesía de acuerdo al contexto sociocultural, así como los recursos no verbales y paraverbales " +
+                        "y las diversas estrategias de manera pertinente para expresarse, intercambiar información, " +
+                        "persuadir, consensuar, entre otros fines. De igual forma, supone tomar conciencia del impacto " +
+                        "de las nuevas tecnologías en la oralidad."));
+        competencias.add(new Competencia(area_19,56,"Lee diversos tipos de textos en inglés como lengua extranjera",
+                "se define como una interacción " +
+                        "dinámica entre el lector, el texto y los contextos socioculturales que enmarcan la lectura. Supone " +
+                        "un proceso activo de construcción del sentido ya que el estudiante no solo decodifica o " +
+                        "comprende la información explícita de los textos que lee sino que es capaz de interpretarlos y " +
+                        "establecer una posición sobre ellos. " +
+                        "En esta competencia el estudiante pone en juego saberes de distinto tipo y recursos " +
+                        "provenientes de su experiencia lectora y del mundo que lo rodea. Ello implica tomar conciencia " +
+                        "de la diversidad de propósitos que tiene la lectura, del uso que se hace de esta en distintos " +
+                        "ámbitos de la vida. " +
+                        "Para construir el sentido de los textos que lee, es indispensable asumir la lectura como una " +
+                        "práctica social situada en distintos grupos o comunidades de lectores. Al involucrarse con la " +
+                        "lectura, el estudiante contribuye con su desarrollo personal, así como el de su propia " +
+                        "comunidad, además de conocer e interactuar con contextos socioculturales distintos al suyo."));
+        competencias.add(new Competencia(area_19,57,"Escribe diversos tipos de textos inglés como lengua extranjera",
+                "se define como el uso del " +
+                        "lenguaje escrito para construir sentidos en el texto y comunicarlos a otros. Se trata de un " +
+                        "proceso reflexivo porque supone la adecuación y organización de los textos considerando los " +
+                        "contextos y el propósito comunicativo, así como la revisión permanente de lo escrito con la " +
+                        "finalidad de mejorarlo. " +
+                        "En esta competencia, el estudiante pone en juego saberes de distinto tipo y recursos " +
+                        "provenientes de su experiencia con el lenguaje escrito y del mundo que lo rodea. Utiliza el " +
+                        "sistema alfabético y un conjunto de convenciones de la escritura, así como diferentes estrategias " +
+                        "para ampliar ideas, enfatizar o matizar significados en los textos que escribe. " +
+                        "Para construir el sentido de los textos que escribe, es indispensable asumir la escritura como " +
+                        "una práctica social que permite participar en distintos grupos o comunidades socioculturales. " +
+                        "Además de participar en la vida social, esta competencia supone otros propósitos, como la " +
+                        "construcción de conocimientos o el uso estético el lenguaje. Al involucrarse con la escritura, se " +
+                        "ofrece la posibilidad de interactuar con otras personas empleando el lenguaje escrito de manera " +
+                        "creativa y responsable, teniendo en cuenta su repercusión en los demás."));
 
         /**
          * Area_20: "Arte y Cultura SEC"
          */
         Area area_20 = areaRepository.findByCode(20);
-        competencias.add(new Competencia(area_20,58,"Aprecia de manera crítica manifestaciones artístico-culturales"));
-        competencias.add(new Competencia(area_20,59,"Crea proyectos desde los lenguajes artísticos"));
+        competencias.add(new Competencia(area_20,58,"Aprecia de manera crítica manifestaciones artístico-culturales",
+                "Se define como la interacción entre el estudiante y manifestaciones artístico-culturales para que " +
+                        "puedan observarlas, investigarlas, comprenderlas y reflexionar sobre ellas. Permite al estudiante " +
+                        "desarrollar habilidades para percibir, describir y analizar sus cualidades estéticas, para ayudarlo " +
+                        "a “leer” y entender el arte que observa y experimenta. Supone comprender y apreciar los " +
+                        "contextos específicos en que se originan estas manifestaciones, y entender que tener " +
+                        "conocimiento sobre estos contextos mejora nuestra capacidad de apreciar, producir y " +
+                        "entendernos a nosotros mismos, a otros y al entorno. También implica emitir juicios de valor " +
+                        "cada vez más informados, basándose en los conocimientos obtenidos en el proceso de " +
+                        "apreciación crítica."));
+        competencias.add(new Competencia(area_20,59,"Crea proyectos desde los lenguajes artísticos",
+                "El estudiante usa los diversos lenguajes artísticos (artes visuales, música, danza, teatro, artes interdisciplinares y otros) " +
+                        "para expresar o comunicar mensajes, ideas y sentimientos. En la que pone en práctica habilidades " +
+                        "imaginativas, creativas y reflexivas para generar ideas, planificar, concretar propuestas y " +
+                        "evaluarlas de manera continua. Para lo cual hace uso de recursos y conocimientos que ha " +
+                        "desarrollado en su interacción con el entorno, con manifestaciones artístico-culturales diversas y " +
+                        "con los diversos lenguajes artísticos. Experimenta, investiga y aplica los diferentes materiales, " +
+                        "técnicas y elementos del arte con una intención específica. Así mismo, reflexiona sobre sus " +
+                        "procesos y creaciones y los socializa con otros, con el fin de seguir desarrollando sus capacidades " +
+                        "críticas y creativas."));
 
         /**
          * Area_21: "Ciencias Sociales SEC"
          */
         Area area_21 = areaRepository.findByCode(21);
-        competencias.add(new Competencia(area_21,60,"Construye interpretaciones históricas"));
-        competencias.add(new Competencia(area_21,61,"Gestiona responsablemente el ambiente y el espacio"));
-        competencias.add(new Competencia(area_21,62,"Gestiona responsablemente los recursos económicos"));
+        competencias.add(new Competencia(area_21,60,"Construye interpretaciones históricas",
+                "El estudiante sustenta una posición " +
+                        "crítica sobre hechos y procesos históricos que ayuden a comprender el siglo XXI y sus desafíos, " +
+                        "articulando el uso de distintas fuentes, la comprensión de los cambios, permanencias, " +
+                        "simultaneidades y secuencias temporales y la explicación de las múltiples causas y consecuencias " +
+                        "de estos. Supone reconocerse como sujeto histórico, es decir, como protagonista de los procesos " +
+                        "históricos y, como tal, producto de un pasado, pero que, a la vez, está construyendo su futuro."));
+        competencias.add(new Competencia(area_21,61,"Gestiona responsablemente el ambiente y el espacio",
+                "El estudiante toma " +
+                        "decisiones que contribuyen a la satisfacción de las necesidades desde una posición crítica y una " +
+                        "perspectiva de desarrollo sostenible -es decir, sin poner en riesgo a las generaciones futuras-, y " +
+                        "participa en acciones que disminuyen la vulnerabilidad de la sociedad frente a distintos desastres. " +
+                        "Supone comprender que el espacio es una construcción social dinámica, es decir, un espacio de " +
+                        "interacción entre elementos naturales y sociales que se va transformando a lo largo del tiempo y " +
+                        "donde el ser humano cumple un rol fundamental."));
+        competencias.add(new Competencia(area_21,62,"Gestiona responsablemente los recursos económicos",
+                "El estudiante es " +
+                        "capaz de administrar los recursos, tanto personales como familiares, a partir de asumir una " +
+                        "postura crítica sobre el manejo de estos, de manera informada y responsable. Esto supone " +
+                        "reconocerse como agente económico, comprender la función de los recursos económicos en la " +
+                        "satisfacción de las necesidades, y el funcionamiento del sistema económico y financiero."));
 
         /**
          * Area_22: "Desarrollo personal, ciudadanía y cívica SEC"
          */
         Area area_22 = areaRepository.findByCode(22);
-        competencias.add(new Competencia(area_22,63,"Construye su identidad"));
-        competencias.add(new Competencia(area_22,64,"Convive y participa democráticamente"));
+        competencias.add(new Competencia(area_22,63,"Construye su identidad",
+                "El estudiante conoce y valora su cuerpo, su forma " +
+                        "de sentir, de pensar y de actuar desde el reconocimiento de las distintas identidades que lo " +
+                        "definen (histórica, étnica, social, sexual, cultural, de género, entre otras) como producto de las " +
+                        "interacciones continuas entre los individuos y los diversos contextos en los que se " +
+                        "desenvuelven (familia, escuela, comunidad). No se trata que los estudiantes construyan una " +
+                        "identidad “ideal”, sino que cada estudiante pueda –a su propio ritmo y criterio– ser consciente " +
+                        "de las características que lo hacen único y de aquellas que lo hacen semejantes a otros."));
+        competencias.add(new Competencia(area_22,64,"Convive y participa democráticamente",
+                "El estudiante actúa en la sociedad " +
+                        "relacionándose con los demás de manera justa y equitativa, reconociendo que todas las " +
+                        "personas tienen los mismos derechos y responsabilidades. Muestra disposición por conocer, " +
+                        "comprender y enriquecerse con los aportes de las diversas culturas, respetando las diferencias. " +
+                        "De igual forma, toma posición frente a aquellos asuntos que lo involucra como ciudadano y " +
+                        "contribuye en la construcción del bienestar general, en la consolidación de los procesos " +
+                        "democráticos y en la promoción de los derechos humanos."));
 
         /**
          * Area_23: "Educación Física SEC"
          */
         Area area_23 = areaRepository.findByCode(23);
-        competencias.add(new Competencia(area_23,65,"Se desenvuelve de manera autónoma a través de su motricidad"));
-        competencias.add(new Competencia(area_23,66,"Asume una vida saludable"));
-        competencias.add(new Competencia(area_23,67,"Interactúa a través de sus habilidades sociomotrices"));
+        competencias.add(new Competencia(area_23,65,"Se desenvuelve de manera autónoma a través de su motricidad",
+                "El estudiante comprende y toma conciencia de sí mismo en interacción con el espacio y las " +
+                        "personas de su entorno, lo que le permite construir su identidad y autoestima. Interioriza y " +
+                        "organiza sus movimientos eficazmente según sus posibilidades, en la práctica de actividades " +
+                        "físicas como el juego, el deporte y aquellas que se desarrollan en la vida cotidiana. Asimismo, " +
+                        "es capaz de expresar y comunicar a través de su cuerpo manifestando ideas, emociones y " +
+                        "sentimientos con gestos, posturas, tono muscular, entre otros."));
+        competencias.add(new Competencia(area_23,66,"Asume una vida saludable",
+                "El estudiante tiene conciencia reflexiva hacia el " +
+                        "logro del bienestar común incorporando prácticas autónomas que conllevan a una mejora de su " +
+                        "calidad de vida. Esto supone la comprensión y aplicación de la actividad física para la salud y de " +
+                        "los conocimientos relacionados con posturas adecuadas, alimentación e higiene corporal " +
+                        "saludables según sus recursos y entorno."));
+        competencias.add(new Competencia(area_23,67,"Interactúa a través de sus habilidades sociomotrices",
+                "en la práctica de " +
+                        "diferentes actividades físicas (juegos, deportes, actividades predeportivas, etc). Implica poner " +
+                        "en juego los recursos personales para una apropiada interacción social, inclusión y convivencia, " +
+                        "insertándose adecuadamente en el grupo y resolviendo conflictos de manera asertiva, empática " +
+                        "y pertinente a cada situación. De igual manera, aplica estrategias y tácticas para el logro de un " +
+                        "objetivo común en la práctica de diferentes actividades físicas, mostrando una actitud proactiva " +
+                        "en la organización de eventos lúdicos y deportivos."));
 
         /**
          * Area_24: "Educación Religiosa SEC"
          */
         Area area_24 = areaRepository.findByCode(24);
-        competencias.add(new Competencia(area_24,68,"Construye su identidad como persona humana, amada por Dios, digna, libre y trascendente"));
-        competencias.add(new Competencia(area_24,69,"Asume la experiencia el encuentro personal y comunitario con Dios"));
+        competencias.add(new Competencia(area_24,68,"Construye su identidad como persona humana, amada por Dios, digna, libre y trascendente, comprendiendo la doctrina de su propia religión , abierto al dialogo con las que le son más cercanas",
+                "El estudiante descubre y asume " +
+                        "que existe una verdad trascendente, que le da una identidad y una dignidad humana, toma " +
+                        "conciencia de que es hijo de Dios creado a imagen y semejanza, reconoce la acción providente " +
+                        "de Dios en su vida, en su comunidad y en la historia humana que le da sentido a los " +
+                        "acontecimientos. Desde esta conciencia, los estudiantes aprenderán a relacionarse con Dios, " +
+                        "como origen y fin último de todos los valores; consigo mismos por ser parte de la creación; con " +
+                        "los demás, como un llamado a vivir la comunión, la corresponsabilidad y la reconciliación, y con " +
+                        "la naturaleza para descubrir el sentido de todo lo creado. " +
+                        "La educación religiosa, desde el conocimiento de Dios, lleva al estudiante a realizar un diálogo " +
+                        "interdisciplinar: fe y cultura, fe y ciencia, fe y vida, para actuar con libertad, autonomía y " +
+                        "responsabilidad frente a la vida. Le capacita para el respeto y diálogo con otras creencias " +
+                        "presentes en nuestra sociedad pluralista, posibilita el desarrollo espiritual, psicológico y cultural " +
+                        "del estudiante, en su propio contexto histórico y ambiental, ayuda a comprender el patrimonio " +
+                        "cultural y artístico peruano y le permite estructurar y sistematizar los contenidos de su fe."));
+        competencias.add(new Competencia(area_24,69,"Asume la experiencia el encuentro personal y comunitario con Dios en su proyecto de vida en coherencia con su creencia religiosa",
+                "el estudiante valora " +
+                        "a Jesús como modelo, desarrollando valores y virtudes personales que configuran su " +
+                        "personalidad libre y responsable propia de quien vive los ideales del Evangelio a través de la " +
+                        "experiencia del discipulado. Conoce a Jesucristo como El Salvador, asume sus actitudes y las " +
+                        "evidencia en el diario vivir, dando testimonio de su fe; acepta su proyecto de vida confrontando " +
+                        "los modelos y paradigmas de hombre que presenta la sociedad con la persona de Jesucristo, lo " +
+                        "cual le permite seleccionar y optar por el que responda a sus expectativas de búsqueda personal, " +
+                        "al modelo ideal. " +
+                        "Desarrolla una cosmovisión cristiana de la realidad interpretando críticamente la cultura."));
 
         /**
          * Area_25: "Ciencia y tecnología SEC"
          */
         Area area_25 = areaRepository.findByCode(25);
-        competencias.add(new Competencia(area_25,70,"Indaga mediante métodos científicos"));
-        competencias.add(new Competencia(area_25,71,"Explica el mundo físico basándose en conocimientos sobre los seres vivos; materia y energía; biodiversidad, Tierra y universo"));
-        competencias.add(new Competencia(area_25,72,"Diseña y construye soluciones tecnológicas para resolver problemas"));
+        competencias.add(new Competencia(area_25,70,"Indaga mediante métodos científicos",
+                "El estudiante es capaz de construir su conocimiento acerca del funcionamiento y " +
+                        "estructura del mundo natural y artificial que le rodea, a través de procedimientos propios de la " +
+                        "ciencia, reflexionando acerca de lo que sabe y de cómo ha llegado a saberlo poniendo en juego " +
+                        "actitudes como la curiosidad, asombro, escepticismo, entre otras."));
+        competencias.add(new Competencia(area_25,71,"Explica el mundo físico basándose en conocimientos sobre los seres vivos; materia y energía; biodiversidad, Tierra y universo",
+                "El estudiante es capaz de " +
+                        "comprender conocimientos científicos relacionados a hechos o fenómenos naturales, sus causas y " +
+                        "relaciones con otros fenómenos, construyendo representaciones del mundo natural y artificial. Esta " +
+                        "representación del mundo, le permite evaluar situaciones donde la aplicación de la ciencia y la " +
+                        "tecnología se encuentran en debate, para construir argumentos que le llevan a participar, deliberar " +
+                        "y tomar decisiones en asuntos personales y públicos, mejorando su calidad de vida, así como " +
+                        "conservar el ambiente."));
+        competencias.add(new Competencia(area_25,72,"Diseña y construye soluciones tecnológicas para resolver problemas",
+                "El estudiante es capaz de construir objetos, procesos o sistemas tecnológicos, basados en " +
+                        "conocimientos científicos, tecnológicos y de diversas prácticas locales, para dar respuesta a " +
+                        "problemas del contexto, ligados a las necesidades sociales, poniendo en juego la creatividad y " +
+                        "perseverancia."));
 
         /**
          * Area_26: "Educación para el Trabajo SEC"
          */
         Area area_26 = areaRepository.findByCode(26);
-        competencias.add(new Competencia(area_26,73,"Gestiona proyectos de emprendimiento económico y social"));
+        competencias.add(new Competencia(area_26,73,"Gestiona proyectos de emprendimiento económico y social",
+                "Es cuando el " +
+                        "estudiante lleva a la acción una idea creativa movilizando con eficiencia y eficacia los recursos, " +
+                        "tareas, y técnicas necesarias para alcanzar objetivos y metas individuales o colectivas en atención " +
+                        "de resolver una necesidad no satisfecha o un problema económico o social. Comprende que el " +
+                        "estudiante trabaje cooperativamente para crear una alternativa de solución a una necesidad o " +
+                        "problema de su entorno, a través de un bien o servicio, valide sus ideas con posibles usuarios y " +
+                        "seleccione, en función de la pertinencia y viabilidad, una de ellas ; diseñe la estrategia que le permita " +
+                        "implementarla definiendo los recursos y tareas necesarios, aplica habilidades técnicas para producir " +
+                        "o prestar el bien o servicio ideado y evalúa los procesos y resultados con el fin de tomar decisiones " +
+                        "para mejorar o innovar. Actuando permanentemente con ética, iniciativa, adaptabilidad y " +
+                        "perseverancia."));
 
         /**
          * Area_27: "Castellano como segunda lengua SEC"
          */
         Area area_27 = areaRepository.findByCode(27);
-        competencias.add(new Competencia(area_27,74,"Se comunica oralmente en castellano como segunda lengua"));
-        competencias.add(new Competencia(area_27,75,"Lee diversos tipos de textos escritos en castellano como segunda lengua"));
-        competencias.add(new Competencia(area_27,76,"Escribe diversos tipos de textos castellano como segunda lengua"));
+        competencias.add(new Competencia(area_27,74,"Se comunica oralmente en castellano como segunda lengua",
+                "Se define como una interacción dinámica entre uno o más interlocutores para expresar y " +
+                        "comprender ideas y emociones. Supone un proceso activo de construcción del sentido de los " +
+                        "diversos tipos de textos orales ya que el estudiante alterna los roles de hablante y oyente con el " +
+                        "fin de lograr su propósito comunicativo. El estudiante pone en juego saberes de distinto tipo y " +
+                        "recursos provenientes del lenguaje oral y del mundo que lo rodea. Esto significa considerar los " +
+                        "modos de cortesía de acuerdo al contexto sociocultural, así como los recursos no verbales y " +
+                        "paraverbales y las diversas estrategias de manera pertinente para expresarse, intercambiar " +
+                        "información, persuadir, consensuar, entre otros fines. De igual forma, supone tomar conciencia " +
+                        "del impacto de las nuevas tecnologías en la oralidad. " +
+                        "La comunicación oral es una herramienta fundamental para la constitución de las identidades y " +
+                        "el desarrollo personal. Esta competencia se asume como una práctica social donde el estudiante " +
+                        "interactúa con distintos individuos o comunidades socioculturales, ya sea de forma presencial o " +
+                        "virtual. Al hacerlo, tiene la posibilidad de usar el lenguaje oral de manera creativa y responsable, " +
+                        "considerando la repercusión de lo expresado o escuchado, y estableciendo una posición crítica " +
+                        "con los medios de comunicación audiovisuales."));
+        competencias.add(new Competencia(area_27,75,"Lee diversos tipos de textos escritos en castellano como segunda lengua",
+                "Esta competencia se define como una interacción dinámica entre el lector, el texto y los contextos " +
+                        "socioculturales que enmarcan la lectura. Supone un proceso activo de construcción del sentido, " +
+                        "ya que el estudiante no solo decodifica o comprende la información explícita de los textos que " +
+                        "lee sino que es capaz de interpretarlos y establecer una posición sobre ellos. " +
+                        "En esta competencia el estudiante pone en juego saberes de distinto tipo y recursos " +
+                        "provenientes de su experiencia lectora y del mundo que lo rodea. Ello implica tomar conciencia " +
+                        "de la diversidad de propósitos que tiene la lectura, del uso que se hace de esta en distintos " +
+                        "ámbitos de la vida, del papel de la experiencia literaria en la formación de lectores y de las " +
+                        "relaciones intertextuales que se establecen entre los textos leídos. Esto es crucial en un mundo " +
+                        "donde las nuevas tecnologías y la multimodalidad han transformado los modos de leer. " +
+                        "Para construir el sentido de los textos que lee, es indispensable asumir la lectura como una " +
+                        "práctica social situada en distintos grupos o comunidades de lectores. Al involucrarse con la " +
+                        "lectura, el estudiante contribuye con su desarrollo personal, así como el de su propia " +
+                        "comunidad, además de conocer e interactuar con contextos socioculturales distintos al suyo."));
+        competencias.add(new Competencia(area_27,76,"Escribe diversos tipos de textos castellano como segunda lengua",
+                "Esta competencia se define como el uso del lenguaje escrito para construir sentidos en el texto y " +
+                        "comunicarlos a otros. Se trata de un proceso reflexivo porque supone la adecuación y " +
+                        "organización de los textos considerando los contextos y el propósito comunicativo, así como la " +
+                        "revisión permanente de lo escrito con la finalidad de mejorarlo. " +
+                        "En esta competencia, el estudiante pone en juego saberes de distinto tipo y recursos provenientes " +
+                        "de su experiencia con el lenguaje escrito y del mundo que lo rodea. Utiliza el sistema alfabético yconjunto de convenciones de la escritura, así como diferentes estrategias para ampliar ideas, " +
+                        "enfatizar o matizar significados en los textos que escribe. Con ello, toma conciencia deposibilidades y limitaciones que ofrece el lenguaje, la comunicación y el sentido. Esto es crucialuna época dominada por nuevas tecnologías que han transformado la naturaleza de la comunicación " +
+                        "escrita. " +
+                        "Para construir el sentido de los textos que escribe, es indispensable asumir la escritura como una " +
+                        "práctica social que permite participar en distintos grupos o comunidades socioculturales. Además " +
+                        "de participar en la vida social, esta competencia supone otros propósitos, como la construcciónconocimientos o el uso estético el lenguaje. Al involucrarse con la escritura, se ofrece la posibilidad " +
+                        "de interactuar con otras personas empleando el lenguaje escrito de manera creativa y responsable, " +
+                        "teniendo en cuenta su repercusión en los demás."));
 
         competenciaRepository.saveAll(competencias);
     }
@@ -688,8 +959,6 @@ public class DatabaseResource {
         capacidades.add(new Capacidad(comp_19, "Genera y registra datos o información"));
         capacidades.add(new Capacidad(comp_19, "Analiza datos e información"));
         capacidades.add(new Capacidad(comp_19, "Evalúa y comunica el proceso y resultado de su indagación"));
-
-
 
 
         Competencia comp_20 = competenciaRepository.findByCode(20);
@@ -1287,18 +1556,644 @@ public class DatabaseResource {
                         "contexto sociocultural."));
 
         Competencia comp_48 = competenciaRepository.findByCode(48);
-        capacidades.add(new Capacidad(comp_48, "",
-                ""));
-        capacidades.add(new Capacidad(comp_48, "",
-                ""));
+        capacidades.add(new Capacidad(comp_48, "Traduce cantidades a expresiones numéricas",
+                "Es transformar las relaciones " +
+                        "entre los datos y condiciones de un problema, a una expresión numérica (modelo) " +
+                        "que reproduzca las relaciones entre estos; esta expresión se comporta como un " +
+                        "sistema compuesto por números, operaciones y sus propiedades. Es plantear " +
+                        "problemas a partir de una situación o una expresión numérica dada. También " +
+                        "implica evaluar si el resultado obtenido o la expresión numérica formulada " +
+                        "(modelo), cumplen las condiciones iniciales del problema."));
+        capacidades.add(new Capacidad(comp_48, "Comunica su comprensión sobre los números y las operaciones",
+                "Es " +
+                        "expresar la comprensión de los conceptos numéricos, las operaciones y " +
+                        "propiedades, las unidades de medida, las relaciones que establece entre ellos; " +
+                        "usando lenguaje numérico y diversas representaciones; así como leer sus " +
+                        "representaciones e información con contenido numérico."));
+        capacidades.add(new Capacidad(comp_48, "Usa estrategias y procedimientos de estimación y cálculo",
+                "Es seleccionar, " +
+                        "adaptar, combinar o crear una variedad de estrategias, procedimientos como el " +
+                        "cálculo mental y escrito, la estimación, la aproximación y medición, comparar " +
+                        "cantidades; y emplear diversos recursos."));
+        capacidades.add(new Capacidad(comp_48, "Argumenta afirmaciones sobre las relaciones numéricas y las operaciones",
+                "Es elaborar afirmaciones sobre las posibles relaciones entre números naturales, " +
+                        "enteros, racionales, reales, sus operaciones y propiedades; en " +
+                        " base a " +
+                        "comparaciones y experiencias en las que induce propiedades a partir de casos " +
+                        "particulares; así como explicarlas con analogías, justificarlas, validarlas o refutarlas " +
+                        "con ejemplos y contraejemplos."));
 
         Competencia comp_49 = competenciaRepository.findByCode(49);
-        capacidades.add(new Capacidad(comp_49, "",
-                ""));
-        capacidades.add(new Capacidad(comp_49, "",
-                ""));
+        capacidades.add(new Capacidad(comp_49, "Traduce datos y condiciones a expresiones algebraicas",
+                "Es transformar los datos, valores desconocidos, variables y relaciones de un " +
+                        "problema a una expresión gráfica o algebraica (modelo) que generalice la " +
+                        "interacción entre estos. Implica también evaluar el resultado o la expresión " +
+                        "formulada, con respecto a las condiciones de la situación; y formular " +
+                        "preguntas o problemas a partir de una situación o una expresión. "));
+        capacidades.add(new Capacidad(comp_49, "Comunica su comprensión sobre las relaciones algebraicas",
+                "Es expresar su comprensión de la noción, concepto o propiedades de los " +
+                        "patrones, funciones, ecuaciones e inecuaciones estableciendo relaciones " +
+                        "entre estas; usando lenguaje algebraico y diversas representaciones. Así " +
+                        "como interpretar información que presente contenido algebraico."));
+        capacidades.add(new Capacidad(comp_49, "Usa estrategias y procedimientos para encontrar reglas generales",
+                "Es seleccionar, adaptar, combinar o crear, procedimientos, estrategias y " +
+                        "algunas propiedades para simplificar o transformar ecuaciones, inecuaciones " +
+                        "y expresiones simbólicas que le permitan resolver ecuaciones, determinar " +
+                        "dominios y rangos, representar rectas, parábolas, y diversas funciones."));
+        capacidades.add(new Capacidad(comp_49, "Argumenta afirmaciones sobre relaciones de cambio y equivalencia",
+                "Es elaborar afirmaciones sobre variables, reglas algebraicas y propiedades " +
+                        "algebraicas, razonando de manera inductiva para generalizar una regla y de " +
+                        "manera deductiva probando y comprobando propiedades y nuevas " +
+                        "relaciones."));
 
+        Competencia comp_50 = competenciaRepository.findByCode(50);
+        capacidades.add(new Capacidad(comp_50, "Modela objetos con formas geométricas y sus transformaciones",
+                "Es construir un modelo que reproduzca las características de los objetos, su " +
+                        "localización y movimiento, mediante formas geométricas, sus elementos y " +
+                        "propiedades; la ubicación y transformaciones en el plano. Es también evaluar " +
+                        "si el modelo cumple con las condiciones dadas en el problema. "));
+        capacidades.add(new Capacidad(comp_50, "Comunica su comprensión sobre las formas y relaciones geométricas",
+                "Es comunicar su comprensión de las propiedades de las formas geométricas, sus " +
+                        "transformaciones y la ubicación en un sistema de referencia; es también " +
+                        "establecer relaciones entre estas formas, usando lenguaje geométrico y " +
+                        "representaciones gráficas o simbólicas."));
+        capacidades.add(new Capacidad(comp_50, "Usa estrategias y procedimientos para orientarse en el espacio",
+                "Es seleccionar, adaptar, combinar o crear, una variedad de " +
+                        " estrategias, procedimientos y recursos para construir formas geométricas, " +
+                        " trazar rutas, medir o estimar distancias y superficies, y transformar " +
+                        " las formas bidimensionales y tridimensionales."));
+        capacidades.add(new Capacidad(comp_50, "Argumenta afirmaciones sobre relaciones geométricas",
+                "Es elaborar afirmaciones sobre las posibles relaciones entre los elementos y las " +
+                        "propiedades de las formas geométricas; en base a su exploración o " +
+                        "visualización. Asimismo, justificarlas, validarlas o refutarlas, en base a su " +
+                        "experiencia, ejemplos o contraejemplos, y conocimientos sobre propiedades " +
+                        "geométricas; usando el razonamiento inductivo o deductivo."));
 
+        Competencia comp_51 = competenciaRepository.findByCode(51);
+        capacidades.add(new Capacidad(comp_51, "Representa datos con gráficos y medidas estadísticas o probabilísticas",
+                "Es representar el comportamiento de un conjunto de " +
+                        "datos, seleccionando tablas o gráficos estadísticos, medidas de " +
+                        "tendencia central, de localización o dispersión. Reconocer variables de " +
+                        "la población o la muestra al plantear un tema de estudio. Así también " +
+                        "implica el análisis de situaciones aleatorias y representar la ocurrencia " +
+                        "de sucesos mediante el valor de la probabilidad."));
+        capacidades.add(new Capacidad(comp_51, "Comunica la comprensión de los conceptos estadísticos y probabilísticos",
+                "Es comunicar su comprensión de conceptos " +
+                        "estadísticos y probabilísticos en relación a la situación. Leer, describir " +
+                        "e interpretar información estadística contenida en gráficos o tablas " +
+                        "provenientes de diferentes fuentes."));
+        capacidades.add(new Capacidad(comp_51, "Usa estrategias y procedimientos para recopilar y procesar datos",
+                "Es seleccionar, adaptar, combinar o crear una variedad de " +
+                        "procedimientos, estrategias y recursos para recopilar, procesar y " +
+                        "analizar datos, así como el uso de técnicas de muestreo y el cálculo de " +
+                        "las medidas estadísticas y probabilísticas."));
+        capacidades.add(new Capacidad(comp_51, "Sustenta conclusiones o decisiones en base a información obtenida",
+                "Es tomar decisiones, hacer predicciones o elaborar conclusiones, y " +
+                        "sustentarlas en base a la información obtenida del procesamiento y " +
+                        "análisis de datos, y de la revisión o valoración de los procesos."));
+
+        Competencia comp_52 = competenciaRepository.findByCode(52);
+        capacidades.add(new Capacidad(comp_52, "Obtiene información del texto oral",
+                "El estudiante recupera y extrae información explícita " +
+                        "expresada por los interlocutores."));
+        capacidades.add(new Capacidad(comp_52, "Infiere e interpreta información del texto oral",
+                "El estudiante construye el sentido del texto. " +
+                        "Para ello, infiere estableciendo diversas relaciones entre la información explícita e implícita " +
+                        "con el fin de deducir nueva información y completar los vacíos del texto oral. A partir de " +
+                        "estas inferencias, el estudiante interpreta integrando la información explícita e implícita, los " +
+                        "recursos verbales, no verbales y paraverbales para construir el sentido global y profundo del " +
+                        "texto oral, y explicar el propósito, el uso estético del lenguaje, las intenciones e ideologías de " +
+                        "los interlocutores, así como su relación con el contexto sociocultural."));
+        capacidades.add(new Capacidad(comp_52, "Adecúa, organiza y desarrolla las ideas de forma coherente y cohesionada",
+                "El estudiante " +
+                        "expresa sus ideas adaptándose al propósito, destinatario, características del tipo de texto, " +
+                        "género discursivo y registro, considerando las normas y modos de cortesía, así como los " +
+                        "contextos socioculturales que enmarcan la comunicación. Asimismo, expresa las ideas en " +
+                        "torno a un tema de forma lógica, relacionándolas mediante diversos recursos cohesivos para " +
+                        "construir el sentido de distintos tipos de textos y géneros discursivos."));
+        capacidades.add(new Capacidad(comp_52, "Utiliza recursos no verbales y paraverbales de forma estratégica",
+                "El estudiante emplea " +
+                        "variados recursos no verbales (como gestos o movimientos corporales) o paraverbales (como " +
+                        "el tono de la voz o silencios) según la situación comunicativa para enfatizar o matizar " +
+                        "significados y producir determinados efectos en los interlocutores."));
+        capacidades.add(new Capacidad(comp_52, "Interactúa estratégicamente con distintos interlocutores",
+                "El estudiante intercambia los " +
+                        "roles de hablante y oyente alternada y dinámicamente, participando de forma pertinente, " +
+                        "oportuna y relevante para lograr su propósito comunicativo."));
+        capacidades.add(new Capacidad(comp_52, "Reflexiona y evalúa la forma, el contenido y contexto del texto oral",
+                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el estudiante se " +
+                        "distancie de los textos orales en los que participa. Para ello, reflexiona como oyente y " +
+                        "hablante, que supone distanciarse de los textos orales en que participa de forma presencial " +
+                        "o a través de medios audiovisuales, comparando y contrastando aspectos formales y de " +
+                        "contenido, con la experiencia, el contexto, el conocimiento formal y diversas fuentes de " +
+                        "información. Asimismo, evalúa, que implica analizar y valorar los textos orales producidos " +
+                        "para construir una opinión personal o un juicio crítico sobre sus aspectos formales, " +
+                        "contenidos e ideologías, y su relación con el contexto sociocultural, considerando los efectos " +
+                        "que producen en los interlocutores."));
+
+        Competencia comp_53 = competenciaRepository.findByCode(53);
+        capacidades.add(new Capacidad(comp_53, "Obtiene información del texto escrito",
+                "El estudiante localiza y selecciona " +
+                        "información explícita en textos escritos con un propósito específico."));
+        capacidades.add(new Capacidad(comp_53, "Infiere e interpreta información del texto",
+                "El estudiante construye el sentido " +
+                        "del texto. Para ello, infiere estableciendo diversas relaciones entre la " +
+                        "información explícita e implícita con el fin de deducir nueva información y " +
+                        "completar los vacíos del texto. A partir de estas inferencias, el estudiante " +
+                        "interpreta integrando la información explícita e implícita, así como los recursos " +
+                        "textuales, para construir el sentido global y profundo del texto, y explicar el " +
+                        "propósito, el uso estético del lenguaje, las intenciones del autor, las ideologías " +
+                        "de los textos así como su relación con el contexto sociocultural del lector y del " +
+                        "texto."));
+        capacidades.add(new Capacidad(comp_53, "Reflexiona y evalúa la forma, el contenido y contexto del texto",
+                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el " +
+                        "estudiante se distancie de los textos escritos situados en épocas y lugares " +
+                        "distintos, y que son presentados en diferentes soportes y formatos. Reflexionar " +
+                        "implica comparar y contrastar aspectos formales y de contenido del texto con la " +
+                        "experiencia, el conocimiento formal del lector y diversas fuentes de " +
+                        "información. Evaluar implica analizar y valorar los textos escritos para construir " +
+                        "una opinión personal o un juicio crítico sobre aspectos formales, estéticos, " +
+                        "contenidos e ideologías de los textos considerando los efectos que producen, la " +
+                        "relación con otros textos, y el contexto sociocultural del texto y del lector."));
+
+        Competencia comp_54 = competenciaRepository.findByCode(54);
+        capacidades.add(new Capacidad(comp_54, "Adecúa el texto a la situación comunicativa",
+                "El estudiante considera el " +
+                        "propósito, destinatario, tipo de texto, género discursivo y registro que utilizará al " +
+                        "escribir los textos, así como los contextos socioculturales que enmarcan la " +
+                        "comunicación escrita."));
+        capacidades.add(new Capacidad(comp_54, "Organiza y desarrolla las ideas de forma coherente y cohesionada",
+                "El estudiante ordena lógicamente las ideas en torno a un tema, ampliándolas y " +
+                        "complementándolas, estableciendo relaciones de cohesión entre ellas y utilizando " +
+                        "un vocabulario pertinente. "));
+        capacidades.add(new Capacidad(comp_54, "Utiliza convenciones del lenguaje escrito de forma pertinente",
+                "El estudiante usa de forma apropiada recursos textuales para garantizar la claridad, " +
+                        "el uso estético del lenguaje y el sentido del texto escrito. "));
+        capacidades.add(new Capacidad(comp_54, "Reflexiona y evalúa la forma, el contenido y contexto del texto escrito",
+                "El estudiante se distancia del texto que ha escrito para revisar de manera " +
+                        "permanente el contenido, la coherencia, cohesión y adecuación a la situación " +
+                        "comunicativa con la finalidad de mejorarlo. También implica analizar, comparar y " +
+                        "contrastar las características de los usos del lenguaje escrito y sus posibilidades, así " +
+                        "como su repercusión en otras personas o su relación con otros textos según el " +
+                        "contexto sociocultural."));
+
+        Competencia comp_55 = competenciaRepository.findByCode(55);
+        capacidades.add(new Capacidad(comp_55, "Obtiene información del texto oral en inglés",
+                "El estudiante recupera y extrae información explícita " +
+                        "expresada por los interlocutores."));
+        capacidades.add(new Capacidad(comp_55, "Infiere e interpreta información del texto oral en inglés",
+                "El estudiante construye el sentido del texto. " +
+                        "Para ello, infiere estableciendo diversas relaciones entre la información explícita e implícita con el " +
+                        "fin de deducir nueva información y completar los vacíos del texto oral. A partir de estas inferencias, " +
+                        "el estudiante interpreta integrando la información explícita e implícita, los recursos verbales, no " +
+                        "verbales y paraverbales para construir el sentido global y profundo del texto oral, y explicar el " +
+                        "propósito, el uso estético del lenguaje, las intenciones e ideologías de los interlocutores, así como " +
+                        "su relación con el contexto sociocultural."));
+        capacidades.add(new Capacidad(comp_55, "Adecúa, organiza y desarrolla el texto en inglés de forma coherente y cohesionada",
+                "El estudiante expresa sus ideas adaptándose al propósito, destinatario, características del tipo de texto, género " +
+                        "discursivo y registro, considerando las normas y modos de cortesía, así como los contextos " +
+                        "socioculturales que enmarcan la comunicación. Asimismo, expresa las ideas en torno a un tema de " +
+                        "forma lógica, relacionándolas mediante diversos recursos cohesivos para construir el sentido de " +
+                        "distintos tipos de textos y géneros discursivos."));
+        capacidades.add(new Capacidad(comp_55, "Utiliza recursos no verbales y paraverbales de forma estratégica",
+                "El estudiante emplea variados " +
+                        "recursos no verbales (como gestos o movimientos corporales) o paraverbales (como el tono de la " +
+                        "voz o silencios) según la situación comunicativa para enfatizar o matizar significados y producir " +
+                        "determinados efectos en los interlocutores."));
+        capacidades.add(new Capacidad(comp_55, "Interactúa estratégicamente en inglés con distintos interlocutores",
+                "El estudiante intercambia los " +
+                        "roles de hablante y oyente alternada y dinámicamente, participando de forma pertinente, oportuna " +
+                        "y relevante para lograr su propósito comunicativo. "));
+        capacidades.add(new Capacidad(comp_55, "Reflexiona y evalúa la forma, el contenido y contexto del texto oral en inglés",
+                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el estudiante se distancie de " +
+                        "los textos orales en los que participa. Para ello, reflexiona como oyente y hablante, que supone " +
+                        "distanciarse de los textos orales en que participa de forma presencial o a través de medios " +
+                        "audiovisuales, comparando y contrastando aspectos formales y de contenido, con la experiencia, el " +
+                        "contexto, el conocimiento formal y diversas fuentes de información. Asimismo, evalúa, que implica " +
+                        "analizar y valorar los textos orales producidos para construir una opinión personal o un juicio crítico " +
+                        "sobre sus aspectos formales, contenidos e ideologías, y su relación con el contexto sociocultural, " +
+                        "considerando los efectos que producen en los interlocutores."));
+
+        Competencia comp_56 = competenciaRepository.findByCode(56);
+        capacidades.add(new Capacidad(comp_56, "Obtiene información del texto escrito en inglés",
+                "El estudiante localiza y selecciona " +
+                        "información explícita en textos escritos con un propósito específico."));
+        capacidades.add(new Capacidad(comp_56, "Infiere e interpreta información del texto escrito en inglés",
+                "El estudiante construye el " +
+                        "sentido del texto. Para ello, infiere estableciendo diversas relaciones entre la información " +
+                        "explícita e implícita con el fin de deducir nueva información y completar los vacíos del texto. " +
+                        "A partir de estas inferencias, el estudiante interpreta integrando la información explícita e " +
+                        "implícita, así como los recursos textuales, para construir el sentido global y profundo del " +
+                        "texto, y explicar el propósito, las intenciones del autor, así como su relación con el contexto " +
+                        "sociocultural del lector y del texto."));
+        capacidades.add(new Capacidad(comp_56, "Reflexiona y evalúa la forma, el contenido y contexto del texto escrito en inglés",
+                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el " +
+                        "estudiante se distancie de los textos escritos situados en épocas y lugares distintos, y que " +
+                        "son presentados en diferentes soportes y formatos. Reflexionar implica comparar y " +
+                        "contrastar aspectos formales y de contenido del texto con la experiencia, el conocimiento " +
+                        "formal del lector y diversas fuentes de información. Evaluar implica analizar y valorar los " +
+                        "textos escritos para construir una opinión personal o un juicio crítico sobre aspectos " +
+                        "formales, contenidos de los textos considerando los efectos que producen, la relación con " +
+                        "otros textos, y el contexto sociocultural del texto y del lector."));
+
+        Competencia comp_57 = competenciaRepository.findByCode(57);
+        capacidades.add(new Capacidad(comp_57, "Adecúa el texto en inglés a la situación comunicativa",
+                "El estudiante considera el propósito, " +
+                        "destinatario, tipo de texto, género discursivo y registro que utilizará al escribir los textos, así " +
+                        "como los contextos socioculturales que enmarcan la comunicación escrita."));
+        capacidades.add(new Capacidad(comp_57, "Organiza y desarrolla las ideas en inglés de forma coherente y cohesionada",
+                "El estudiante " +
+                        "ordena lógicamente las ideas en torno a un tema, ampliándolas y complementándolas, " +
+                        "estableciendo relaciones de cohesión entre ellas y utilizando un vocabulario pertinente."));
+        capacidades.add(new Capacidad(comp_57, "Utiliza convenciones del lenguaje escrito en inglés de forma pertinente",
+                "El estudiante usa de forma apropiada recursos textuales para garantizar la claridad, el uso estético del lenguaje " +
+                        "y el sentido del texto escrito."));
+        capacidades.add(new Capacidad(comp_57, "Reflexiona y evalúa la forma, el contenido y contexto del texto escrito en inglés",
+                "El estudiante se distancia del texto que ha escrito para revisar de manera permanente el " +
+                        "contenido, la coherencia, cohesión y adecuación a la situación comunicativa con la finalidad " +
+                        "de mejorarlo. También implica analizar, comparar y contrastar las características de los usos " +
+                        "del lenguaje escrito y sus posibilidades, así como su repercusión en otras personas o su " +
+                        "relación con otros textos según el contexto sociocultural."));
+
+        Competencia comp_58 = competenciaRepository.findByCode(58);
+        capacidades.add(new Capacidad(comp_58, "Percibe manifestaciones artístico-culturales",
+                "Consiste en usar los sentidos para " +
+                        "observar, escuchar, describir y analizar las cualidades visuales, táctiles, sonoras y " +
+                        "kinestésicas de diversas manifestaciones artístico-culturales."));
+        capacidades.add(new Capacidad(comp_58, "Contextualiza las manifestaciones culturales",
+                "Es informarse acerca de la cultura en que " +
+                        "se origina una manifestación artística para entender cómo el contexto social, cultural e " +
+                        "histórico de esta influye en su creación y la manera en que transmite sus significados."));
+        capacidades.add(new Capacidad(comp_58, "Reflexiona creativa y críticamente",
+                "Supone interpretar las intenciones y significados de " +
+                        "manifestaciones artístico-culturales que hayan visto o experimentado y emitir juicios de " +
+                        "valor, entrelazando información obtenida a través de la percepción, el análisis y la " +
+                        "comprensión de los contextos."));
+
+        Competencia comp_59 = competenciaRepository.findByCode(59);
+        capacidades.add(new Capacidad(comp_59, "Explora y experimenta los lenguajes del arte",
+                "Significa experimentar, improvisar y desarrollar " +
+                        "habilidades en el uso de los medios, materiales, herramientas y técnicas de los diversos " +
+                        "lenguajes del arte."));
+        capacidades.add(new Capacidad(comp_59, "Aplica procesos creativos",
+                "Supone generar ideas, investigar, tomar decisiones y poner en " +
+                        "práctica sus conocimientos para elaborar un proyecto artístico individual o colaborativo en " +
+                        "relación a una intención específica."));
+        capacidades.add(new Capacidad(comp_59, "Evalúa y socializa sus procesos y proyectos",
+                "Significa registrar sus experiencias, comunicar " +
+                        "sus descubrimientos y compartir sus creaciones con otros, para profundizar en ellos y " +
+                        "reflexionar sobre sus ideas y experiencias."));
+
+        Competencia comp_60 = competenciaRepository.findByCode(60);
+        capacidades.add(new Capacidad(comp_60, "Interpreta críticamente fuentes diversas",
+                "Es reconocer la diversidad de fuentes y su " +
+                        "diferente utilidad para abordar un hecho o proceso histórico. Supone ubicarlas en su " +
+                        "contexto y comprender, de manera crítica, que estas reflejan una perspectiva particular y " +
+                        "tienen diferentes grados de fiabilidad. También implica recurrir a múltiples fuentes."));
+        capacidades.add(new Capacidad(comp_60, "Comprende el tiempo histórico",
+                "Es usar las nociones relativas al tiempo de manera " +
+                        "pertinente, reconociendo que los sistemas de medición temporal son convenciones que " +
+                        "dependen de distintas tradiciones culturales y que el tiempo histórico tiene diferentes " +
+                        "duraciones. Asimismo, implica ordenar los hechos y procesos históricos cronológicamente " +
+                        "y explicar los cambios y permanencias que se dan en ellos."));
+        capacidades.add(new Capacidad(comp_60, "Elabora explicaciones sobre procesos históricos",
+                "Es jerarquizar las causas de los procesos " +
+                        "históricos relacionando las motivaciones de sus protagonistas con su cosmovisión y la " +
+                        "época en la que vivieron. También es establecer las múltiples consecuencias de los " +
+                        "procesos del pasado y sus implicancias en el presente, así como reconocer que este va " +
+                        "construyendo nuestro futuro."));
+
+        Competencia comp_61 = competenciaRepository.findByCode(61);
+        capacidades.add(new Capacidad(comp_61, "Comprende las relaciones entre los elementos naturales y sociales",
+                "Es explicar las dinámicas " +
+                        "y transformaciones del espacio geográfico, a partir del reconocimiento de sus elementos " +
+                        "naturales y sociales que los componen, así como de las interacciones que se dan entre " +
+                        "ambos a escala local, nacional o global."));
+        capacidades.add(new Capacidad(comp_61, "Maneja fuentes de información para comprender el espacio geográfico",
+                "Es usar distintas " +
+                        "fuentes: cartográficas, fotográficas e imágenes diversas, cuadros y gráficos estadísticos, " +
+                        "entre otros, para analizar el espacio geográfico, orientarse y desplazarse en él."));
+        capacidades.add(new Capacidad(comp_61, "Genera acciones para preservar el ambiente",
+                "Es proponer y poner en práctica acciones " +
+                        "orientadas al cuidado del ambiente y a contribuir a la prevención de situaciones de riesgo " +
+                        "de desastre. Esto supone analizar el impacto de las problemáticas ambientales y " +
+                        "territoriales en la vida de las personas."));
+
+        Competencia comp_62 = competenciaRepository.findByCode(62);
+        capacidades.add(new Capacidad(comp_62, "Comprende el funcionamiento del sistema económico y financiero",
+                "Supone identificar los " +
+                        "roles de los diversos agentes que intervienen en el sistema, analizar las interacciones entre " +
+                        "ellos y comprender el rol del Estado en dichas interrelaciones."));
+        capacidades.add(new Capacidad(comp_62, "Toma decisiones económicas y financieras",
+                "Supone planificar el uso de sus recursos " +
+                        "económicos de manera sostenible, en función a sus necesidades y posibilidades. También " +
+                        "implica asumir una posición crítica frente a los sistemas de producción y de consumo, así " +
+                        "como ejercer sus derechos y responsabilidades como consumidor informado."));
+
+        Competencia comp_63 = competenciaRepository.findByCode(63);
+        capacidades.add(new Capacidad(comp_63, "Se valora a sí mismo",
+                "es decir, el estudiante reconoce sus características, cualidades, " +
+                        "limitaciones y potencialidades que lo hacen ser quien es, que le permiten aceptarse, " +
+                        "sentirse bien consigo mismo y ser capaz de asumir retos y alcanzar sus metas. Además, se " +
+                        "reconoce como integrante de una colectividad sociocultural específica y tiene sentido de " +
+                        "pertenencia a su familia, escuela, comunidad, país y mundo."));
+        capacidades.add(new Capacidad(comp_63, "Autorregula sus emociones",
+                "es que el estudiante reconoce y toma conciencia de sus " +
+                        "emociones, a fin de poder expresarlas de manera adecuada según el contexto, los " +
+                        "patrones culturales diversos y las consecuencias que estas tienen para sí mismo y para los " +
+                        "demás. Ello le permite regular su comportamiento, en favor de su bienestar y el de los " +
+                        "demás."));
+        capacidades.add(new Capacidad(comp_63, "Reflexiona y argumenta éticamente",
+                "es que el estudiante analice situaciones cotidianas " +
+                        "para identificar los valores que están presentes en ellas y asumir una posición, sustentada " +
+                        "en argumentos razonados y en principios éticos. Implica también tomar conciencia de las " +
+                        "propias decisiones y acciones, a partir de reflexionar sobre si estas responden a los " +
+                        "principios éticos asumidos, y cómo los resultados y consecuencias influyen en sí mismos " +
+                        "y en los demás."));
+        capacidades.add(new Capacidad(comp_63, "Vive su sexualidad de manera plena y responsable",
+                "es tomar conciencia de sí mismo como " +
+                        "hombre o mujer, a partir del desarrollo de su imagen corporal, de su identidad sexual y " +
+                        "de género, y mediante la exploración y valoración de su cuerpo. Supone establecer " +
+                        "relaciones de igualdad entre mujeres y hombres, así como relaciones afectivas " +
+                        "armoniosas y libres de violencia. También implica identificar y poner en práctica " +
+                        "conductas de autocuidado frente a situaciones que ponen en riesgo su bienestar o que " +
+                        "vulneran sus derechos sexuales y reproductivos."));
+
+        Competencia comp_64 = competenciaRepository.findByCode(64);
+        capacidades.add(new Capacidad(comp_64, "Interactúa con todas las personas",
+                "es decir, reconoce a todos como personas valiosas y " +
+                        "con derechos, muestra preocupación por el otro, respeta las diferencias y se enriquecerse " +
+                        "de ellas. Actúa frente a las distintas formas de discriminación (por género, fenotipo, origen " +
+                        "étnico, lengua, discapacidad, orientación sexual, edad, nivel socioeconómico, entre " +
+                        "otras), y reflexiona sobre las diversas situaciones que vulneran la convivencia " +
+                        "democrática."));
+        capacidades.add(new Capacidad(comp_64, "Construye normas y asume acuerdos y leyes",
+                "es que el estudiante participe en la " +
+                        "construcción de normas, las respete y evalúe en relación a los principios que las sustentan, " +
+                        "así como, cumple con los acuerdos y las leyes, reconociendo la importancia de estas para " +
+                        "la convivencia. Para lo cual, maneja información y conceptos relacionados con la " +
+                        "convivencia (como la equidad, el respeto y la libertad) y hace suyo los principios " +
+                        "democráticos (la autofundación, la secularidad, la incertidumbre, la ética, la complejidad " +
+                        "y lo público)."));
+        capacidades.add(new Capacidad(comp_64, "Maneja conflictos de manera constructiva",
+                "es que actúe con empatía y asertividad frente " +
+                        "a ellos, y ponga en práctica pautas y estrategias para resolverlos de manera pacífica y " +
+                        "creativa, contribuyendo a construir comunidades democráticas. Para lo cual parte de " +
+                        "comprender el conflicto como inherente a las relaciones humanas, así como desarrollar " +
+                        "criterios para evaluar situaciones en las que estos ocurren."));
+        capacidades.add(new Capacidad(comp_64, "Delibera sobre asuntos públicos",
+                "es que participe en un proceso de reflexión y diálogo " +
+                        "sobre asuntos que involucran a todos, donde se plantean diversos puntos de vista y se " +
+                        "busca llegar a consensos orientados al bien común. Supone construir una posición propia " +
+                        "sobre dichos asuntos basándose en argumentos razonados, la institucionalidad, el Estado " +
+                        "de derecho y los principios democráticos, así como valorar y contraponer las diversas " +
+                        "posiciones."));
+        capacidades.add(new Capacidad(comp_64, "Participa en acciones que promueven el bienestar común",
+                "es que proponga y gestione " +
+                        "iniciativas vinculadas con el interés común y con la promoción y defensa de los derechos " +
+                        "humanos, tanto en la escuela como en la comunidad. Para ello, se apropia y utiliza canales " +
+                        "y mecanismos de participación democrática."));
+
+        Competencia comp_65 = competenciaRepository.findByCode(65);
+        capacidades.add(new Capacidad(comp_65, "Comprende su cuerpo",
+                "es decir interioriza su cuerpo en estado estático o en " +
+                        "movimiento en relación al espacio, el tiempo, los objetos y demás personas de su " +
+                        "entorno, representando mentalmente su cuerpo y desarrollando su identidad."));
+        capacidades.add(new Capacidad(comp_65, "Se expresa corporalmente",
+                "usa el lenguaje corporal para comunicar emociones, " +
+                        "sentimientos y pensamientos. Implica utilizar el tono, los gestos, mímicas, posturas y " +
+                        "movimientos para expresarse, desarrollando la creatividad al usar todos los recursos " +
+                        "que ofrece el cuerpo y el movimiento."));
+
+        Competencia comp_66 = competenciaRepository.findByCode(66);
+        capacidades.add(new Capacidad(comp_66, "Comprende las relaciones entre la actividad física, alimentación, postura e higiene corporal y la salud",
+                "es analizar y comprender los procesos vinculados con la " +
+                        "alimentación, la postura, la higiene corporal y la práctica de actividad física y cómo estos " +
+                        "influyen en las diferentes actividades físicas o de la vida cotidiana, para el logro de un " +
+                        "estado de bienestar integral (físico, psicológico y emocional), según sus recursos y " +
+                        "entorno."));
+        capacidades.add(new Capacidad(comp_66, "Incorpora prácticas que mejoran su calidad de vida",
+                "es asumir una actitud crítica sobre " +
+                        "la importancia de hábitos saludables y sus beneficios vinculados con la mejora de la " +
+                        "calidad de vida. Esto supone la planificación de rutinas, dietas o planes que pongan en " +
+                        "práctica sus conocimientos sobre alimentación, higiene corporal, posturas y actividad " +
+                        "física para la salud según sus propias necesidades, recursos y entorno."));
+
+        Competencia comp_67 = competenciaRepository.findByCode(67);
+        capacidades.add(new Capacidad(comp_67, "Se relaciona utilizando sus habilidades sociomotrices",
+                "supone interactuar de manera " +
+                        "asertiva con los demás en la práctica lúdica y deportiva experimentando el placer y " +
+                        "disfrute que ella representa. Por otro lado desarrolla habilidades como el respeto a las " +
+                        "normas de juego, liderazgo, tolerancia, actitud proactiva, la resolución de conflictos " +
+                        "interpersonales, la pertenencia positiva a un grupo, entre otras."));
+        capacidades.add(new Capacidad(comp_67, "Crea y aplica estrategias y tácticas de juego",
+                "supone emplear los recursos personales y " +
+                        "las potencialidades de cada miembro del equipo para el logro de un objetivo común, " +
+                        "desarrollando y aplicando reglas y soluciones tácticas de juego en actividades físicas de " +
+                        "colaboración, cooperación y oposición."));
+
+        Competencia comp_68 = competenciaRepository.findByCode(68);
+        capacidades.add(new Capacidad(comp_68, "Conoce a Dios y asume su identidad religiosa como persona digna, libre y trascendente",
+                "El estudiante entiende y experimenta que Dios es Amor, comprende que Dios es su Padre y " +
+                        "creador, que lo ama y le ha dado la vida para ser feliz. "));
+        capacidades.add(new Capacidad(comp_68, "Cultiva y valora las manifestaciones religiosas de su entorno argumentando su fe de manera comprensible y respetuosa",
+                "El estudiante comprende el mensaje cristiano en " +
+                        "relación con los problemas existenciales comunes a las religiones y característicos de todo " +
+                        "ser humano, con las concepciones de la vida presentes en la cultura, y con los problemas " +
+                        "morales fundamentales en los que hoy se ve envuelta la humanidad. También expresa con " +
+                        "libertad su fe respetando las diversas creencias y expresiones religiosas de los demás."));
+
+        Competencia comp_69 = competenciaRepository.findByCode(69);
+        capacidades.add(new Capacidad(comp_69, "Transforma su entorno desde el encuentro personal y comunitario con Dios y desde la fe que profesa",
+                "Los estudiantes deben asumir con renovado entusiasmo y decisión, el reto de " +
+                        "contribuir a la gestación de una nueva sociedad, más justa, más solidaria, más fraterna y " +
+                        "más cristiana, de acuerdo con los valores de la civilización del amor."));
+        capacidades.add(new Capacidad(comp_69, "Actúa coherentemente en razón de su fe según los principios de su conciencia moral en situaciones concretas de la vida",
+                "Los estudiantes deben actuar según los principios de la " +
+                        "conciencia moral cristiana: verdad, bondad y misericordia en situaciones concretas de la " +
+                        "convivencia humana. Toman decisiones razonables en coherencia con los principios " +
+                        "evangélicos y su escala de valores morales."));
+
+        Competencia comp_70 = competenciaRepository.findByCode(70);
+        capacidades.add(new Capacidad(comp_70, "Problematiza situaciones para hacer indagación",
+                "Es plantear preguntas sobre " +
+                        "hechos y fenómenos naturales, interpretar situaciones y formular hipótesis."));
+        capacidades.add(new Capacidad(comp_70, "Diseña estrategias para hacer indagación",
+                "Es proponer actividades que " +
+                        "permitan construir un procedimiento, seleccionar materiales, instrumentos e " +
+                        "información para comprobar o refutar la hipótesis."));
+        capacidades.add(new Capacidad(comp_70, "Genera y registra datos o información",
+                "Es obtener, organizar y registrar datos " +
+                        "fiables en función de las variables, utilizando instrumentos y diversas técnicas, que " +
+                        "permitan comprobar o refutar la hipótesis."));
+        capacidades.add(new Capacidad(comp_70, "Analiza datos e información",
+                "Es interpretar los datos obtenidos en la " +
+                        "indagación, contrastarlos con las hipótesis e información relacionada al problema " +
+                        "para elaborar conclusiones, que comprueban o refutan la hipótesis."));
+        capacidades.add(new Capacidad(comp_70, "Evalúa y comunica el proceso y resultados de su indagación",
+                "Es identificar y " +
+                        "dar a conocer las dificultades técnicas y los conocimientos logrados para cuestionar " +
+                        "el grado de satisfacción que la respuesta da a la pregunta de indagación."));
+
+        Competencia comp_71 = competenciaRepository.findByCode(71);
+        capacidades.add(new Capacidad(comp_71, "Comprende y usa conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
+                "Cuando es capaz de tener desempeños flexibles, " +
+                        "es decir, establece relaciones entre varios conceptos y los transfiere a nuevas " +
+                        "situaciones. Esto le permite construir representaciones del mundo natural y " +
+                        "artificial, que se evidencian cuando el estudiante explica, ejemplifica, aplica, " +
+                        "justifica, compara, contextualiza y generaliza sus conocimientos."));
+        capacidades.add(new Capacidad(comp_71, "Evalúa las implicancias del saber y del quehacer científico y tecnológico",
+                "Cuando " +
+                        "identifica los cambios generados en la sociedad por el conocimiento científico o " +
+                        "desarrollo tecnológico, con el fin de asumir una postura crítica o tomar decisiones, " +
+                        "considerando saberes locales, evidencia empírica y científica, con la finalidad de " +
+                        "mejorar su calidad de vida y conservar el ambiente."));
+
+        Competencia comp_72 = competenciaRepository.findByCode(72);
+        capacidades.add(new Capacidad(comp_72, "Determina una alternativa de solución tecnológica",
+                "al detectar un problema y " +
+                        "propone alternativas de solución creativas basadas en conocimientos científico, " +
+                        "tecnológico y prácticas locales, evaluando su pertinencia para seleccionar una de " +
+                        "ellas."));
+        capacidades.add(new Capacidad(comp_72, "Diseña la alternativa de solución tecnológica",
+                "es representar de manera gráfica o " +
+                        "esquemática la estructura y funcionamiento de la solución tecnológica " +
+                        "(especificaciones de diseño), usando conocimiento científico, tecnológico y " +
+                        "prácticas locales, teniendo en cuenta los requerimientos del problema y los " +
+                        "recursos disponibles."));
+        capacidades.add(new Capacidad(comp_72, "Implementa la alternativa de solución tecnológica",
+                "es llevar a cabo la alternativa " +
+                        "de solución, verificando y poniendo a prueba el cumplimiento de las " +
+                        "especificaciones de diseño y el funcionamiento de sus partes o etapas."));
+        capacidades.add(new Capacidad(comp_72, "Evalúa y comunica el funcionamiento de su alternativa de solución tecnológica",
+                "es determinar qué tan bien la solución tecnológica logró responder a los " +
+                        "requerimientos del problema, comunicar su funcionamiento y analizar sus " +
+                        "posibles impactos, en el ambiente y la sociedad, tanto en su proceso de " +
+                        "elaboración como de uso."));
+
+        Competencia comp_73 = competenciaRepository.findByCode(73);
+        capacidades.add(new Capacidad(comp_73, "Crea propuestas de valor",
+                "Genera alternativas de solución creativas e innovadoras a " +
+                        "través de un bien o servicio que resuelva una necesidad no satisfecha o un problema " +
+                        "social que investiga en su entorno; evalúa la pertinencia de sus alternativas de solución " +
+                        "validando sus ideas con las personas que busca beneficiar o impactar, y la viabilidad de " +
+                        "las alternativas de solución en base a criterios para seleccionar una de ellas y diseña una " +
+                        "estrategia que le permita poner en marcha su idea definiendo objetivos y metas y " +
+                        "dimensionando los recursos y tareas."));
+        capacidades.add(new Capacidad(comp_73, "Aplica habilidades técnicas",
+                "Es operar herramientas, máquinas o programas de " +
+                        "software, y desarrollar métodos y estrategias para ejecutar los procesos de producción " +
+                        "de un bien o la prestación de un servicio aplicando principios técnicos; implica " +
+                        "seleccionar o combinar aquellas herramientas, métodos o técnicas en función de " +
+                        "requerimientos específicos aplicando criterios de calidad y eficiencia."));
+        capacidades.add(new Capacidad(comp_73, "Trabaja cooperativamente para lograr objetivos y metas",
+                "Es integrar esfuerzos " +
+                        "individuales para el logro de un objetivo en común, organizar el trabajo en equipo en " +
+                        "función de las habilidades diferentes que puede aportar cada miembro, asumir con " +
+                        "responsabilidad su rol y las tareas que implica desempeñándose con eficacia y " +
+                        "eficiencia. Es también reflexionar sobre su experiencia de trabajo y la de los miembros " +
+                        "del equipo para generar un clima favorable, mostrando tolerancia a la frustración, " +
+                        "aceptando distintos puntos de vista y consensuando ideas."));
+        capacidades.add(new Capacidad(comp_73, "Evalúa los resultados del proyecto de emprendimiento",
+                "Es determinar en qué medida " +
+                        "los resultados parciales o finales generaron los cambios esperados en la atención del " +
+                        "problema o necesidad identificada; emplea la información para tomar decisiones e " +
+                        "incorporar mejoras al diseño del proyecto. Es además analizar los posibles impactos en " +
+                        "el ambiente y la sociedad, y formular estrategias que permitan la sostenibilidad del " +
+                        "proyecto en el tiempo."));
+
+        Competencia comp_74 = competenciaRepository.findByCode(74);
+        capacidades.add(new Capacidad(comp_74, "Obtiene información del texto oral",
+                "El estudiante recupera y extrae información explícita expresada " +
+                        "por los interlocutores."));
+        capacidades.add(new Capacidad(comp_74, "Infiere e interpreta información del texto oral",
+                "El estudiante construye el sentido del texto. Para ello, " +
+                        "infiere estableciendo diversas relaciones entre la información explícita e implícita con el fin de deducir " +
+                        "nueva información y completar los vacíos del texto oral. A partir de estas inferencias, el estudiante " +
+                        "interpreta integrando la información explícita e implícita, los recursos verbales, no verbales y paraverbales " +
+                        "para construir el sentido global y profundo del texto oral, y explicar el propósito, el uso estético del " +
+                        "lenguaje, las intenciones e ideologías de los interlocutores, así como su relación con el contexto " +
+                        "sociocultural."));
+        capacidades.add(new Capacidad(comp_74, "Adecúa, organiza y desarrolla el texto de forma coherente y cohesionada",
+                "El estudiante expresa sus " +
+                        "ideas adaptándose al propósito, destinatario, características del tipo de texto, género discursivo y registro, " +
+                        "considerando las normas y modos de cortesía, así como los contextos socioculturales que enmarcan la " +
+                        "comunicación. Asimismo, expresa las ideas en torno a un tema de forma lógica, relacionándolas mediante " +
+                        "diversos recursos cohesivos para construir el sentido de distintos tipos de textos y géneros discursivos."));
+        capacidades.add(new Capacidad(comp_74, "Utiliza recursos no verbales y paraverbales de forma estratégica",
+                "El estudiante emplea variados " +
+                        "recursos no verbales (como gestos o movimientos corporales) o paraverbales (como el tono de la voz o " +
+                        "silencios) según la situación comunicativa para enfatizar o matizar significados y producir determinados " +
+                        "efectos en los interlocutores."));
+        capacidades.add(new Capacidad(comp_74, "Interactúa estratégicamente con distintos interlocutores",
+                "El estudiante intercambia los roles de " +
+                        "hablante y oyente alternada y dinámicamente, participando de forma pertinente, oportuna y relevante " +
+                        "para lograr su propósito comunicativo."));
+        capacidades.add(new Capacidad(comp_74, "Reflexiona y evalúa la forma, el contenido y contexto del texto oral",
+                "Los procesos de reflexión y " +
+                        "evaluación están relacionados porque ambos suponen que el estudiante se distancie de los textos orales " +
+                        "en los que participa. Para ello, reflexiona como oyente y hablante, que supone distanciarse de los textos " +
+                        "orales en que participa de forma presencial o a través de medios audiovisuales, comparando y " +
+                        "contrastando aspectos formales y de contenido, con la experiencia, el contexto, el conocimiento formal y " +
+                        "diversas fuentes de información. Asimismo, evalúa, que implica analizar y valorar los textos orales " +
+                        "producidos para construir una opinión personal o un juicio crítico sobre sus aspectos formales, contenidos " +
+                        "e ideologías, y su relación con el contexto sociocultural, considerando los efectos que producen en los " +
+                        "interlocutores."));
+
+        Competencia comp_75 = competenciaRepository.findByCode(75);
+        capacidades.add(new Capacidad(comp_75, "Obtiene información del texto escrito",
+                "El estudiante localiza y selecciona " +
+                        "información explícita en textos escritos con un propósito específico."));
+        capacidades.add(new Capacidad(comp_75, "Infiere e interpreta información del texto",
+                "El estudiante construye el sentido " +
+                        "del texto. Para ello, infiere estableciendo diversas relaciones entre la " +
+                        "información explícita e implícita con el fin de deducir nueva información y " +
+                        "completar los vacíos del texto. A partir de estas inferencias, el estudiante " +
+                        "interpreta integrando la información explícita e implícita, así como los recursos " +
+                        "textuales, para construir el sentido global y profundo del texto, y explicar el " +
+                        "propósito, el uso estético del lenguaje, las intenciones del autor, las ideologías " +
+                        "de los textos así como su relación con el contexto sociocultural del lector y del " +
+                        "texto."));
+        capacidades.add(new Capacidad(comp_75, "Reflexiona y evalúa la forma, el contenido y contexto del texto",
+                "Los procesos " +
+                        "de reflexión y evaluación están relacionados porque ambos suponen que el " +
+                        "estudiante se distancie de los textos escritos situados en épocas y lugares " +
+                        "distintos, y que son presentados en diferentes soportes y formatos. Reflexionar " +
+                        "implica comparar y contrastar aspectos formales y de contenido del texto con la " +
+                        "experiencia, el conocimiento formal del lector y diversas fuentes de " +
+                        "información. Evaluar implica analizar y valorar los textos escritos para construir " +
+                        "una opinión personal o un juicio crítico sobre aspectos formales, estéticos, " +
+                        "contenidos e ideologías de los textos considerando los efectos que producen, la " +
+                        "relación con otros textos, y el contexto sociocultural del texto y del lector."));
+
+        Competencia comp_76 = competenciaRepository.findByCode(76);
+        capacidades.add(new Capacidad(comp_76, "Adecúa el texto a la situación comunicativa",
+                "El estudiante considera el " +
+                        "propósito, destinatario, tipo de texto, género discursivo y registro que utilizará al " +
+                        "escribir los textos, así como los contextos socioculturales que enmarcan la " +
+                        "comunicación escrita."));
+        capacidades.add(new Capacidad(comp_76, "Organiza y desarrolla las ideas de forma coherente y cohesionada",
+                "El estudiante ordena lógicamente las ideas en torno a un tema, ampliándolas y " +
+                        "complementándolas, estableciendo relaciones de cohesión entre ellas y utilizando " +
+                        "un vocabulario pertinente."));
+        capacidades.add(new Capacidad(comp_76, "Utiliza convenciones del lenguaje escrito de forma pertinente",
+                "El estudiante usa de forma apropiada recursos textuales para garantizar la claridad, " +
+                        "el uso estético del lenguaje y el sentido del texto escrito."));
+        capacidades.add(new Capacidad(comp_76, "Reflexiona y evalúa la forma, el contenido y contexto del texto escrito",
+                "El estudiante se distancia del texto que ha escrito para revisar de manera " +
+                        "permanente el contenido, la coherencia, cohesión y adecuación a la situación " +
+                        "comunicativa con la finalidad de mejorarlo. También implica analizar, comparar y " +
+                        "contrastar las características de los usos del lenguaje escrito y sus posibilidades, así " +
+                        "como su repercusión en otras personas o su relación con otros textos según el " +
+                        "contexto sociocultural."));
+        /**
+         * Guardamos todas las capacidades
+         */
+        capacidadRepository.saveAll(capacidades);
+
+    }
+
+    private void initMatrixDesempeyos() {
 
     }
 

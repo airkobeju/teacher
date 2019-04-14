@@ -16,6 +16,8 @@ public class Competencia extends AbstractDocument {
     @Nullable
     private Ciclo ciclo;
     private String description;
+    @Nullable
+    private String detailed;
     @DBRef(lazy = true)
     private List<Capacidad> capacidades;
     @DBRef(lazy = true)
@@ -32,6 +34,15 @@ public class Competencia extends AbstractDocument {
         this.code = code;
         this.description = description;
     }
+
+    public Competencia(Area area,int code, String description, String detailed) {
+        this.area = area;
+        this.ciclo = null;
+        this.code = code;
+        this.description = description;
+        this.detailed = detailed;
+    }
+
     public Competencia(Area area,Ciclo ciclo, int code, String description) {
         this.area = area;
         this.ciclo = ciclo;
@@ -97,6 +108,15 @@ public class Competencia extends AbstractDocument {
 
     public void setCiclo(@Nullable Ciclo ciclo) {
         this.ciclo = ciclo;
+    }
+
+    @Nullable
+    public String getDetailed() {
+        return detailed;
+    }
+
+    public void setDetailed(@Nullable String detailed) {
+        this.detailed = detailed;
     }
 }
 

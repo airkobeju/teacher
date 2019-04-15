@@ -1,6 +1,5 @@
 package com.jmtp.teacher.model;
 
-import com.mongodb.lang.Nullable;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +8,7 @@ import java.util.List;
 @Document(collection = "curso")
 public class Curso extends AbstractDocument {
 
+    @DBRef
     private Area area;
     @DBRef
     private Grado grado;
@@ -17,10 +17,12 @@ public class Curso extends AbstractDocument {
     @DBRef(lazy = true)
     private List<Sesion> sesions;
 
-
-
-
     public Curso() {
+    }
+
+    public Curso(Area area, Grado grado) {
+        this.area = area;
+        this.grado = grado;
     }
 
     public Curso(Area area, Grado grado, List<Desempenyo> desempenyos, List<Sesion> sesions) {
@@ -62,4 +64,10 @@ public class Curso extends AbstractDocument {
         this.sesions = sesions;
     }
 
+    @Override
+    public String toString() {
+        return area + " - " + grado;
+    }
+
 }
+

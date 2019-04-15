@@ -5,68 +5,41 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Document(collection = "competencia")
 public class Competencia extends AbstractDocument {
 
-    @DBRef
-    private Area area;
-    @DBRef(lazy = true)
-    @Nullable
-    private Ciclo ciclo;
     private String description;
     @Nullable
     private String detailed;
+    @DBRef
+    @Nullable
+    private List<Capacidad> capacidades = new ArrayList<>();
     @DBRef(lazy = true)
-    private List<Capacidad> capacidades;
-    @DBRef(lazy = true)
-    private List<Desempenyo> desempenyos;
+    private List<Desempenyo> desempenyos = new ArrayList<>();
     @Indexed(unique = true)
     private int code;
 
     public Competencia() {
     }
 
-    public Competencia(Area area,int code, String description) {
-        this.area = area;
-        this.ciclo = null;
+    public Competencia(int code, String description) {
         this.code = code;
         this.description = description;
     }
 
-    public Competencia(Area area,int code, String description, String detailed) {
-        this.area = area;
-        this.ciclo = null;
+    public Competencia(int code, String description, String detailed) {
         this.code = code;
         this.description = description;
         this.detailed = detailed;
     }
 
-    public Competencia(Area area,Ciclo ciclo, int code, String description) {
-        this.area = area;
-        this.ciclo = ciclo;
-        this.code = code;
-        this.description = description;
-    }
-
-    public Competencia(Area area, String description, List<Capacidad> capacidades, List<Desempenyo> desempenyos) {
-        this.area = area;
+    public Competencia(String description, List<Capacidad> capacidades, List<Desempenyo> desempenyos) {
         this.description = description;
         this.capacidades = capacidades;
         this.desempenyos = desempenyos;
-    }
-
-    public Competencia(Area area) {
-        this.area = area;
-    }
-
-    public Area getArea() {
-        return area;
-    }
-
-    public void setArea(Area area) {
-        this.area = area;
     }
 
     public String getDescription() {
@@ -99,15 +72,6 @@ public class Competencia extends AbstractDocument {
 
     public void setCode(int code) {
         this.code = code;
-    }
-
-    @Nullable
-    public Ciclo getCiclo() {
-        return ciclo;
-    }
-
-    public void setCiclo(@Nullable Ciclo ciclo) {
-        this.ciclo = ciclo;
     }
 
     @Nullable

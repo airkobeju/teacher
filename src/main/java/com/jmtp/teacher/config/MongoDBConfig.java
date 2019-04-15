@@ -1,6 +1,5 @@
 package com.jmtp.teacher.config;
 
-import com.jmtp.teacher.model.Alumno;
 import com.jmtp.teacher.repository.AlumnoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @EnableMongoRepositories(basePackages = "com.jmtp.teacher.repository")
 @Configuration

@@ -11,22 +11,18 @@ public class Capacidad extends AbstractDocument {
 
     @DBRef(lazy = true)
     private List<Desempenyo> desempenyos;
-    @DBRef
-    private Competencia competencia;
     private String description;
     @Nullable
-    private String detailed;
+    private String detailed = null;
 
     public Capacidad() {
     }
 
-    public Capacidad(Competencia competencia, String description) {
-        this.competencia = competencia;
+    public Capacidad(String description) {
         this.description = description;
     }
 
-    public Capacidad(Competencia competencia, String description, String detailed) {
-        this.competencia = competencia;
+    public Capacidad(String description, String detailed) {
         this.description = description;
         this.detailed = detailed;
     }
@@ -50,14 +46,6 @@ public class Capacidad extends AbstractDocument {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Competencia getCompetencia() {
-        return competencia;
-    }
-
-    public void setCompetencia(Competencia competencia) {
-        this.competencia = competencia;
     }
 
     @Nullable

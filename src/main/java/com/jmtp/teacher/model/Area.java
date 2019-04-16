@@ -16,7 +16,7 @@ public class Area extends AbstractDocument {
     private String abbreviature;
     @Indexed(unique = true)
     private int code;
-    @DBRef
+    @DBRef(lazy = true)
     private List<Competencia> competencias = new ArrayList<>();
 
 

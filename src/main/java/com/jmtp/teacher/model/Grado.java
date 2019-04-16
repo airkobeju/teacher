@@ -23,7 +23,7 @@ public class Grado extends AbstractDocument {
     @DBRef(lazy = true)
     private List<Curso> cursos = new ArrayList<>();
     @DBRef(lazy = true)
-    private List<Alumno> alumnos;
+    private List<Alumno> alumnos = new ArrayList<>();
 
     public Grado() {
     }

@@ -43,26 +43,8 @@ public class DatabaseResource {
         this.evaluacionRepository = evaluacionRepository;
     }
 
-//    @GetMapping("/capacidades/{competencia}")
-//    public List<Capacidad> listCapacidades(@PathVariable("competencia") Integer code){
-//        return capacidadRepository.findByCompetencia( competenciaRepository.findByCode( code ) );
-//    }
 
-    @GetMapping("/savegrado")
-    public Grado saveGrado() throws Exception{
-        Ciclo ciclo = cicloRepository.findByName("V");
-        Grado grado = new Grado(ciclo, "6to \"B\"");
-        List<Area> areas = new ArrayList<>();
-        areas.add( areaRepository.findByCode(8) );
-        areas.add( areaRepository.findByCode(14) );
 
-        try {
-            gradoRepository.save(grado, areas);
-        }catch(Exception err){
-            throw err;
-        }
-        return grado;
-    }
 
     @GetMapping("/star")
     public List<Capacidad> createMatrix() {

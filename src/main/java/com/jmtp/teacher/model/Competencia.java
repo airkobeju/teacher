@@ -14,10 +14,11 @@ public class Competencia extends AbstractDocument {
     private String description;
     @Nullable
     private String detailed;
-    @DBRef
+    @DBRef(lazy = true)
     @Nullable
     private List<Capacidad> capacidades = new ArrayList<>();
     @DBRef(lazy = true)
+    @Nullable
     private List<Desempenyo> desempenyos = new ArrayList<>();
     @Indexed(unique = true)
     private int code;

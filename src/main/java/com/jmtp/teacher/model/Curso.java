@@ -8,10 +8,6 @@ import java.util.List;
 @Document(collection = "curso")
 public class Curso extends AbstractDocument {
 
-    @DBRef
-    private Area area;
-    @DBRef
-    private Grado grado;
     @DBRef(lazy = true)
     private List<Desempenyo> desempenyos;
     @DBRef(lazy = true)
@@ -20,32 +16,9 @@ public class Curso extends AbstractDocument {
     public Curso() {
     }
 
-    public Curso(Area area, Grado grado) {
-        this.area = area;
-        this.grado = grado;
-    }
-
-    public Curso(Area area, Grado grado, List<Desempenyo> desempenyos, List<Sesion> sesions) {
-        this.area = area;
-        this.grado = grado;
+    public Curso(List<Desempenyo> desempenyos, List<Sesion> sesions) {
         this.desempenyos = desempenyos;
         this.sesions = sesions;
-    }
-
-    public Area getArea() {
-        return area;
-    }
-
-    public void setArea(Area area) {
-        this.area = area;
-    }
-
-    public Grado getGrado() {
-        return grado;
-    }
-
-    public void setGrado(Grado grado) {
-        this.grado = grado;
     }
 
     public List<Desempenyo> getDesempenyos() {
@@ -64,10 +37,6 @@ public class Curso extends AbstractDocument {
         this.sesions = sesions;
     }
 
-    @Override
-    public String toString() {
-        return area + " - " + grado;
-    }
 
 }
 

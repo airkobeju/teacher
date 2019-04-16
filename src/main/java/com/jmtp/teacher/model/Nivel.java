@@ -10,9 +10,9 @@ import java.util.List;
 public class Nivel extends AbstractDocument {
 
     private String name;
-    @DBRef
+    @DBRef(lazy = true)
     private List<Ciclo> ciclos = new ArrayList<>();
-    @DBRef
+    @DBRef(lazy = true)
     private List<Area> areas = new ArrayList<>();
 
     public Nivel() {

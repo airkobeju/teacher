@@ -19,6 +19,7 @@ public class DatabaseResource {
     private CompetenciaRepository competenciaRepository;
     private CapacidadRepository capacidadRepository;
     private GradoRepository gradoRepository;
+    private GradoBaseRepository gradoBaseRepository;
 
     private EvaluacionRepository evaluacionRepository;
 
@@ -30,6 +31,7 @@ public class DatabaseResource {
                             CompetenciaRepository competenciaRepository,
                             CapacidadRepository capacidadRepository,
                             GradoRepository gradoRepository,
+                            GradoBaseRepository gradoBaseRepository,
                             EvaluacionRepository evaluacionRepository) {
         this.alumnoRepository = alumnoRepository;
         this.areaRepository = areaRepository;
@@ -39,6 +41,7 @@ public class DatabaseResource {
         this.competenciaRepository = competenciaRepository;
         this.capacidadRepository = capacidadRepository;
         this.gradoRepository = gradoRepository;
+        this.gradoBaseRepository = gradoBaseRepository;
 
         this.evaluacionRepository = evaluacionRepository;
     }
@@ -51,6 +54,7 @@ public class DatabaseResource {
 
         initMatrixNivel();
         initMatrixCiclo();
+        initMatrixGradoBase();
         initMatrixArea();
         initMatrixCompetencias();
         initMatrixCapacidad();
@@ -110,38 +114,6 @@ public class DatabaseResource {
         areas_secundaria.add(new Area(27,"Tutoría y orientación educativa"));
         nivel_secundaria.getAreas().addAll(areaRepository.saveAll(areas_secundaria));
         nivelRepository.save(nivel_secundaria);
-
-
-//        areaRepository.save(new Area(1,"Personal Social"));
-//        areaRepository.save(new Area(2,"Psicomotriz"));
-//        areaRepository.save(new Area(3,"Comunicación"));
-//        areaRepository.save(new Area(4,"Castellano como segunda lengua"));
-//        areaRepository.save(new Area(5,"Descubrimiento del mundo"));
-//        areaRepository.save(new Area(6,"Matemática"));
-//        areaRepository.save(new Area(7,"Ciencia y Tecnología"));
-
-//        areaRepository.save(new Area(8,"Matemática"));
-//        areaRepository.save(new Area(9,"Comunicación"));
-//        areaRepository.save(new Area(10,"Inglés"));
-//        areaRepository.save(new Area(11,"Personal Social"));
-//        areaRepository.save(new Area(12,"Arte y Cultura"));
-//        areaRepository.save(new Area(13,"Ciencia y Tecnología"));
-//        areaRepository.save(new Area(14,"Educación Física"));
-//        areaRepository.save(new Area(15,"Educación Religiosa"));
-//        areaRepository.save(new Area(16,"Castellano como segunda lengua"));
-
-//        areaRepository.save(new Area(17,"Matemática"));
-//        areaRepository.save(new Area(18,"Comunicación"));
-//        areaRepository.save(new Area(19,"Inglés"));
-//        areaRepository.save(new Area(20,"Arte y Cultura"));
-//        areaRepository.save(new Area(21,"Ciencias Sociales"));
-//        areaRepository.save(new Area(22,"Desarrollo personal, ciudadanía y cívica"));
-//        areaRepository.save(new Area(23,"Educación Física"));
-//        areaRepository.save(new Area(24,"Educación Religiosa"));
-//        areaRepository.save(new Area(25,"Ciencia y tecnología"));
-//        areaRepository.save(new Area(26,"Educación para el Trabajo"));
-//        areaRepository.save(new Area(27,"Tutoría y orientación educativa"));
-
     }
 
     private void initMatrixCiclo() {
@@ -151,54 +123,236 @@ public class DatabaseResource {
 
         List<Ciclo> ciclos = new ArrayList<>();
 
-        ciclos.add(new Ciclo("I"));
-        ciclos.add(new Ciclo("II"));
+        ciclos.add(new Ciclo(1,"I"));
+        ciclos.add(new Ciclo(2,"II"));
         nivel_inicial.getCiclos().addAll(cicloRepository.saveAll(ciclos));
         nivelRepository.save(nivel_inicial);
 
         ciclos.clear();
 
-        ciclos.add(new Ciclo("III"));
-        ciclos.add(new Ciclo("IV"));
-        ciclos.add(new Ciclo("V"));
+        ciclos.add(new Ciclo(3,"III"));
+        ciclos.add(new Ciclo(4,"IV"));
+        ciclos.add(new Ciclo(5,"V"));
         nivel_primaria.getCiclos().addAll(cicloRepository.saveAll(ciclos));
         nivelRepository.save(nivel_primaria);
 
         ciclos.clear();
 
-        ciclos.add(new Ciclo("VI"));
-        ciclos.add(new Ciclo("VII"));
+        ciclos.add(new Ciclo(6,"VI"));
+        ciclos.add(new Ciclo(7,"VII"));
         nivel_secundaria.getCiclos().addAll(cicloRepository.saveAll(ciclos));
         nivelRepository.save(nivel_secundaria);
 
     }
 
-    private void initMatrixCompetencias() {
-        List<Competencia> competencias = new ArrayList<>();
+    private void initMatrixGradoBase() {
+        List<GradoBase> grados = new ArrayList<>();
 
+        Ciclo ciclo_i = cicloRepository.findByName("I");
+        grados.add( new GradoBase("2 años") );
+        grados.add( new GradoBase("3 años") );
+        ciclo_i.getGrados().addAll(gradoBaseRepository.saveAll(grados));
+        cicloRepository.save(ciclo_i);
+
+        grados.clear();
+
+        Ciclo ciclo_ii = cicloRepository.findByName("II");
+        grados.add( new GradoBase("4 años") );
+        grados.add( new GradoBase("5 años") );
+        ciclo_ii.getGrados().addAll(gradoBaseRepository.saveAll(grados));
+        cicloRepository.save(ciclo_ii);
+
+        grados.clear();
+
+        Ciclo ciclo_iii = cicloRepository.findByName("III");
+        grados.add( new GradoBase("1ro") );
+        grados.add( new GradoBase("2do") );
+        ciclo_iii.getGrados().addAll(gradoBaseRepository.saveAll(grados));
+        cicloRepository.save(ciclo_iii);
+
+        grados.clear();
+
+        Ciclo ciclo_iv = cicloRepository.findByName("IV");
+        grados.add( new GradoBase("3ro") );
+        grados.add( new GradoBase("4to") );
+        ciclo_iv.getGrados().addAll(gradoBaseRepository.saveAll(grados));
+        cicloRepository.save(ciclo_iv);
+
+        grados.clear();
+
+        Ciclo ciclo_v = cicloRepository.findByName("V");
+        grados.add( new GradoBase("5to") );
+        grados.add( new GradoBase("6to") );
+        ciclo_v.getGrados().addAll(gradoBaseRepository.saveAll(grados));
+        cicloRepository.save(ciclo_v);
+
+        grados.clear();
+
+        Ciclo ciclo_vi = cicloRepository.findByName("VI");
+        grados.add( new GradoBase("1ro") );
+        grados.add( new GradoBase("2do") );
+        ciclo_vi.getGrados().addAll(gradoBaseRepository.saveAll(grados));
+        cicloRepository.save(ciclo_vi);
+
+        grados.clear();
+
+        Ciclo ciclo_vii = cicloRepository.findByName("VII");
+        grados.add( new GradoBase("3ro") );
+        grados.add( new GradoBase("4to") );
+        grados.add( new GradoBase("5to") );
+        ciclo_vii.getGrados().addAll(gradoBaseRepository.saveAll(grados));
+        cicloRepository.save(ciclo_vii);
+
+    }
+
+    private void initMatrixCompetencias() {
+        List<Area> areas = new ArrayList<>();
+        List<Ciclo> ciclos = new ArrayList<>();
+        List<Competencia> competencias = new ArrayList<>();
 
         Ciclo ciclo_i = cicloRepository.findByName("I");
         Ciclo ciclo_ii = cicloRepository.findByName("II");
+        Ciclo ciclo_iii = cicloRepository.findByName("III");
+        Ciclo ciclo_iv = cicloRepository.findByName("IV");
+        Ciclo ciclo_v = cicloRepository.findByName("V");
+        Ciclo ciclo_vi = cicloRepository.findByName("VI");
+        Ciclo ciclo_vii = cicloRepository.findByName("VII");
 
         Area area_1 = areaRepository.findByCode(1);
-        competencias.add(new Competencia(1,"Construye su indentidad"));
-        competencias.add(new Competencia(2,"Convive y participa democráticamente en la búsqueda del bien común"));
+        competencias.add(new Competencia(1,"Construye su indentidad",
+                "El estudiante conoce y valora su cuerpo, su forma de " +
+                        "sentir, de pensar y de actuar desde el reconocimiento de las distintas identidades que lo definen " +
+                        "(histórica, étnica, social, sexual, cultural, de género, entre otras) como producto de las interacciones " +
+                        "continuas entre los individuos y los diversos contextos en los que se desenvuelven (familia, escuela, " +
+                        "comunidad). No se trata que los estudiantes construyan una identidad “ideal”, sino que cada " +
+                        "estudiante pueda –a su propio ritmo y criterio– ser consciente de las características que lo hacen " +
+                        "único y de aquellas que lo hacen semejantes a otros. " +
+                        "En el nivel Inicial, la competencia Construye su identidad parte de la comprensión de los niños sobre " +
+                        "el conocimiento de su propio cuerpo, sus gustos, preferencias y habilidades. En esta etapa, la familia " +
+                        "es el principal espacio en el que se reciben los cuidados y la atención, en un marco de cariño, lo que " +
+                        "permite la construcción de vínculos seguros. En la medida que estos vínculos estén bien establecidos, " +
+                        "el niño será capaz de relacionarse con otros niños, maestra y otros adultos con mayor seguridad e " +
+                        "iniciativa. En estas interacciones el niño va construyendo su propia identidad, la visión de sí mismo, " +
+                        "de los demás y del mundo afirmándose como sujeto activo, con iniciativa, derechos y con " +
+                        "competencias. Asimismo va reconociendo sus emociones y aprendiendo a expresarlas de manera " +
+                        "adecuada con la compañía del adulto."));
+        competencias.add(new Competencia(2,"Convive y participa democráticamente en la búsqueda del bien común",
+                "Es actuar en la sociedad relacionándose " +
+                        "con los demás de manera justa y equitativa, reconociendo que todas las personas tienen los mismos " +
+                        "derechos y responsabilidades. Implica una disposición a conocer, comprender y enriquecerse con los " +
+                        "aportes de las diversas culturas, respetando las diferencias. De igual forma, supone tomar posición " +
+                        "frente a aquellos asuntos que los involucran como ciudadanos y contribuir en la construcción del " +
+                        "bienestar general, en la consolidación de los procesos democráticos y en la promoción de los " +
+                        "derechos humanos. " +
+                        "En el nivel Inicial esta competencia se entiende como la convivencia y la participación de los niños y " +
+                        "niñas por propia iniciativa, es decir, cómo los niños y niñas se relacionan con las personas y empiezan " +
+                        "a interactuar entre pares y con otros adultos distintos a su familia en el primer espacio público que " +
+                        "es la escuela. Lo hacen a través del juego, la exploración y las actividades cotidianas que surgen en " +
+                        "su convivencia. Además, con el acompañamiento del adulto, conocen los límites y las normas en la " +
+                        "interacción, necesarias para la interacción y la convivencia armónica. Por otro lado, inician su " +
+                        "participación dando su opinión, buscando soluciones o tomando acción a partir de su propia iniciativa " +
+                        "en asuntos comunes que afectan a todo el grupo y que le interesan."));
         area_1.getCompetencias().addAll(competenciaRepository.saveAll(competencias));
         areaRepository.save(area_1);
+        ciclo_i.getCompetencias().add(area_1.getCompetencias().get(0));
+        ciclo_i.getCompetencias().add(area_1.getCompetencias().get(1));
+        ciclo_ii.getCompetencias().add(area_1.getCompetencias().get(0));
+        ciclo_ii.getCompetencias().add(area_1.getCompetencias().get(1));
+        cicloRepository.save(ciclo_i);
+        cicloRepository.save(ciclo_ii);
 
         competencias.clear();
 
         Area area_2 = areaRepository.findByCode(2);
-        competencias.add(new Competencia(3,"Se desenvuelve de manera autónoma a través de su motricidad"));
+        competencias.add(new Competencia(3,"Se desenvuelve de manera autónoma a través de su motricidad",
+                "Es la " +
+                        "comprensión progresiva y toma conciencia de sí mismo en interacción con el espacio y las personas " +
+                        "de su entorno, lo que le permite construir su identidad y autoestima. Esto supone que el estudiante " +
+                        "se desenvuelva por propia iniciativa y de manera placentera, interiorizando y organizando sus " +
+                        "movimientos eficazmente según sus posibilidades, en la práctica de actividades físicas como el juego, " +
+                        "el deporte y aquellas que se desarrollan en la vida cotidiana. Este proceso se acompaña naturalmente " +
+                        "de la expresión y comunicación a través de su cuerpo, lo que le permite manifestar ideas, " +
+                        "emociones y sentimientos con gestos, posturas, tono muscular, entre otros. Esta competencia " +
+                        "implica una mirada de la motricidad en la que una acción no solo involucra el movimiento sino que " +
+                        "conlleva intención, emoción y pensamiento. " +
+                        "En el nivel de Educación Inicial, la competencia Se desenvuelve de manera autónoma a través de su " +
+                        "motricidad está orientada a que los niños y niñas puedan conocerse e ir tomando conciencia de sí " +
+                        "mismos, expresándose libremente a través de la vía corporal y motriz. Es decir, los niños irán " +
+                        "logrando, progresivamente, la construcción de su imagen y su esquema corporal, a partir de la " +
+                        "exploración de sus movimientos, posturas y desplazamientos, en la interacción con el entorno, " +
+                        "durante el juego y la actividad autónoma. Todo esto les permitirá lograr, de manera paulatina, el " +
+                        "dominio de su cuerpo, el desarrollo y control de sus posturas, la coordinación de sus movimientos, y " +
+                        "el sentido de ubicación y organización en razón al tiempo, al espacio y los otros. " +
+                        "Igualmente, es importante tomar en cuenta que durante estas vivencias lúdicas, cotidianas y " +
+                        "autónomas, los niños y niñas manifiestan de manera espontánea las diversas sensaciones, emociones " +
+                        "y sentimientos. Para ello se valen de gestos, posturas, tono, ritmo y movimientos. De este modo, " +
+                        "podrán ir ampliando sus posibilidades expresivas y creativas, con un acompañamiento adecuado y " +
+                        "respetuoso por su propia forma de ser y de expresarse."));
         area_2.getCompetencias().addAll(competenciaRepository.saveAll(competencias));
         areaRepository.save(area_2);
+        ciclo_i.getCompetencias().add(area_2.getCompetencias().get(0));
+        ciclo_i.getCompetencias().add(area_2.getCompetencias().get(1));
+        ciclo_ii.getCompetencias().add(area_2.getCompetencias().get(0));
+        ciclo_ii.getCompetencias().add(area_2.getCompetencias().get(1));
+        cicloRepository.save(ciclo_i);
+        cicloRepository.save(ciclo_ii);
 
         competencias.clear();
 
         Area area_3 = areaRepository.findByCode(3);
-        competencias.add(new Competencia(4,"Se comunica oralmente en legua materna"));
+        competencias.add(new Competencia(4,"Se comunica oralmente en legua materna",
+                "Se define como una " +
+                        "interacción dinámica entre uno o más interlocutores para expresar y comprender ideas y " +
+                        "emociones. Supone un proceso activo de construcción del sentido de los diversos tipos de textos " +
+                        "orales ya que el estudiante alterna los roles de hablante y oyente con el fin de lograr su propósito " +
+                        "comunicativo. " +
+                        "En esta competencia, el estudiante pone en juego saberes de distinto tipo y recursos provenientes " +
+                        "del lenguaje oral y del mundo que lo rodea. Esto significa considerar los modos de cortesía de acuerdo " +
+                        "al contexto sociocultural, así como los recursos no verbales y paraverbales y las diversas estrategias " +
+                        "de manera pertinente para expresarse, intercambiar información, persuadir, consensuar, entre otros " +
+                        "fines. De igual forma, supone tomar conciencia del impacto de las nuevas tecnologías en la oralidad. " +
+                        "La comunicación oral es una herramienta fundamental para la constitución de las identidades y el " +
+                        "desarrollo personal. Esta competencia se asume como una práctica social donde el estudiante " +
+                        "interactúa con distintos individuos o comunidades socioculturales, ya sea de forma presencial o " +
+                        "virtual. Al hacerlo, tiene la posibilidad de usar el lenguaje oral de manera creativa y responsable, " +
+                        "considerando la repercusión de lo expresado o escuchado, y estableciendo una posición crítica con " +
+                        "los medios de comunicación audiovisuales."));
+        competencias.add(new Competencia(5,"Lee diversos tipos de textos escritos",
+                "Se define como una interacción " +
+                        "dinámica entre el lector, el texto y los contextos socioculturales que enmarcan la lectura. Supone un " +
+                        "proceso activo de construcción del sentido ya que el estudiante no solo decodifica o comprende la " +
+                        "información explícita de los textos que lee sino que es capaz de interpretarlos y establecer una " +
+                        "posición sobre ellos. " +
+                        "En esta competencia el estudiante pone en juego saberes de distinto tipo y recursos provenientes de " +
+                        "su experiencia lectora y del mundo que lo rodea. Ello implica tomar conciencia de la diversidad de " +
+                        "propósitos que tiene la lectura, del uso que se hace de esta en distintos ámbitos de la vida, del papel " +
+                        "de la experiencia literaria en la formación de lectores y de las relaciones intertextuales que se " +
+                        "establecen entre los textos leídos. Esto es crucial en un mundo donde las nuevas tecnologías y la " +
+                        "multimodalidad han transformado los modos de leer. " +
+                        "Para construir el sentido de los textos que lee, es indispensable asumir la lectura como una práctica " +
+                        "social situada en distintos grupos o comunidades de lectores. Al involucrarse con la lectura, el " +
+                        "estudiante contribuye con su desarrollo personal, así como el de su propia comunidad, además de " +
+                        "conocer e interactuar con contextos socioculturales distintos al suyo. " +
+                        "En el nivel Inicial, los niños y niñas se inician en el aprendizaje de la lectura en su lengua materna " +
+                        "estableciendo los primeros contactos con los textos escritos de su entorno (cuentos, enciclopedias, " +
+                        "recetarios, revistas infantiles, poemas, etc.). Se acercan a ellos con diferentes propósitos (disfrutar, " +
+                        "buscar información, etc.), los exploran, realizan anticipaciones sobre su significado antes de haberlos " +
+                        "leído. En un inicio se centran en las ilustraciones y paulatinamente identifican algunas palabras " +
+                        "conocidas. De esta manera, cada niño o niña le da un significado al texto y logran comunicar su agrado " +
+                        "o desagrado en relación al texto leído. En este nivel, se espera que los niños se interesen por los " +
+                        "textos escritos y se acerquen al mundo escrito."));
+        competencias.add(new Competencia(6,"Escribe diversos tipos de textos"));
+        competencias.add(new Competencia(7,"Crea proyectos desde los lenguajes artísticos"));
+
         area_3.getCompetencias().addAll(competenciaRepository.saveAll(competencias));
         areaRepository.save(area_3);
+        ciclo_i.getCompetencias().add(area_3.getCompetencias().get(0));
+        ciclo_ii.getCompetencias().add(area_3.getCompetencias().get(0));
+        ciclo_ii.getCompetencias().add(area_3.getCompetencias().get(1));
+        ciclo_ii.getCompetencias().add(area_3.getCompetencias().get(2));
+        ciclo_ii.getCompetencias().add(area_3.getCompetencias().get(3));
+        cicloRepository.save(ciclo_i);
+        cicloRepository.save(ciclo_ii);
 
         competencias.clear();
 
@@ -239,14 +393,7 @@ public class DatabaseResource {
         /**
          * Area_3
          */
-        competencias.add(new Competencia(12,"Se comunica oralmente en legua materna"));
-        competencias.add(new Competencia(13,"Lee diversos tipos de textos escritos"));
-        competencias.add(new Competencia(14,"Escribe diversos tipos de textos"));
-        competencias.add(new Competencia(15,"Crea proyectos desde los lenguajes artísticos"));
-        area_3.getCompetencias().addAll(competenciaRepository.saveAll(competencias));
-        areaRepository.save(area_3);
-
-        competencias.clear();
+        
 
         /**
          * Area_4
@@ -2658,6 +2805,8 @@ public class DatabaseResource {
     }
 
     private void initMatrixDesempeyos() {
+        List<Desempenyo> desempenyos = new ArrayList<>();
+
 
     }
 

@@ -11,6 +11,12 @@ import java.util.List;
 @Document(collection = "competencia")
 public class Competencia extends AbstractDocument {
 
+    @DBRef
+    private Area areas;
+
+    @DBRef
+    private List<Ciclo> ciclos = new ArrayList<>();
+
     private String description;
     @Nullable
     private String detailed;
@@ -37,10 +43,34 @@ public class Competencia extends AbstractDocument {
         this.detailed = detailed;
     }
 
+    public Competencia(int code, Area areas, List<Ciclo> ciclos, String description, @Nullable String detailed) {
+        this.areas = areas;
+        this.ciclos = ciclos;
+        this.description = description;
+        this.detailed = detailed;
+        this.code = code;
+    }
+
     public Competencia(String description, List<Capacidad> capacidades, List<Desempenyo> desempenyos) {
         this.description = description;
         this.capacidades = capacidades;
         this.desempenyos = desempenyos;
+    }
+
+    public Area getAreas() {
+        return areas;
+    }
+
+    public void setAreas(Area areas) {
+        this.areas = areas;
+    }
+
+    public List<Ciclo> getCiclos() {
+        return ciclos;
+    }
+
+    public void setCiclos(List<Ciclo> ciclos) {
+        this.ciclos = ciclos;
     }
 
     public String getDescription() {

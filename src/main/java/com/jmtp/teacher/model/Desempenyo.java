@@ -1,44 +1,23 @@
 package com.jmtp.teacher.model;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
+import com.mongodb.lang.Nullable;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Document(collection = "desempenyo")
 public class Desempenyo extends AbstractDocument {
 
-    @DBRef(lazy = true)
-    private Capacidad capacidad;
-    @DBRef(lazy = true)
-    private Curso curso;
+    @Nullable
+    private List<String> tag = new ArrayList<>();
     private String description;
 
     public Desempenyo() {
     }
 
-    public Desempenyo(Capacidad capacidad, Curso curso, String description) {
-        this.capacidad = capacidad;
-        this.curso = curso;
-        this.description = description;
-    }
-
     public Desempenyo(String description) {
         this.description = description;
-    }
-
-    public Capacidad getCapacidad() {
-        return capacidad;
-    }
-
-    public void setCapacidad(Capacidad capacidad) {
-        this.capacidad = capacidad;
-    }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
     }
 
     public String getDescription() {
@@ -47,5 +26,13 @@ public class Desempenyo extends AbstractDocument {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<String> getTag() {
+        return tag;
+    }
+
+    public void setTag(List<String> tag) {
+        this.tag = tag;
     }
 }

@@ -29,4 +29,9 @@ public class AreaController {
         return areaRepository.findById(id).get();
     }
 
+    @GetMapping("/getbycode/{code}")
+    public Area getArea(@PathVariable(name = "code") Integer code){
+        return areaRepository.findByCode(code);
+    }
+
 }

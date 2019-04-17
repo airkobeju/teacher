@@ -7,4 +7,6 @@ public interface CicloRepository extends MongoRepository<Ciclo, String> {
 
     Ciclo findByName(String name);
 
+    Ciclo findByCode(int code);
+
 }

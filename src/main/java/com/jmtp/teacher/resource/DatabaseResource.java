@@ -221,7 +221,7 @@ public class DatabaseResource {
         Area area_1 = areaRepository.findByCode(1);
         ciclos.add(ciclo_i);
         ciclos.add(ciclo_ii);
-        competencias.add(new Competencia(1, area_1, ciclos, "Construye su indentidad",
+        competencias.add(new Competencia(1, "Construye su indentidad",
                 "El estudiante conoce y valora su cuerpo, su forma de " +
                         "sentir, de pensar y de actuar desde el reconocimiento de las distintas identidades que lo definen " +
                         "(histórica, étnica, social, sexual, cultural, de género, entre otras) como producto de las interacciones " +
@@ -238,7 +238,7 @@ public class DatabaseResource {
                         "de los demás y del mundo afirmándose como sujeto activo, con iniciativa, derechos y con " +
                         "competencias. Asimismo va reconociendo sus emociones y aprendiendo a expresarlas de manera " +
                         "adecuada con la compañía del adulto."));
-        competencias.add(new Competencia(2,area_1, ciclos,"Convive y participa democráticamente en la búsqueda del bien común",
+        competencias.add(new Competencia(2, "Convive y participa democráticamente en la búsqueda del bien común",
                 "Es actuar en la sociedad relacionándose " +
                         "con los demás de manera justa y equitativa, reconociendo que todas las personas tienen los mismos " +
                         "derechos y responsabilidades. Implica una disposición a conocer, comprender y enriquecerse con los " +
@@ -270,7 +270,7 @@ public class DatabaseResource {
         Area area_2 = areaRepository.findByCode(2);
         ciclos.add(ciclo_i);
         ciclos.add(ciclo_ii);
-        competencias.add(new Competencia(3, area_2, ciclos, "Se desenvuelve de manera autónoma a través de su motricidad",
+        competencias.add(new Competencia(3, "Se desenvuelve de manera autónoma a través de su motricidad",
                 "Es la comprensión progresiva y toma conciencia de sí mismo en interacción con el espacio y las personas " +
                         "de su entorno, lo que le permite construir su identidad y autoestima. Esto supone que el estudiante " +
                         "se desenvuelva por propia iniciativa y de manera placentera, interiorizando y organizando sus " +
@@ -305,7 +305,7 @@ public class DatabaseResource {
 
         //Comunicacion
         Area area_3 = areaRepository.findByCode(3);
-        Competencia comp_4 = new Competencia(4, area_3, "Se comunica oralmente en legua materna",
+        Competencia comp_4 = new Competencia(4, "Se comunica oralmente en legua materna",
                 "Se define como una " +
                         "interacción dinámica entre uno o más interlocutores para expresar y comprender ideas y " +
                         "emociones. Supone un proceso activo de construcción del sentido de los diversos tipos de textos " +
@@ -322,10 +322,8 @@ public class DatabaseResource {
                         "virtual. Al hacerlo, tiene la posibilidad de usar el lenguaje oral de manera creativa y responsable, " +
                         "considerando la repercusión de lo expresado o escuchado, y estableciendo una posición crítica con " +
                         "los medios de comunicación audiovisuales.");
-        comp_4.getCiclos().add(ciclo_i);
-        comp_4.getCiclos().add(ciclo_ii);
         competencias.add(comp_4);
-        Competencia comp_5 = new Competencia(5, area_3, "Lee diversos tipos de textos escritos",
+        Competencia comp_5 = new Competencia(5, "Lee diversos tipos de textos escritos",
                 "Se define como una interacción " +
                         "dinámica entre el lector, el texto y los contextos socioculturales que enmarcan la lectura. Supone un " +
                         "proceso activo de construcción del sentido ya que el estudiante no solo decodifica o comprende la " +
@@ -349,9 +347,8 @@ public class DatabaseResource {
                         "conocidas. De esta manera, cada niño o niña le da un significado al texto y logran comunicar su agrado " +
                         "o desagrado en relación al texto leído. En este nivel, se espera que los niños se interesen por los " +
                         "textos escritos y se acerquen al mundo escrito.");
-        comp_5.getCiclos().add(ciclo_ii);
         competencias.add(comp_5);
-        Competencia comp_6 = new Competencia(6, area_3, "Escribe diversos tipos de textos",
+        Competencia comp_6 = new Competencia(6, "Escribe diversos tipos de textos",
                 "Se define como el uso " +
                         "del lenguaje escrito para construir sentidos en el texto y comunicarlos a otros. Se trata de un proceso " +
                         "reflexivo porque supone la adecuación y organización de los textos considerando los contextos y el " +
@@ -377,9 +374,8 @@ public class DatabaseResource {
                         "reales de comunicación. Los niños pueden escribir diferentes tipos de textos con propósitos diversos " +
                         "(una nota para su mamá, una invitación para el festival de la escuela, un cuento, entre otros). En este " +
                         "nivel se espera que los niños se inicien en la adquisición del sistema de escritura/ lenguaje escrito .");
-        comp_6.getCiclos().add(ciclo_ii);
         competencias.add(comp_6);
-        Competencia comp_7 = new Competencia(7, area_3, "Crea proyectos desde los lenguajes artísticos",
+        Competencia comp_7 = new Competencia(7, "Crea proyectos desde los lenguajes artísticos",
                 "Significa que el estudiante " +
                         "desarrolla un proyecto artístico a través de un proceso creativo en el que imagina sus creaciones, " +
                         "experimenta, investiga, evoca recuerdos y experiencias, propone, construye y deconstruye una idea, " +
@@ -395,7 +391,6 @@ public class DatabaseResource {
                         "para los cuales hace uso de los diferentes lenguajes del arte. De esta manera lo que se espera es que " +
                         "los niños cuenten con oportunidades y condiciones que les permitan descubrir las formas que más le " +
                         "interesan, manifestándose como un ser único y especial.");
-        comp_7.getCiclos().add(ciclo_ii);
         competencias.add(comp_7);
         area_3.getCompetencias().addAll(competenciaRepository.saveAll(competencias));
         areaRepository.save(area_3);
@@ -412,8 +407,7 @@ public class DatabaseResource {
 
         //Castellano como segunda lengua
         Area area_4 = areaRepository.findByCode(4);
-        Competencia comp_8 = new Competencia(8, area_4, "Se comunica oralmente en castellano como segunda lengua");
-        comp_8.getCiclos().add(ciclo_ii);
+        Competencia comp_8 = new Competencia(8, "Se comunica oralmente en castellano como segunda lengua");
         competencias.add(comp_8);
         area_4.getCompetencias().addAll(competenciaRepository.saveAll(competencias));
         areaRepository.save(area_4);
@@ -424,7 +418,7 @@ public class DatabaseResource {
 
         //Descubrimiento del mundo
         Area area_5 = areaRepository.findByCode(5);
-        Competencia comp_9 = new Competencia(9, area_5, "Resuelve problemas de cantidad",
+        Competencia comp_9 = new Competencia(9, "Resuelve problemas de cantidad",
                 "Consiste en estimar, comparar y relacionar " +
                         "cantidades o medidas, a partir de la construcción y comprensión de las nociones de cantidad, número " +
                         "y sistema de numeración decimal; y usarlas en situaciones retadoras de diversos contextos. Buscar " +
@@ -437,9 +431,8 @@ public class DatabaseResource {
                         "denomina Construye la noción de cantidad. Esta competencia implica el desarrollo de las primeras " +
                         "nociones relacionadas con la cantidad; a partir de la exploración es que niños y niñas empiezan a " +
                         "establecer relaciones entre los objetos, personas y situaciones que están en su entorno.");
-        comp_9.getCiclos().add(ciclo_i);
         competencias.add(comp_9);
-        Competencia comp_10 = new Competencia(10, area_5, "Indaga mediante métodos científicos para construir sus conocimientos",
+        Competencia comp_10 = new Competencia(10, "Indaga mediante métodos científicos para construir sus conocimientos",
                 "Consiste en orientarse en el espacio al visualizar, interpretar y relacionar las características de los objetos, sus " +
                         "atributos medibles, posiciones y movimientos, con formas bidimensionales y tridimensionales y sus " +
                         "propiedades, y usarlas en situaciones retadoras de diversos contextos. Buscar solución a estos retos " +
@@ -450,9 +443,8 @@ public class DatabaseResource {
                         "espaciales. Los niños y las niñas desarrollan esta competencia a partir de la estructuración de sus " +
                         "primeras nociones espaciales, lo que implica que establezcan relaciones entre su posición, la posición " +
                         "de otros y sus desplazamientos en el espacio a partir de la exploración de su entorno.");
-        comp_10.getCiclos().add(ciclo_i);
         competencias.add(comp_10);
-        Competencia comp_11 = new Competencia(11, area_5, "Resuelve problemas de forma, movimiento y localización",
+        Competencia comp_11 = new Competencia(11, "Resuelve problemas de forma, movimiento y localización",
                 "El estudiante es capaz de construir su conocimiento acerca del funcionamiento y estructura del " +
                         "mundo que le rodea a través de procedimientos propios de la ciencia, desarrollando habilidades " +
                         "científicas, reflexionando acerca de lo que sabe y de cómo ha llegado a saberlo poniendo en juego " +
@@ -464,7 +456,6 @@ public class DatabaseResource {
                         "propio conocimiento acerca del funcionamiento y estructura del mundo que le rodea, poniendo en " +
                         "juego actitudes que son innatas en ellos como la curiosidad y el asombro, y que son promovidas a " +
                         "través de la exploración libre y situaciones de indagación.");
-        comp_11.getCiclos().add(ciclo_i);
         competencias.add(comp_11);
         area_5.getCompetencias().addAll(competenciaRepository.saveAll(competencias));
         areaRepository.save(area_5);
@@ -479,7 +470,7 @@ public class DatabaseResource {
          * Area_6: Matemática
          */
         Area area_6 = areaRepository.findByCode(6);
-        Competencia comp_12 = new Competencia(12, area_6, "Resuelve problemas de cantidad",
+        Competencia comp_12 = new Competencia(12, "Resuelve problemas de cantidad",
                 "Consiste en estimar, comparar y relacionar " +
                         "cantidades o medidas, a partir de la construcción y comprensión de las nociones de cantidad, " +
                         "número y sistema de numeración decimal; y usarlas en situaciones retadoras de diversos contextos. " +
@@ -493,9 +484,8 @@ public class DatabaseResource {
                         "partir de la curiosidad y el deseo por comprender el mundo. A través de la exploración de su entorno " +
                         "va desarrollan su capacidad de establecer relaciones entre objetos y su capacidad de diseñar " +
                         "estrategias y explicar sus ideas, soluciones o dudas en relación a su exploración del entorno.");
-        comp_12.getCiclos().add(ciclo_ii);
         competencias.add(comp_12);
-        Competencia comp_13 = new Competencia(13, area_6, "Resuelve problemas de forma, movimiento y localización",
+        Competencia comp_13 = new Competencia(13, "Resuelve problemas de forma, movimiento y localización",
                 "Consiste en " +
                         "orientarse en el espacio al visualizar, interpretar y relacionar las características de los objetos, sus " +
                         "atributos medibles, posiciones y movimientos, con formas bidimensionales y tridimensionales y sus " +
@@ -510,7 +500,6 @@ public class DatabaseResource {
                         "situaciones en las que requiere reconocer la ubicación, la posición de los objetos, construir formas " +
                         "bidimensionales y tridimensionales, comparar la medida de dos objetos o realizar desplazamientos; " +
                         "usando sus propias estrategias y comunicando sus ideas sobre las relaciones que establece.");
-        comp_13.getCiclos().add(ciclo_ii);
         competencias.add(comp_13);
         area_6.getCompetencias().addAll(competenciaRepository.saveAll(competencias));
         areaRepository.save(area_6);
@@ -524,12 +513,11 @@ public class DatabaseResource {
          * Area_7: Ciencia y Tecnología
          */
         Area area_7 = areaRepository.findByCode(7);
-        Competencia comp_14 = new Competencia(14, area_7, "Indaga mediante métodos científicos para construir sus conocimientos",
+        Competencia comp_14 = new Competencia(14, "Indaga mediante métodos científicos para construir sus conocimientos",
                 "El estudiante es capaz de construir conocimiento acerca del funcionamiento y estructura del mundo " +
                         "que le rodea a través de procedimientos propios de la ciencia, desarrollando habilidades científicas, " +
                         "reflexionando acerca de lo que sabe y del cómo ha llegado a saberlo poniendo en juego actitudes " +
                         "como la curiosidad, asombro, escepticismo, entre otros.");
-        comp_14.getCiclos().add(ciclo_ii);
         competencias.add(comp_14);
         area_7.getCompetencias().addAll(competenciaRepository.saveAll(competencias));
         areaRepository.save(area_7);
@@ -548,7 +536,7 @@ public class DatabaseResource {
          * Area_8: "Mate prim"
          */
         Area area_8 = areaRepository.findByCode(8);
-        competencias.add(new Competencia(15, area_8,ciclos, "Resuelve problemas de cantidad",
+        competencias.add(new Competencia(15, "Resuelve problemas de cantidad",
                 "Consiste en que el estudiante solucione problemas o plantee nuevos que le demanden construir y comprender las nociones de número," +
                         "de sistemas numéricos, sus operaciones y propiedades. Además dotar de significado a estos" +
                         "conocimientos en la situación y usarlos para representar o reproducir las relaciones entre sus" +
@@ -557,7 +545,7 @@ public class DatabaseResource {
                         "medida y diversos recursos. El razonamiento lógico en esta competencia es usado cuando el" +
                         "estudiante hace comparaciones, explica a través de analogías, induce propiedades a partir de" +
                         "casos particulares o ejemplos, en el proceso de resolución del problema"));
-        competencias.add(new Competencia(16, area_8, ciclos,"Resuelve problemas de regularidad, equivalencia y cambio",
+        competencias.add(new Competencia(16, "Resuelve problemas de regularidad, equivalencia y cambio",
                 "Consiste en que el estudiante logre caracterizar equivalencias y generalizar regularidades y el " +
                         "cambio de una magnitud con respecto de otra, a través de reglas generales que le permitan " +
                         "encontrar valores desconocidos, determinar restricciones y hacer predicciones sobre el " +
@@ -565,7 +553,7 @@ public class DatabaseResource {
                         "usa estrategias, procedimientos y propiedades para resolverlas, graficarlas o manipular " +
                         "expresiones simbólicas. Así también razona de manera inductiva y deductiva, para determinar " +
                         "leyes generales mediante varios ejemplos, propiedades y contraejemplos. "));
-        competencias.add(new Competencia(17, area_8, ciclos,"Resuelve problemas de movimiento, forma y localización",
+        competencias.add(new Competencia(17, "Resuelve problemas de movimiento, forma y localización",
                 "Consiste en que el estudiante se oriente y describa la posición y el movimiento de objetos y de sí mismo en " +
                         "el espacio, visualizando, interpretando y relacionando las características de los objetos con " +
                         "formas geométricas bidimensionales y tridimensionales. Implica que realice mediciones directas " +
@@ -573,7 +561,7 @@ public class DatabaseResource {
                         "logre construir representaciones de las formas geométricas para diseñar objetos, planos y " +
                         "maquetas, usando instrumentos, estrategias y procedimientos de construcción y medida. " +
                         "Además describa trayectorias y rutas, usando sistemas de referencia y lenguaje geométrico."));
-        competencias.add(new Competencia(18, area_8, ciclos,"Resuelve problemas de gestión de datos e incertidumbre",
+        competencias.add(new Competencia(18, "Resuelve problemas de gestión de datos e incertidumbre",
                 "Consiste en que el estudiante analice datos sobre un tema de interés o estudio o de situaciones aleatorias, " +
                         "que le permita tomar decisiones, elaborar predicciones razonables y conclusiones respaldadas " +
                         "en la información producida. Para ello, el estudiante recopila, organiza y representa datos que " +
@@ -594,7 +582,7 @@ public class DatabaseResource {
  * Area_9: "Comu prim"
  */
         Area area_9 = areaRepository.findByCode(9);
-        competencias.add(new Competencia(19, area_9, ciclos,"Se comunica oralmente",
+        competencias.add(new Competencia(19, "Se comunica oralmente",
                 "Se define como una interacción dinámica entre uno " +
                         "o más interlocutores para expresar y comprender ideas y emociones. Supone un proceso activo " +
                         "de construcción del sentido de los diversos tipos de textos orales ya que el estudiante alterna los " +
@@ -605,7 +593,7 @@ public class DatabaseResource {
                         "repercusión de lo expresado o escuchado, y estableciendo una posición crítica con los medios de " +
                         "comunicación audiovisuales. La comunicación oral es una herramienta fundamental para la " +
                         "constitución de las identidades y el desarrollo personal."));
-        competencias.add(new Competencia(20, area_9, ciclos,"Lee diversos tipos de textos escritos",
+        competencias.add(new Competencia(20, "Lee diversos tipos de textos escritos",
                 "Esta competencia se define como una " +
                         "interacción dinámica entre el lector, el texto y los contextos socioculturales que enmarcan la " +
                         "lectura. Supone para el estudiante un proceso activo de construcción del sentido, ya que el " +
@@ -621,7 +609,7 @@ public class DatabaseResource {
                         "práctica social situada en distintos grupos o comunidades de lectores. Al involucrarse con la " +
                         "lectura, el estudiante contribuye con su desarrollo personal, así como el de su propia comunidad, " +
                         "además de conocer e interactuar con contextos socioculturales distintos al suyo."));
-        competencias.add(new Competencia(21, area_9, ciclos,"Escribe diversos tipos de textos",
+        competencias.add(new Competencia(21, "Escribe diversos tipos de textos",
                 "Esta competencia se define como el uso del " +
                         "lenguaje escrito para construir sentidos en el texto y comunicarlos a otros. Se trata de un " +
                         "proceso reflexivo porque supone la adecuación y organización de los textos considerando los " +
@@ -655,7 +643,7 @@ public class DatabaseResource {
  * Area_10: "Ingles prim"
  */
         Area area_10 = areaRepository.findByCode(10);
-        competencias.add(new Competencia(22, area_10, ciclos, "Se comunica oralmente en inglés como lengua extranjera",
+        competencias.add(new Competencia(22, "Se comunica oralmente en inglés como lengua extranjera",
                 "se define como una interacción dinámica " +
                         "entre uno o más interlocutores para expresar y comprender ideas y emociones. Supone un " +
                         "proceso activo de construcción del sentido de los diversos tipos de textos orales ya que el " +
@@ -672,7 +660,7 @@ public class DatabaseResource {
                         "virtual. Al hacerlo, tiene la posibilidad de usar el lenguaje oral de manera creativa y responsable, " +
                         "considerando la repercusión de lo expresado o escuchado, y estableciendo una posición crítica " +
                         "con los medios de comunicación audiovisuales."));
-        competencias.add(new Competencia(23, area_10,ciclos, "Lee diversos tipos de textos en inglés como lengua extranjera",
+        competencias.add(new Competencia(23, "Lee diversos tipos de textos en inglés como lengua extranjera",
                 "se define como una interacción " +
                         "dinámica entre el lector, el texto y los contextos socioculturales que enmarcan la lectura. Supone " +
                         "un proceso activo de construcción del sentido ya que el estudiante no solo decodifica o " +
@@ -686,7 +674,7 @@ public class DatabaseResource {
                         "práctica social situada en distintos grupos o comunidades de lectores. Al involucrarse con la " +
                         "lectura, el estudiante contribuye con su desarrollo personal, así como el de su propia " +
                         "comunidad, además de conocer e interactuar con contextos socioculturales distintos al suyo."));
-        competencias.add(new Competencia(24, area_10, ciclos,"Escribe diversos tipos de textos inglés como lengua extranjera",
+        competencias.add(new Competencia(24, "Escribe diversos tipos de textos inglés como lengua extranjera",
                 "se define como el uso del " +
                         "lenguaje escrito para construir sentidos en el texto y comunicarlos a otros. Se trata de un " +
                         "proceso reflexivo porque supone la adecuación y organización de los textos considerando los " +
@@ -717,7 +705,7 @@ public class DatabaseResource {
  * Area_11: "Personal Social prim"
  */
         Area area_11 = areaRepository.findByCode(11);
-        competencias.add(new Competencia(25, area_11, ciclos,"Construye su identidad",
+        competencias.add(new Competencia(25, "Construye su identidad",
                 "El estudiante conoce y valora su cuerpo, su forma de " +
                         "sentir, de pensar y de actuar desde el reconocimiento de las distintas identidades que lo definen " +
                         "(histórica, étnica, social, sexual, cultural, de género, entre otras) como producto de las " +
@@ -725,7 +713,7 @@ public class DatabaseResource {
                         "(familia, escuela, comunidad). No se trata que los estudiantes construyan una identidad “ideal”, " +
                         "sino que cada estudiante pueda –a su propio ritmo y criterio– ser consciente de las características " +
                         "que lo hacen único y de aquellas que lo hacen semejantes a otros."));
-        competencias.add(new Competencia(26, area_11, ciclos,"Convive y participa democráticamente",
+        competencias.add(new Competencia(26, "Convive y participa democráticamente",
                 "El estudiante actúa en la sociedad " +
                         "relacionándose con los demás de manera justa y equitativa, reconociendo que todas las personas " +
                         "tienen los mismos derechos y responsabilidades. Muestra disposición por conocer, comprender " +
@@ -733,14 +721,14 @@ public class DatabaseResource {
                         "toma posición frente a aquellos asuntos que lo involucra como ciudadano y contribuye en la " +
                         "construcción del bienestar general, en la consolidación de los procesos democráticos y en la " +
                         "promoción de los derechos humanos."));
-        competencias.add(new Competencia(27, area_11, ciclos,"Construye interpretaciones históricas",
+        competencias.add(new Competencia(27, "Construye interpretaciones históricas",
                 "Sustenta una posición crítica sobre " +
                         "hechos y procesos históricos que ayuden a comprender el siglo XXI y sus desafíos, articulando el " +
                         "uso de distintas fuentes, la comprensión de los cambios, permanencias, simultaneidades y " +
                         "secuencias temporales y la explicación de las múltiples causas y consecuencias de estos. Supone " +
                         "reconocerse como sujeto histórico, es decir, como protagonista de los procesos históricos y, " +
                         "como tal, producto de un pasado, pero que, a la vez, está construyendo su futuro."));
-        competencias.add(new Competencia(28, area_11, ciclos,"Gestiona responsablemente el ambiente y el espacio",
+        competencias.add(new Competencia(28, "Gestiona responsablemente el ambiente y el espacio",
                 "El estudiante toma " +
                         "decisiones que contribuyen a la satisfacción de las necesidades desde una posición crítica y una " +
                         "perspectiva de desarrollo sostenible -es decir, sin poner en riesgo a las generaciones futuras-, y " +
@@ -748,7 +736,7 @@ public class DatabaseResource {
                         "Supone comprender que el espacio es una construcción social dinámica, es decir, un espacio de " +
                         "interacción entre elementos naturales y sociales que se va transformando a lo largo del tiempo y " +
                         "donde el ser humano cumple un rol fundamental."));
-        competencias.add(new Competencia(29, area_11, ciclos,"Gestiona responsablemente los recursos económicos",
+        competencias.add(new Competencia(29, "Gestiona responsablemente los recursos económicos",
                 "El estudiante es " +
                         "capaz de administrar los recursos, tanto personales como familiares, a partir de asumir una " +
                         "postura crítica sobre el manejo de estos, de manera informada y responsable. Esto supone " +
@@ -769,7 +757,7 @@ public class DatabaseResource {
  * Area_12: "Arte y cultura prim"
  */
         Area area_12 = areaRepository.findByCode(12);
-        competencias.add(new Competencia(30, area_12, ciclos,"Aprecia de manera crítica manifestaciones artístico-culturales",
+        competencias.add(new Competencia(30, "Aprecia de manera crítica manifestaciones artístico-culturales",
                 "Se define como la interacción entre el estudiante y manifestaciones artístico-culturales para que " +
                         "puedan observarlas, investigarlas, comprenderlas y reflexionar sobre ellas. Permite al estudiante " +
                         "desarrollar habilidades para percibir, describir y analizar sus cualidades estéticas, para ayudarlo " +
@@ -779,7 +767,7 @@ public class DatabaseResource {
                         "entendernos a nosotros mismos, a otros y al entorno. También implica emitir juicios de valor " +
                         "cada vez más informados, basándose en los conocimientos obtenidos en el proceso de " +
                         "apreciación crítica."));
-        competencias.add(new Competencia(31, area_12, ciclos,"Crea proyectos desde los lenguajes artísticos",
+        competencias.add(new Competencia(31, "Crea proyectos desde los lenguajes artísticos",
                 "El estudiante usa los " +
                         "diversos lenguajes artísticos (artes visuales, música, danza, teatro, artes interdisciplinares y otros) " +
                         "para expresar o comunicar mensajes, ideas y sentimientos. En la que pone en práctica habilidades " +
@@ -805,12 +793,12 @@ public class DatabaseResource {
  * Area_13: "Ciencia y Tecnología prim"
  */
         Area area_13 = areaRepository.findByCode(13);
-        competencias.add(new Competencia(32, area_13, ciclos,"Indaga mediante métodos científicos",
+        competencias.add(new Competencia(32, "Indaga mediante métodos científicos",
                 "El estudiante es capaz de construir su conocimiento acerca del " +
                         "funcionamiento y estructura del mundo natural y artificial que le rodea, a través de " +
                         "procedimientos propios de la ciencia, reflexionando acerca de lo que sabe y de cómo ha llegado " +
                         "a saberlo poniendo en juego actitudes como la curiosidad, asombro, escepticismo, entre otras."));
-        competencias.add(new Competencia(33, area_13, ciclos,"Explica el mundo físico basándose en conocimientos sobre los seres vivos; materia y energía; biodiversidad, Tierra y universo",
+        competencias.add(new Competencia(33, "Explica el mundo físico basándose en conocimientos sobre los seres vivos; materia y energía; biodiversidad, Tierra y universo",
                 "El estudiante es capaz de " +
                         "comprender conocimientos científicos relacionados a hechos o fenómenos naturales, sus causas " +
                         "y relaciones con otros fenómenos, construyendo representaciones del mundo natural y artificial. " +
@@ -818,7 +806,7 @@ public class DatabaseResource {
                         "y la tecnología se encuentran en debate, para construir argumentos que le llevan a participar, " +
                         "deliberar y tomar decisiones en asuntos personales y públicos, mejorando su calidad de vida, así " +
                         "como conservar el ambiente."));
-        competencias.add(new Competencia(34, area_13, ciclos,"Diseña y construye soluciones tecnológicas para resolver problemas",
+        competencias.add(new Competencia(34, "Diseña y construye soluciones tecnológicas para resolver problemas",
                 "tecnológicas para resolver problemas de su " +
                         "entorno. El estudiante es capaz de construir objetos, procesos o sistemas tecnológicos, basados " +
                         "en conocimientos científicos, tecnológicos y de diversas prácticas locales, para dar respuesta a " +
@@ -839,20 +827,20 @@ public class DatabaseResource {
  * Area_14: "Educación Física prim"
  */
         Area area_14 = areaRepository.findByCode(14);
-        competencias.add(new Competencia(35, area_14, ciclos,"Se desenvuelve de manera autónoma a través de su motricidad",
+        competencias.add(new Competencia(35, "Se desenvuelve de manera autónoma a través de su motricidad",
                 "El estudiante comprende y toma conciencia de sí mismo en interacción con el espacio y las " +
                         "personas de su entorno, lo que le permite construir su identidad y autoestima. Interioriza y " +
                         "organiza sus movimientos eficazmente según sus posibilidades, en la práctica de actividades " +
                         "físicas como el juego, el deporte y aquellas que se desarrollan en la vida cotidiana. Asimismo, " +
                         "es capaz de expresar y comunicar a través de su cuerpo manifestando ideas, emociones y " +
                         "sentimientos con gestos, posturas, tono muscular, entre otros."));
-        competencias.add(new Competencia(36, area_14, ciclos,"Asume una vida saludable",
+        competencias.add(new Competencia(36, "Asume una vida saludable",
                 "El estudiante tiene conciencia reflexiva hacia el " +
                         "logro del bienestar común incorporando prácticas autónomas que conllevan a una mejora de su " +
                         "calidad de vida. Esto supone la comprensión y aplicación de la actividad física para la salud y de " +
                         "los conocimientos relacionados con posturas adecuadas, alimentación e higiene corporal " +
                         "saludables según sus recursos y entorno."));
-        competencias.add(new Competencia(37, area_14, ciclos,"Interactúa a través de sus habilidades sociomotrices",
+        competencias.add(new Competencia(37, "Interactúa a través de sus habilidades sociomotrices",
                 "En la práctica de " +
                         "diferentes actividades físicas (juegos, deportes, actividades predeportivas, etc). Implica poner " +
                         "en juego los recursos personales para una apropiada interacción social, inclusión y convivencia, " +
@@ -875,8 +863,8 @@ public class DatabaseResource {
  * Area_15: "Educación Religiosa prim"
  */
         Area area_15 = areaRepository.findByCode(15);
-        competencias.add(new Competencia(38, area_15, ciclos,"Construye su identidad como persona humana, amada por Dios, digna, libre y trascendente"));
-        competencias.add(new Competencia(39, area_15, ciclos,"Asume la experiencia el encuentro personal y comunitario con Dios"));
+        competencias.add(new Competencia(38, "Construye su identidad como persona humana, amada por Dios, digna, libre y trascendente"));
+        competencias.add(new Competencia(39, "Asume la experiencia el encuentro personal y comunitario con Dios"));
         area_15.getCompetencias().addAll(competenciaRepository.saveAll(competencias));
         areaRepository.save(area_15);
         ciclo_iii.getCompetencias().addAll(area_15.getCompetencias());
@@ -892,7 +880,7 @@ public class DatabaseResource {
  * Area_16: "Castellano como segunda lengua prim"
  */
         Area area_16 = areaRepository.findByCode(16);
-        competencias.add(new Competencia(40, area_16, ciclos,"Se comunica oralmente en castellano como segunda lengua",
+        competencias.add(new Competencia(40, "Se comunica oralmente en castellano como segunda lengua",
                 " Se define como una interacción dinámica entre uno o más interlocutores para expresar y " +
                         "comprender ideas y emociones. Supone un proceso activo de construcción del sentido de los " +
                         "diversos tipos de textos orales ya que el estudiante alterna los roles de hablante y oyente con el " +
@@ -908,7 +896,7 @@ public class DatabaseResource {
                         "virtual. Al hacerlo, tiene la posibilidad de usar el lenguaje oral de manera creativa y responsable, " +
                         "considerando la repercusión de lo expresado o escuchado, y estableciendo una posición crítica " +
                         "con los medios de comunicación audiovisuales."));
-        competencias.add(new Competencia(41, area_16, ciclos,"Lee diversos tipos de textos escritos en castellano como segunda lengua",
+        competencias.add(new Competencia(41, "Lee diversos tipos de textos escritos en castellano como segunda lengua",
                 "Esta competencia se define como una interacción dinámica entre el lector, el texto y los contextos " +
                         "socioculturales que enmarcan la lectura. Supone un proceso activo de construcción del sentido, " +
                         "ya que el estudiante no solo decodifica o comprende la información explícita de los textos que " +
@@ -923,7 +911,7 @@ public class DatabaseResource {
                         "práctica social situada en distintos grupos o comunidades de lectores. Al involucrarse con la " +
                         "lectura, el estudiante contribuye con su desarrollo personal, así como el de su propia " +
                         "comunidad, además de conocer e interactuar con contextos socioculturales distintos al suyo."));
-        competencias.add(new Competencia(42, area_16, ciclos,"Escribe diversos tipos de textos castellano como segunda lengua",
+        competencias.add(new Competencia(42, "Escribe diversos tipos de textos castellano como segunda lengua",
                 "Esta competencia se define como el uso del lenguaje escrito para construir sentidos en el texto y " +
                         "comunicarlos a otros. Se trata de un proceso reflexivo porque supone la adecuación y " +
                         "organización de los textos considerando los contextos y el propósito comunicativo, así como la " +
@@ -961,7 +949,7 @@ public class DatabaseResource {
  * Area_17: "Matemática sec"
  */
         Area area_17 = areaRepository.findByCode(17);
-        competencias.add(new Competencia(43, area_17, ciclos, "Resuelve problemas de cantidad",
+        competencias.add(new Competencia(43, "Resuelve problemas de cantidad",
                 "Consiste en que el estudiante solucione " +
                         "problemas o plantee nuevos que le demanden construir y comprender las nociones de número, de " +
                         "sistemas numéricos, sus operaciones y propiedades. Además dotar de significado a estos " +
@@ -971,7 +959,7 @@ public class DatabaseResource {
                         "recursos. El razonamiento lógico en esta competencia es usado cuando el estudiante hace " +
                         "comparaciones, explica a través de analogías, induce propiedades a partir de casos particulares o " +
                         "ejemplos, en el proceso de resolución del problema."));
-        competencias.add(new Competencia(44, area_17, ciclos, "Resuelve problemas de regularidad, equivalencia y cambio",
+        competencias.add(new Competencia(44, "Resuelve problemas de regularidad, equivalencia y cambio",
                 "Consiste en que el estudiante logre caracterizar equivalencias y generalizar regularidades y el " +
                         "cambio de una magnitud con respecto de otra, a través de reglas generales que le permitan " +
                         "encontrar valores desconocidos, determinar restricciones y hacer predicciones sobre el " +
@@ -979,7 +967,7 @@ public class DatabaseResource {
                         "estrategias, procedimientos y propiedades para resolverlas, graficarlas o manipular expresiones " +
                         "simbólicas. Así también razona de manera inductiva y deductiva, para determinar leyes generales " +
                         "mediante varios ejemplos, propiedades y contraejemplos."));
-        competencias.add(new Competencia(45, area_17, ciclos,"Resuelve problemas de movimiento, forma y localización",
+        competencias.add(new Competencia(45, "Resuelve problemas de movimiento, forma y localización",
                 "Consiste en que el estudiante se oriente y describa la posición y el movimiento de objetos y de sí mismo en el " +
                         "espacio, visualizando, interpretando y relacionando las características de los objetos con formas " +
                         "geométricas bidimensionales y tridimensionales. Implica que realice mediciones directas o " +
@@ -987,7 +975,7 @@ public class DatabaseResource {
                         "construir representaciones de las formas geométricas para diseñar objetos, planos y maquetas, " +
                         "usando instrumentos, estrategias y procedimientos de construcción y medida. Además describa " +
                         "trayectorias y rutas, usando sistemas de referencia y lenguaje geométrico."));
-        competencias.add(new Competencia(46, area_17, ciclos, "Resuelve problemas de gestión de datos e incertidumbre",
+        competencias.add(new Competencia(46, "Resuelve problemas de gestión de datos e incertidumbre",
                 "Consiste en que " +
                         "el estudiante analice datos sobre un tema de interés o estudio o de situaciones aleatorias, que le " +
                         "permita tomar decisiones, elaborar predicciones razonables y conclusiones respaldadas en la " +
@@ -1007,7 +995,7 @@ public class DatabaseResource {
  * Area_18: "Comunicación sec"
  */
         Area area_18 = areaRepository.findByCode(18);
-        competencias.add(new Competencia(47, area_18, ciclos,"Se comunica oralmente en lengua materna",
+        competencias.add(new Competencia(47, "Se comunica oralmente en lengua materna",
                 " Se define como una interacción dinámica entre uno o más interlocutores para expresar y comprender ideas y " +
                         "emociones. Supone un proceso activo de construcción del sentido de los diversos tipos de textos " +
                         "orales ya que el estudiante alterna los roles de hablante y oyente con el fin de lograr su propósito " +
@@ -1018,7 +1006,7 @@ public class DatabaseResource {
                         "repercusión de lo expresado o escuchado, y estableciendo una posición crítica con los medios de " +
                         "comunicación audiovisuales. La comunicación oral es una herramienta fundamental para la " +
                         "constitución de las identidades y el desarrollo personal."));
-        competencias.add(new Competencia(48, area_18, ciclos,"Lee diversos tipos de textos escritos",
+        competencias.add(new Competencia(48, "Lee diversos tipos de textos escritos",
                 "Esta competencia se define como una interacción dinámica entre el lector, el texto y los contextos " +
                         "socioculturales que enmarcan la lectura. Supone para el estudiante un proceso activo de " +
                         "construcción del sentido, ya que el estudiante no solo decodifica o comprende la información " +
@@ -1033,7 +1021,7 @@ public class DatabaseResource {
                         "práctica social situada en distintos grupos o comunidades de lectores. Al involucrarse con la " +
                         "lectura, el estudiante contribuye con su desarrollo personal, así como el de su propia comunidad, " +
                         "además de conocer e interactuar con contextos socioculturales distintos al suyo."));
-        competencias.add(new Competencia(49, area_18, ciclos,"Escribe diversos tipos de textos",
+        competencias.add(new Competencia(49, "Escribe diversos tipos de textos",
                 "Esta competencia se define como el uso del " +
                         "lenguaje escrito para construir sentidos en el texto y comunicarlos a otros. Se trata de un " +
                         "proceso reflexivo porque supone la adecuación y organización de los textos considerando los " +
@@ -1066,7 +1054,7 @@ public class DatabaseResource {
  */
 
         Area area_19 = areaRepository.findByCode(19);
-        competencias.add(new Competencia(50, area_19, ciclos,"Se comunica oralmente en inglés como lengua extranjera",
+        competencias.add(new Competencia(50, "Se comunica oralmente en inglés como lengua extranjera",
                 "se define como una interacción dinámica " +
                         "entre uno o más interlocutores para expresar y comprender ideas y emociones. Supone un " +
                         "proceso activo de construcción del sentido de los diversos tipos de textos orales ya que el " +
@@ -1077,7 +1065,7 @@ public class DatabaseResource {
                         "y las diversas estrategias de manera pertinente para expresarse, intercambiar información, " +
                         "persuadir, consensuar, entre otros fines. De igual forma, supone tomar conciencia del impacto " +
                         "de las nuevas tecnologías en la oralidad."));
-        competencias.add(new Competencia(51, area_19, ciclos,"Lee diversos tipos de textos en inglés como lengua extranjera",
+        competencias.add(new Competencia(51, "Lee diversos tipos de textos en inglés como lengua extranjera",
                 "se define como una interacción " +
                         "dinámica entre el lector, el texto y los contextos socioculturales que enmarcan la lectura. Supone " +
                         "un proceso activo de construcción del sentido ya que el estudiante no solo decodifica o " +
@@ -1091,7 +1079,7 @@ public class DatabaseResource {
                         "práctica social situada en distintos grupos o comunidades de lectores. Al involucrarse con la " +
                         "lectura, el estudiante contribuye con su desarrollo personal, así como el de su propia " +
                         "comunidad, además de conocer e interactuar con contextos socioculturales distintos al suyo."));
-        competencias.add(new Competencia(52, area_19, ciclos,"Escribe diversos tipos de textos inglés como lengua extranjera",
+        competencias.add(new Competencia(52, "Escribe diversos tipos de textos inglés como lengua extranjera",
                 "se define como el uso del " +
                         "lenguaje escrito para construir sentidos en el texto y comunicarlos a otros. Se trata de un " +
                         "proceso reflexivo porque supone la adecuación y organización de los textos considerando los " +
@@ -1121,7 +1109,7 @@ public class DatabaseResource {
  */
 
         Area area_20 = areaRepository.findByCode(20);
-        competencias.add(new Competencia(53, area_20, ciclos,"Aprecia de manera crítica manifestaciones artístico-culturales",
+        competencias.add(new Competencia(53, "Aprecia de manera crítica manifestaciones artístico-culturales",
                 "Se define como la interacción entre el estudiante y manifestaciones artístico-culturales para que " +
                         "puedan observarlas, investigarlas, comprenderlas y reflexionar sobre ellas. Permite al estudiante " +
                         "desarrollar habilidades para percibir, describir y analizar sus cualidades estéticas, para ayudarlo " +
@@ -1131,7 +1119,7 @@ public class DatabaseResource {
                         "entendernos a nosotros mismos, a otros y al entorno. También implica emitir juicios de valor " +
                         "cada vez más informados, basándose en los conocimientos obtenidos en el proceso de " +
                         "apreciación crítica."));
-        competencias.add(new Competencia(54, area_20, ciclos,"Crea proyectos desde los lenguajes artísticos",
+        competencias.add(new Competencia(54, "Crea proyectos desde los lenguajes artísticos",
                 "El estudiante usa los diversos lenguajes artísticos (artes visuales, música, danza, teatro, artes interdisciplinares y otros) " +
                         "para expresar o comunicar mensajes, ideas y sentimientos. En la que pone en práctica habilidades " +
                         "imaginativas, creativas y reflexivas para generar ideas, planificar, concretar propuestas y " +
@@ -1155,14 +1143,14 @@ public class DatabaseResource {
  */
 
         Area area_21 = areaRepository.findByCode(21);
-        competencias.add(new Competencia(55, area_21, ciclos,"Construye interpretaciones históricas",
+        competencias.add(new Competencia(55, "Construye interpretaciones históricas",
                 "El estudiante sustenta una posición " +
                         "crítica sobre hechos y procesos históricos que ayuden a comprender el siglo XXI y sus desafíos, " +
                         "articulando el uso de distintas fuentes, la comprensión de los cambios, permanencias, " +
                         "simultaneidades y secuencias temporales y la explicación de las múltiples causas y consecuencias " +
                         "de estos. Supone reconocerse como sujeto histórico, es decir, como protagonista de los procesos " +
                         "históricos y, como tal, producto de un pasado, pero que, a la vez, está construyendo su futuro."));
-        competencias.add(new Competencia(56, area_21, ciclos,"Gestiona responsablemente el ambiente y el espacio",
+        competencias.add(new Competencia(56, "Gestiona responsablemente el ambiente y el espacio",
                 "El estudiante toma " +
                         "decisiones que contribuyen a la satisfacción de las necesidades desde una posición crítica y una " +
                         "perspectiva de desarrollo sostenible -es decir, sin poner en riesgo a las generaciones futuras-, y " +
@@ -1170,7 +1158,7 @@ public class DatabaseResource {
                         "Supone comprender que el espacio es una construcción social dinámica, es decir, un espacio de " +
                         "interacción entre elementos naturales y sociales que se va transformando a lo largo del tiempo y " +
                         "donde el ser humano cumple un rol fundamental."));
-        competencias.add(new Competencia(57, area_21, ciclos,"Gestiona responsablemente los recursos económicos",
+        competencias.add(new Competencia(57, "Gestiona responsablemente los recursos económicos",
                 "El estudiante es " +
                         "capaz de administrar los recursos, tanto personales como familiares, a partir de asumir una " +
                         "postura crítica sobre el manejo de estos, de manera informada y responsable. Esto supone " +
@@ -1190,7 +1178,7 @@ public class DatabaseResource {
  */
 
         Area area_22 = areaRepository.findByCode(22);
-        competencias.add(new Competencia(58, area_22, ciclos,"Construye su identidad",
+        competencias.add(new Competencia(58, "Construye su identidad",
                 "El estudiante conoce y valora su cuerpo, su forma " +
                         "de sentir, de pensar y de actuar desde el reconocimiento de las distintas identidades que lo " +
                         "definen (histórica, étnica, social, sexual, cultural, de género, entre otras) como producto de las " +
@@ -1198,7 +1186,7 @@ public class DatabaseResource {
                         "desenvuelven (familia, escuela, comunidad). No se trata que los estudiantes construyan una " +
                         "identidad “ideal”, sino que cada estudiante pueda –a su propio ritmo y criterio– ser consciente " +
                         "de las características que lo hacen único y de aquellas que lo hacen semejantes a otros."));
-        competencias.add(new Competencia(59, area_22, ciclos,"Convive y participa democráticamente",
+        competencias.add(new Competencia(59, "Convive y participa democráticamente",
                 "El estudiante actúa en la sociedad " +
                         "relacionándose con los demás de manera justa y equitativa, reconociendo que todas las " +
                         "personas tienen los mismos derechos y responsabilidades. Muestra disposición por conocer, " +
@@ -1220,20 +1208,20 @@ public class DatabaseResource {
  */
 
         Area area_23 = areaRepository.findByCode(23);
-        competencias.add(new Competencia(60, area_23, ciclos,"Se desenvuelve de manera autónoma a través de su motricidad",
+        competencias.add(new Competencia(60, "Se desenvuelve de manera autónoma a través de su motricidad",
                 "El estudiante comprende y toma conciencia de sí mismo en interacción con el espacio y las " +
                         "personas de su entorno, lo que le permite construir su identidad y autoestima. Interioriza y " +
                         "organiza sus movimientos eficazmente según sus posibilidades, en la práctica de actividades " +
                         "físicas como el juego, el deporte y aquellas que se desarrollan en la vida cotidiana. Asimismo, " +
                         "es capaz de expresar y comunicar a través de su cuerpo manifestando ideas, emociones y " +
                         "sentimientos con gestos, posturas, tono muscular, entre otros."));
-        competencias.add(new Competencia(61, area_23, ciclos,"Asume una vida saludable",
+        competencias.add(new Competencia(61, "Asume una vida saludable",
                 "El estudiante tiene conciencia reflexiva hacia el " +
                         "logro del bienestar común incorporando prácticas autónomas que conllevan a una mejora de su " +
                         "calidad de vida. Esto supone la comprensión y aplicación de la actividad física para la salud y de " +
                         "los conocimientos relacionados con posturas adecuadas, alimentación e higiene corporal " +
                         "saludables según sus recursos y entorno."));
-        competencias.add(new Competencia(62, area_23, ciclos,"Interactúa a través de sus habilidades sociomotrices",
+        competencias.add(new Competencia(62, "Interactúa a través de sus habilidades sociomotrices",
                 "en la práctica de " +
                         "diferentes actividades físicas (juegos, deportes, actividades predeportivas, etc). Implica poner " +
                         "en juego los recursos personales para una apropiada interacción social, inclusión y convivencia, " +
@@ -1255,7 +1243,7 @@ public class DatabaseResource {
  */
 
         Area area_24 = areaRepository.findByCode(24);
-        competencias.add(new Competencia(63, area_24, ciclos,"Construye su identidad como persona humana, amada por Dios, digna, libre y trascendente, comprendiendo la doctrina de su propia religión , abierto al dialogo con las que le son más cercanas",
+        competencias.add(new Competencia(63, "Construye su identidad como persona humana, amada por Dios, digna, libre y trascendente, comprendiendo la doctrina de su propia religión , abierto al dialogo con las que le son más cercanas",
                 "El estudiante descubre y asume " +
                         "que existe una verdad trascendente, que le da una identidad y una dignidad humana, toma " +
                         "conciencia de que es hijo de Dios creado a imagen y semejanza, reconoce la acción providente " +
@@ -1270,7 +1258,7 @@ public class DatabaseResource {
                         "presentes en nuestra sociedad pluralista, posibilita el desarrollo espiritual, psicológico y cultural " +
                         "del estudiante, en su propio contexto histórico y ambiental, ayuda a comprender el patrimonio " +
                         "cultural y artístico peruano y le permite estructurar y sistematizar los contenidos de su fe."));
-        competencias.add(new Competencia(64, area_24, ciclos,"Asume la experiencia el encuentro personal y comunitario con Dios en su proyecto de vida en coherencia con su creencia religiosa",
+        competencias.add(new Competencia(64, "Asume la experiencia el encuentro personal y comunitario con Dios en su proyecto de vida en coherencia con su creencia religiosa",
                 "el estudiante valora " +
                         "a Jesús como modelo, desarrollando valores y virtudes personales que configuran su " +
                         "personalidad libre y responsable propia de quien vive los ideales del Evangelio a través de la " +
@@ -1294,12 +1282,12 @@ public class DatabaseResource {
  */
 
         Area area_25 = areaRepository.findByCode(25);
-        competencias.add(new Competencia(65, area_25, ciclos,"Indaga mediante métodos científicos",
+        competencias.add(new Competencia(65, "Indaga mediante métodos científicos",
                 "El estudiante es capaz de construir su conocimiento acerca del funcionamiento y " +
                         "estructura del mundo natural y artificial que le rodea, a través de procedimientos propios de la " +
                         "ciencia, reflexionando acerca de lo que sabe y de cómo ha llegado a saberlo poniendo en juego " +
                         "actitudes como la curiosidad, asombro, escepticismo, entre otras."));
-        competencias.add(new Competencia(66, area_25, ciclos,"Explica el mundo físico basándose en conocimientos sobre los seres vivos; materia y energía; biodiversidad, Tierra y universo",
+        competencias.add(new Competencia(66, "Explica el mundo físico basándose en conocimientos sobre los seres vivos; materia y energía; biodiversidad, Tierra y universo",
                 "El estudiante es capaz de " +
                         "comprender conocimientos científicos relacionados a hechos o fenómenos naturales, sus causas y " +
                         "relaciones con otros fenómenos, construyendo representaciones del mundo natural y artificial. Esta " +
@@ -1307,7 +1295,7 @@ public class DatabaseResource {
                         "tecnología se encuentran en debate, para construir argumentos que le llevan a participar, deliberar " +
                         "y tomar decisiones en asuntos personales y públicos, mejorando su calidad de vida, así como " +
                         "conservar el ambiente."));
-        competencias.add(new Competencia(67, area_25, ciclos,"Diseña y construye soluciones tecnológicas para resolver problemas",
+        competencias.add(new Competencia(67, "Diseña y construye soluciones tecnológicas para resolver problemas",
                 "El estudiante es capaz de construir objetos, procesos o sistemas tecnológicos, basados en " +
                         "conocimientos científicos, tecnológicos y de diversas prácticas locales, para dar respuesta a " +
                         "problemas del contexto, ligados a las necesidades sociales, poniendo en juego la creatividad y " +
@@ -1326,7 +1314,7 @@ public class DatabaseResource {
  */
 
         Area area_26 = areaRepository.findByCode(26);
-        competencias.add(new Competencia(68, area_26, ciclos,"Gestiona proyectos de emprendimiento económico y social",
+        competencias.add(new Competencia(68, "Gestiona proyectos de emprendimiento económico y social",
                 "Es cuando el " +
                         "estudiante lleva a la acción una idea creativa movilizando con eficiencia y eficacia los recursos, " +
                         "tareas, y técnicas necesarias para alcanzar objetivos y metas individuales o colectivas en atención " +
@@ -1352,7 +1340,7 @@ public class DatabaseResource {
  */
 
         Area area_27 = areaRepository.findByCode(27);
-        competencias.add(new Competencia(69, area_27, ciclos,"Se comunica oralmente en castellano como segunda lengua",
+        competencias.add(new Competencia(69, "Se comunica oralmente en castellano como segunda lengua",
                 "Se define como una interacción dinámica entre uno o más interlocutores para expresar y " +
                         "comprender ideas y emociones. Supone un proceso activo de construcción del sentido de los " +
                         "diversos tipos de textos orales ya que el estudiante alterna los roles de hablante y oyente con el " +
@@ -1368,7 +1356,7 @@ public class DatabaseResource {
                         "virtual. Al hacerlo, tiene la posibilidad de usar el lenguaje oral de manera creativa y responsable, " +
                         "considerando la repercusión de lo expresado o escuchado, y estableciendo una posición crítica " +
                         "con los medios de comunicación audiovisuales."));
-        competencias.add(new Competencia(70, area_27, ciclos,"Lee diversos tipos de textos escritos en castellano como segunda lengua",
+        competencias.add(new Competencia(70, "Lee diversos tipos de textos escritos en castellano como segunda lengua",
                 "Esta competencia se define como una interacción dinámica entre el lector, el texto y los contextos " +
                         "socioculturales que enmarcan la lectura. Supone un proceso activo de construcción del sentido, " +
                         "ya que el estudiante no solo decodifica o comprende la información explícita de los textos que " +
@@ -1383,7 +1371,7 @@ public class DatabaseResource {
                         "práctica social situada en distintos grupos o comunidades de lectores. Al involucrarse con la " +
                         "lectura, el estudiante contribuye con su desarrollo personal, así como el de su propia " +
                         "comunidad, además de conocer e interactuar con contextos socioculturales distintos al suyo."));
-        competencias.add(new Competencia(71, area_27, ciclos,"Escribe diversos tipos de textos castellano como segunda lengua",
+        competencias.add(new Competencia(71, "Escribe diversos tipos de textos castellano como segunda lengua",
                 "Esta competencia se define como el uso del lenguaje escrito para construir sentidos en el texto y " +
                         "comunicarlos a otros. Se trata de un proceso reflexivo porque supone la adecuación y " +
                         "organización de los textos considerando los contextos y el propósito comunicativo, así como la " +

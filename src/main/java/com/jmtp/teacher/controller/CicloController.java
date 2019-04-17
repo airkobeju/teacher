@@ -29,4 +29,9 @@ public class CicloController {
         return cicloRepository.findById(id).get();
     }
 
+    @GetMapping("/getbycode/{code}")
+    public Ciclo getCiclo(@PathVariable(name = "code") Integer code){
+        return cicloRepository.findByCode(code);
+    }
+
 }

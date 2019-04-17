@@ -11,12 +11,6 @@ import java.util.List;
 @Document(collection = "competencia")
 public class Competencia extends AbstractDocument {
 
-    @DBRef
-    private Area area;
-
-    @DBRef
-    private List<Ciclo> ciclos = new ArrayList<>();
-
     private String description;
     @Nullable
     private String detailed;
@@ -32,41 +26,13 @@ public class Competencia extends AbstractDocument {
     public Competencia() {
     }
 
+    public Competencia(int code, String description, @Nullable String detailed) {
+        this.description = description;
+        this.detailed = detailed;
+        this.code = code;
+    }
+
     public Competencia(int code, String description) {
-        this.code = code;
-        this.description = description;
-    }
-
-    public Competencia(int code, String description, String detailed) {
-        this.code = code;
-        this.description = description;
-        this.detailed = detailed;
-    }
-
-    public Competencia(int code, Area area, List<Ciclo> ciclos, String description, @Nullable String detailed) {
-        this.area = area;
-        this.ciclos = ciclos;
-        this.description = description;
-        this.detailed = detailed;
-        this.code = code;
-    }
-
-    public Competencia(int code, Area area, List<Ciclo> ciclos, String description) {
-        this.area = area;
-        this.ciclos = ciclos;
-        this.description = description;
-        this.code = code;
-    }
-
-    public Competencia(int code, Area area, String description, @Nullable String detailed) {
-        this.area = area;
-        this.description = description;
-        this.detailed = detailed;
-        this.code = code;
-    }
-
-    public Competencia(int code, Area area, String description) {
-        this.area = area;
         this.description = description;
         this.code = code;
     }
@@ -75,22 +41,6 @@ public class Competencia extends AbstractDocument {
         this.description = description;
         this.capacidades = capacidades;
         this.desempenyos = desempenyos;
-    }
-
-    public Area getArea() {
-        return area;
-    }
-
-    public void setArea(Area area) {
-        this.area = area;
-    }
-
-    public List<Ciclo> getCiclos() {
-        return ciclos;
-    }
-
-    public void setCiclos(List<Ciclo> ciclos) {
-        this.ciclos = ciclos;
     }
 
     public String getDescription() {

@@ -12,7 +12,7 @@ import java.util.List;
 public class Competencia extends AbstractDocument {
 
     @DBRef
-    private Area areas;
+    private Area area;
 
     @DBRef
     private List<Ciclo> ciclos = new ArrayList<>();
@@ -43,11 +43,31 @@ public class Competencia extends AbstractDocument {
         this.detailed = detailed;
     }
 
-    public Competencia(int code, Area areas, List<Ciclo> ciclos, String description, @Nullable String detailed) {
-        this.areas = areas;
+    public Competencia(int code, Area area, List<Ciclo> ciclos, String description, @Nullable String detailed) {
+        this.area = area;
         this.ciclos = ciclos;
         this.description = description;
         this.detailed = detailed;
+        this.code = code;
+    }
+
+    public Competencia(int code, Area area, List<Ciclo> ciclos, String description) {
+        this.area = area;
+        this.ciclos = ciclos;
+        this.description = description;
+        this.code = code;
+    }
+
+    public Competencia(int code, Area area, String description, @Nullable String detailed) {
+        this.area = area;
+        this.description = description;
+        this.detailed = detailed;
+        this.code = code;
+    }
+
+    public Competencia(int code, Area area, String description) {
+        this.area = area;
+        this.description = description;
         this.code = code;
     }
 
@@ -57,12 +77,12 @@ public class Competencia extends AbstractDocument {
         this.desempenyos = desempenyos;
     }
 
-    public Area getAreas() {
-        return areas;
+    public Area getArea() {
+        return area;
     }
 
-    public void setAreas(Area areas) {
-        this.areas = areas;
+    public void setArea(Area area) {
+        this.area = area;
     }
 
     public List<Ciclo> getCiclos() {

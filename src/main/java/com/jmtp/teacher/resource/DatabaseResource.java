@@ -57,7 +57,7 @@ public class DatabaseResource {
         initMatrixGradoBase();
         initMatrixArea();
         initMatrixCompetencias();
-        //initMatrixCapacidad();
+        initMatrixCapacidad();
 
         return capacidadRepository.findAll();
     }
@@ -110,7 +110,7 @@ public class DatabaseResource {
         areas_secundaria.add(new Area(24,"Educación Religiosa"));
         areas_secundaria.add(new Area(25,"Ciencia y tecnología"));
         areas_secundaria.add(new Area(26,"Educación para el Trabajo"));
-        areas_secundaria.add(new Area(27,"Tutoría y orientación educativa"));
+        areas_secundaria.add(new Area(27,"Castellano como segunda lengua"));
         nivel_secundaria.getAreas().addAll(areaRepository.saveAll(areas_secundaria));
         nivelRepository.save(nivel_secundaria);
     }
@@ -1397,25 +1397,59 @@ public class DatabaseResource {
         List<Capacidad> capacidades = new ArrayList<>();
 
         Competencia comp_1 = competenciaRepository.findByCode(1);
-        capacidades.add(new Capacidad("Se valora a sí mismo"));
-        capacidades.add(new Capacidad("Autoregula sus emociones"));
+        capacidades.add(new Capacidad("Se valora a sí mismo",
+                "Parte por reconocer las características, cualidades, " +
+                        "limitaciones y potencialidades que lo hacen ser quien es, que le permiten " +
+                        "aceptarse, sentirse bien consigo mismo y ser capaz de asumir retos y alcanzar sus " +
+                        "metas. Además, se reconoce como integrante de una colectividad sociocultural " +
+                        "específica, desarrollando un sentido de pertenencia a su familia, escuela, " +
+                        "comunidad, país y mundo."));
+        capacidades.add(new Capacidad("Autoregula sus emociones",
+                "Es reconocer y tomar conciencia de sus emociones, " +
+                        "a fin de poder expresarlas de manera adecuada, considerando su etapa de " +
+                        "desarrollo, el contexto, los patrones culturales diversos y las consecuencias que " +
+                        "estas tienen para sí mismo y para los demás. Ello le permite regular su " +
+                        "comportamiento, en favor de su bienestar y el de los demás."));
         comp_1.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_1);
 
         capacidades.clear();
 
         Competencia comp_2 = competenciaRepository.findByCode(2);
-        capacidades.add(new Capacidad("Interactúa con todas las personas"));
-        capacidades.add(new Capacidad("Construye normas, y asume acuerdos y leyes"));
-        capacidades.add(new Capacidad("Participa en acciones que promueven el bienestar común"));
+        capacidades.add(new Capacidad("Interactúa con todas las personas reconociendo que todos tenemos derechos",
+                "Es establecer relaciones en las que se respetan las diferencias, se reconoce a todos " +
+                        "como personas valiosas, y se demuestra disposición a preocuparse por el otro y a " +
+                        "enriquecerse mutuamente. Implica actuar frente a las distintas formas de " +
+                        "discriminación (por género, fenotipo, origen étnico, lengua, discapacidad, " +
+                        "orientación sexual, edad, nivel socioeconómico, entre otras), así como reflexionar " +
+                        "sobre las diversas situaciones que vulneran la convivencia democrática."));
+        capacidades.add(new Capacidad("Construye normas, y asume acuerdos y leyes",
+                "Es producir, respetar y evaluar las normas en " +
+                        "relación a los principios que las sustentan, así como cumplir con las leyes, " +
+                        "reconociendo la importancia de estas para la convivencia. Supone manejar " +
+                        "información y conceptos relacionados con la convivencia (como la equidad, el " +
+                        "respeto y la libertad) y hacer suyos los principios democráticos (la autofundación, " +
+                        "la secularidad, la incertidumbre, la ética, la complejidad y lo público)."));
+        capacidades.add(new Capacidad("Participa en acciones que promueven el bienestar común",
+                "Es proponer y gestionar iniciativas vinculadas con el interés común y con la promoción y defensa " +
+                        "de los derechos humanos, tanto en la escuela como en la comunidad. Para ello, " +
+                        "se apropia y utiliza canales y mecanismos de participación democrática."));
         comp_2.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_2);
 
         capacidades.clear();
 
         Competencia comp_3 = competenciaRepository.findByCode(3);
-        capacidades.add(new Capacidad("Comprende su cuerpo"));
-        capacidades.add(new Capacidad("Se expresa corporalmente"));
+        capacidades.add(new Capacidad("Comprende su cuerpo",
+                "Es la interiorización progresiva que los estudiantes tienen " +
+                        "de su cuerpo en estado estático o en movimiento y con relación al espacio, el " +
+                        "tiempo, los otros y los objetos de su entorno, permitiéndoles el desarrollo de su " +
+                        "personalidad y la representación mental de su cuerpo."));
+        capacidades.add(new Capacidad("Se expresa corporalmente",
+                "Es el uso del lenguaje corporal para comunicar " +
+                        "emociones, sentimientos y pensamientos. Implica utilizar el tono, los gestos, " +
+                        "mímicas, posturas y movimientos para expresarse, desarrollando la creatividad al " +
+                        "usar todos los recursos que ofrece el cuerpo y el movimiento."));
         comp_3.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_3);
 
@@ -1434,33 +1468,113 @@ public class DatabaseResource {
         capacidades.clear();
 
         Competencia comp_5 = competenciaRepository.findByCode(5);
-        capacidades.add(new Capacidad("Genera y registra datos o información"));
+        capacidades.add(new Capacidad("Obtiene información del texto escrito",
+                "El estudiante localiza y selecciona información explícita " +
+                        "en textos escritos con un propósito específico."));
+        capacidades.add(new Capacidad("Infiere e interpreta información del texto",
+                "El estudiante construye el sentido del texto. Para " +
+                        "ello, infiere estableciendo diversas relaciones entre la información explícita e implícita con el fin " +
+                        "de deducir nueva información y completar los vacíos del texto. A partir de estas inferencias, el " +
+                        "estudiante interpreta integrando la información explícita e implícita, así como los recursos " +
+                        "textuales, para construir el sentido global y profundo del texto, y explicar el propósito, el uso " +
+                        "estético del lenguaje, las intenciones del autor, las ideologías de los textos así como su relación " +
+                        "con el contexto sociocultural del lector y del texto."));
+        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto",
+                "Los procesos de reflexión y " +
+                        "evaluación están relacionados porque ambos suponen que el estudiante se distancie de los " +
+                        "textos escritos situados en épocas y lugares distintos, y que son presentados en diferentes " +
+                        "soportes y formatos. Reflexionar implica comparar y contrastar aspectos formales y de " +
+                        "contenido del texto con la experiencia, el conocimiento formal del lector y diversas fuentes de " +
+                        "información. Evaluar implica analizar y valorar los textos escritos para construir una opinión " +
+                        "personal o un juicio crítico sobre aspectos formales, estéticos, contenidos e ideologías de los " +
+                        "textos considerando los efectos que producen, la relación con otros textos, y el contexto " +
+                        "sociocultural del texto y del lector."));
         comp_5.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_5);
 
         capacidades.clear();
 
         Competencia comp_6 = competenciaRepository.findByCode(6);
-        capacidades.add(new Capacidad("Traduce cantidades a expresiones numéricas"));
-        capacidades.add(new Capacidad("Comunica su comprensión sobre los números y las operaciones"));
-        capacidades.add(new Capacidad("Usa estrategias y procedimientos de estimación y cálculo"));
+        capacidades.add(new Capacidad("Adecúa el texto a la situación comunicativa",
+                "El estudiante considera el propósito, " +
+                        "destinatario, tipo de texto, género discursivo y registro que utilizará al escribir los " +
+                        "textos, así como los contextos socioculturales que enmarcan la comunicación " +
+                        "escrita."));
+        capacidades.add(new Capacidad("Organiza y desarrolla las ideas de forma coherente y cohesionada",
+                "El estudiante " +
+                        "ordena lógicamente las ideas en torno a un tema, ampliándolas y " +
+                        "complementándolas, estableciendo relaciones de cohesión entre ellas y " +
+                        "utilizando un vocabulario pertinente."));
+        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto escrito",
+                "El estudiante se distancia del texto que ha escrito para revisar de manera " +
+                        "permanente el contenido, la coherencia, cohesión y adecuación a la situación " +
+                        "comunicativa con la finalidad de mejorarlo. También implica analizar, comparar y " +
+                        "contrastar las características de los usos del lenguaje escrito y sus posibilidades, " +
+                        "así como su repercusión en otras personas o su relación con otros textos según el " +
+                        "contexto sociocultural."));
         comp_6.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_6);
 
         capacidades.clear();
 
         Competencia comp_7 = competenciaRepository.findByCode(7);
-        capacidades.add(new Capacidad("Modela objetos con formas geométricas y sus transformaciones"));
-        capacidades.add(new Capacidad("Comunica su comprensión sobre las formas y relaciones geométricas"));
-        capacidades.add(new Capacidad("Usa estrategias y procedimientos para orientarse en el espacio"));
+        capacidades.add(new Capacidad("Explora el lenguaje de las artes",
+                "Significa experimentar, descubrir y aprender sobre " +
+                        "los elementos, códigos y formas del arte, así como las diferentes técnicas y diversos " +
+                        "materiales como medios, para relacionar sus sensaciones con sus ideas."));
+        capacidades.add(new Capacidad("Desarrolla procesos de creación",
+                "Significa planificar y realizar proyectos artísticos, a " +
+                        "través de un proceso creativo, motivado por un impulso expresivo, un estímulo externo, una " +
+                        "intención o idea."));
+        capacidades.add(new Capacidad("Socializa sus experiencias y descubrimientos",
+                "Significa compartir los hallazgos y " +
+                        "resultados de sus procesos y proyectos artístico-culturales, lo que le permite vincularse con " +
+                        "diversos agentes de su comunidad para dar y recibir retroalimentación de ellos."));
         comp_7.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_7);
 
         capacidades.clear();
 
         Competencia comp_8 = competenciaRepository.findByCode(8);
-        capacidades.add(new Capacidad("Se valora a sí mismo"));
-        capacidades.add(new Capacidad("Autoregula sus emociones"));
+        capacidades.add(new Capacidad("Obtiene información del texto oral",
+                "El estudiante recupera y extrae información " +
+                        "explícita expresada por los interlocutores."));
+        capacidades.add(new Capacidad("Infiere e interpreta información del texto oral",
+                "El estudiante construye el sentido del " +
+                        "texto. Para ello, infiere estableciendo diversas relaciones entre la información explícita " +
+                        "e implícita con el fin de deducir nueva información y completar los vacíos del texto " +
+                        "oral. A partir de estas inferencias, el estudiante interpreta integrando la información " +
+                        "explícita e implícita, los recursos verbales, no verbales y paraverbales para construir el " +
+                        "sentido global y profundo del texto oral, y explicar el propósito, el uso estético del " +
+                        "lenguaje, las intenciones e ideologías de los interlocutores, así como su relación con el " +
+                        "contexto sociocultural."));
+        capacidades.add(new Capacidad("Adecúa, organiza y desarrolla el texto de forma coherente y cohesionada",
+                "El estudiante expresa sus ideas adaptándose al propósito, destinatario, características " +
+                        "del tipo de texto, género discursivo y registro, considerando las normas y modos de " +
+                        "cortesía, así como los contextos socioculturales que enmarcan la comunicación. " +
+                        "Asimismo, expresa las ideas en torno a un tema de forma lógica, relacionándolas " +
+                        "mediante diversos recursos cohesivos para construir el sentido de distintos tipos de " +
+                        "textos y géneros discursivos."));
+        capacidades.add(new Capacidad("Utiliza recursos no verbales y paraverbales de forma estratégica",
+                "El estudiante " +
+                        "emplea variados recursos no verbales (como gestos o movimientos corporales) o " +
+                        "paraverbales (como el tono de la voz o silencios) según la situación comunicativa para " +
+                        "enfatizar o matizar significados y producir determinados efectos en los interlocutores."));
+        capacidades.add(new Capacidad("Interactúa estratégicamente con distintos interlocutores",
+                "El estudiante intercambia " +
+                        "los roles de hablante y oyente alternada y dinámicamente, participando de forma " +
+                        "pertinente, oportuna y relevante para lograr su propósito comunicativo."));
+        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto oral",
+                "Los procesos de " +
+                        "reflexión y evaluación están relacionados porque ambos suponen que el estudiante se " +
+                        "distancie de los textos orales en los que participa. Para ello, reflexiona como oyente y " +
+                        "hablante, que supone distanciarse de los textos orales en que participa de forma " +
+                        "presencial o a través de medios audiovisuales, comparando y contrastando aspectos " +
+                        "formales y de contenido, con la experiencia, el contexto, el conocimiento formal y " +
+                        "diversas fuentes de información. Asimismo, evalúa, que implica analizar y valorar los " +
+                        "textos orales producidos para construir una opinión personal o un juicio crítico sobre " +
+                        "sus aspectos formales, contenidos e ideologías, y su relación con el contexto " +
+                        "sociocultural, considerando los efectos que producen en los interlocutores."));
         comp_8.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_8);
 
@@ -1477,159 +1591,154 @@ public class DatabaseResource {
 
 
         Competencia comp_10 = competenciaRepository.findByCode(10);
-        capacidades.add(new Capacidad("Conoce a Dios y asume su identidad religiosa y espiritual como persona digna, libre y trascendente"));
-        capacidades.add(new Capacidad("Cultiva y valora las manifestaciones religiosas de su entorno argumentando su fe de manera comprensible y respetuosa"));
+        capacidades.add(new Capacidad("Genera y registra datos o información"));
         comp_10.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_10);
 
         capacidades.clear();
 
         Competencia comp_11 = competenciaRepository.findByCode(11);
-        capacidades.add(new Capacidad("Comprende su cuerpo"));
-        capacidades.add(new Capacidad("Se expresa corporalmente"));
+        capacidades.add(new Capacidad("Modela objetos con formas geométricas y sus transformaciones"));
+        capacidades.add(new Capacidad("Comunica su comprensión sobre las formas y relaciones geométricas"));
+        capacidades.add(new Capacidad("Usa estrategias y procedimientos para orientarse en el espacio"));
         comp_11.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_11);
 
         capacidades.clear();
 
         Competencia comp_12 = competenciaRepository.findByCode(12);
-        capacidades.add(new Capacidad("Obtiene información del texto oral"));
-        capacidades.add(new Capacidad("Infiere e interpreta información del texto oral"));
-        capacidades.add(new Capacidad("Adecúa, organiza y desarrolla el texto de forma coherente y cohesionada"));
-        capacidades.add(new Capacidad("Utiliza recursos no verbales y paraverbales de forma estratégica"));
-        capacidades.add(new Capacidad("Interactúa estratégicamente con distintos interlocutores"));
-        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto oral"));
+        capacidades.add(new Capacidad("Traduce cantidades a expresiones numéricas",
+                "Es transformar las relaciones " +
+                        "entre los datos y condiciones de un problema, a una expresión numérica (modelo) " +
+                        "que reproduzca las relaciones entre estos; esta expresión se comporta como un " +
+                        "sistema compuesto por números, operaciones y sus propiedades. Es plantear " +
+                        "problemas a partir de una situación o una expresión numérica dada. También implica " +
+                        "evaluar si el resultado obtenido o la expresión numérica formulada (modelo), " +
+                        "cumplen las condiciones iniciales del problema."));
+        capacidades.add(new Capacidad("Comunica su comprensión sobre los números y las operaciones",
+                "Es expresar " +
+                        "la comprensión de los conceptos numéricos, las operaciones y propiedades, las " +
+                        "unidades de medida, las relaciones que establece entre ellos; usando lenguaje " +
+                        "numérico y diversas representaciones, así como leer sus representaciones e " +
+                        "información con contenido numérico."));
+        capacidades.add(new Capacidad("Usa estrategias y procedimientos de estimación y calculo",
+                "Es seleccionar, " +
+                        "adaptar, combinar o crear una variedad de estrategias, procedimientos como el " +
+                        "cálculo mental y escrito, la estimación, la aproximación y medición, comparar " +
+                        "cantidades; y emplear diversos recursos."));
         comp_12.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_12);
 
         capacidades.clear();
 
         Competencia comp_13 = competenciaRepository.findByCode(13);
-        capacidades.add(new Capacidad("Obtiene información del texto escrito"));
-        capacidades.add(new Capacidad("Infiere e interpreta información del texto escrito"));
-        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto escrito"));
+        capacidades.add(new Capacidad("Traduce datos y condiciones a expresiones algebraicas",
+                "Es transformar los " +
+                        "datos, valores desconocidos, variables y relaciones de un problema, a una " +
+                        "expresión gráfica o algebraica (modelo) que generalice la interacción entre " +
+                        "estos. Implica también evaluar el resultado o la expresión formulada, con " +
+                        "respecto a las condiciones de la situación; y formular preguntas o problemas " +
+                        "a partir de una situación o una expresión."));
+        capacidades.add(new Capacidad("Comunica su comprensión sobre las relaciones algebraicas",
+                "Es expresar su " +
+                        "comprensión de la noción, concepto o propiedades de los patrones, " +
+                        "funciones, ecuaciones e inecuaciones estableciendo relaciones entre estas; " +
+                        "usando lenguaje algebraico y diversas representaciones. Así como " +
+                        "interpretar información que presente contenido algebraico"));
+        capacidades.add(new Capacidad("Usa estrategias y procedimientos para encontrar reglas generales",
+                "Es seleccionar, adaptar, combinar o crear, procedimientos, estrategias y " +
+                        "algunas propiedades como las de las ecuaciones e inecuaciones, y reglas de " +
+                        "manipulación de expresiones simbólicas que permitan resolver ecuaciones, " +
+                        "determinar dominios y rangos, representar rectas, parábolas, y diversas " +
+                        "funciones."));
         comp_13.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_13);
 
         capacidades.clear();
 
         Competencia comp_14 = competenciaRepository.findByCode(14);
-        capacidades.add(new Capacidad("Adecúa el texto a la situación comunicativa"));
-        capacidades.add(new Capacidad("Organiza y desarrolla las ideas de forma coherente y cohesionada"));
-        capacidades.add(new Capacidad("Utiliza convenciones del lenguaje escrito de forma pertinente"));
-        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto escrito"));
+        capacidades.add(new Capacidad("Problematiza situaciones para hacer indagación",
+                "Cuando plantea preguntas " +
+                        "sobre hechos y fenómenos naturales, interpreta situaciones y formula " +
+                        "hipótesis."));
+        capacidades.add(new Capacidad("Diseña estrategias para hacer indagación",
+                "Cuando propone actividades que " +
+                        "permitan construir un procedimiento, selecciona materiales, instrumentos e " +
+                        "información para comprobar o refutar la hipótesis."));
+        capacidades.add(new Capacidad("Genera y registra datos o información",
+                "Cuando aplica el procedimiento, utiliza " +
+                        "instrumentos y diversas técnicas para obtener y organizar datos fiables, en " +
+                        "función de las variables, que permitan comprobar o refutar la hipótesis."));
+        capacidades.add(new Capacidad("Analiza datos e información",
+                "Cuando interpreta los datos obtenidos en la " +
+                        "indagación, los contrasta con las hipótesis e información relacionada al " +
+                        "problema para elaborar conclusiones, que comprueban o refutan la hipótesis."));
+        capacidades.add(new Capacidad("Evalúa y comunica el proceso y resultados de su indagación",
+                "Cuando identifica y da a conocer las dificultades técnicas y los conocimientos logrados " +
+                        "para cuestionar el grado de satisfacción que la respuesta da a la pregunta de " +
+                        "indagación."));
         comp_14.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_14);
 
         capacidades.clear();
 
         Competencia comp_15 = competenciaRepository.findByCode(15);
-        capacidades.add(new Capacidad("Explora y experimenta los lenguajes del arte"));
-        capacidades.add(new Capacidad("Aplica procesos creativos"));
-        capacidades.add(new Capacidad("Socializa sus procesos y proyectos"));
+        capacidades.add(new Capacidad("Traduce cantidades a expresiones numéricas",
+                "Es transformar las " +
+                        "relaciones entre los datos y condiciones de un problema, a una expresión " +
+                        "numérica (modelo) que reproduzca las relaciones entre estos; esta expresión se " +
+                        "comporta como un sistema compuesto por números, operaciones y sus " +
+                        "propiedades. Es plantear problemas a partir de una situación o una expresión " +
+                        "numérica dada. También implica evaluar si el resultado obtenido o la expresión " +
+                        "numérica formulada (modelo), cumplen las condiciones iniciales del problema."));
+        capacidades.add(new Capacidad("Comunica su comprensión sobre los números y las operaciones",
+                "Es expresar la comprensión de los conceptos numéricos, las operaciones y " +
+                        "propiedades, las unidades de medida, las relaciones que establece entre ellos; " +
+                        "usando lenguaje numérico y diversas representaciones; así como leer sus " +
+                        "representaciones e información con contenido numérico."));
+        capacidades.add(new Capacidad("Usa estrategias y procedimientos de estimación y cálculo",
+                "Es seleccionar, adaptar, combinar o crear una variedad de estrategias, " +
+                        "procedimientos como el cálculo mental y escrito, la estimación, la aproximación " +
+                        "y medición, comparar cantidades; y emplear diversos recursos."));
+        capacidades.add(new Capacidad("Argumenta afirmaciones sobre las relaciones numéricas y las operaciones",
+                "Es elaborar afirmaciones sobre las posibles relaciones entre " +
+                        "números naturales, enteros, racionales, reales, sus operaciones y propiedades; " +
+                        "en base a comparaciones y experiencias en las que induce propiedades a partir " +
+                        "de casos particulares; así como explicarlas con analogías, justificarlas, validarlas " +
+                        "o refutarlas con ejemplos y contraejemplos."));
         comp_15.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_15);
 
         capacidades.clear();
 
         Competencia comp_16 = competenciaRepository.findByCode(16);
-        capacidades.add(new Capacidad("Obtiene información del texto oral"));
-        capacidades.add(new Capacidad("Infiere e interpreta información del texto oral"));
-        capacidades.add(new Capacidad("Adecúa, organiza y desarrolla el texto de forma coherente y cohesionada"));
-        capacidades.add(new Capacidad("Utiliza recursos no verbales y paraverba les de forma estratégica"));
-        capacidades.add(new Capacidad("Interactúa estratégicamente con distintos interlocutores"));
-        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto oral"));
+        capacidades.add(new Capacidad("Traduce datos y condiciones a expresiones algebraicas",
+                "Es transformar los datos, valores desconocidos, variables y relaciones de un " +
+                        "problema a una expresión gráfica o algebraica (modelo) que generalice la " +
+                        "interacción entre estos. Implica también evaluar el resultado o la " +
+                        "expresión formulada, con respecto a las condiciones de la situación; y " +
+                        "formular preguntas o problemas a partir de una situación o una expresión."));
+        capacidades.add(new Capacidad("Comunica su comprensión sobre las relaciones algebraicas",
+                "Es expresar su comprensión de la noción, concepto o propiedades de los " +
+                        "patrones, funciones, ecuaciones e inecuaciones estableciendo relaciones " +
+                        "entre estas; usando lenguaje algebraico y diversas representaciones. Así " +
+                        "como interpretar información que presente contenido algebraico."));
+        capacidades.add(new Capacidad("Usa estrategias y procedimientos para encontrar reglas generales",
+                "Es seleccionar, adaptar, combinar o crear, procedimientos, " +
+                        "estrategias y algunas propiedades para simplificar o transformar " +
+                        "ecuaciones, inecuaciones y expresiones simbólicas que le permitan " +
+                        "resolver ecuaciones, determinar"));
+        capacidades.add(new Capacidad("Argumenta afirmaciones sobre relaciones de cambio y equivalencia",
+                "Es elaborar afirmaciones sobre variables, reglas " +
+                        "algebraicas y propiedades algebraicas, razonando de manera inductiva " +
+                        "para generalizar una regla y de manera deductiva probando y " +
+                        "comprobando propiedades y nuevas relaciones."));
         comp_16.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_16);
 
         capacidades.clear();
 
         Competencia comp_17 = competenciaRepository.findByCode(17);
-        capacidades.add(new Capacidad("Traduce cantidades a expresiones numéricas"));
-        capacidades.add(new Capacidad("Comunica su comprensión sobre los números y las operaciones"));
-        capacidades.add(new Capacidad("Usa estrategias y procedimientos de estimación y cálculo"));
-        comp_17.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_17);
-
-        capacidades.clear();
-
-        Competencia comp_18 = competenciaRepository.findByCode(18);
-        capacidades.add(new Capacidad("Modela objetos con formas geométricas y sus transformaciones"));
-        capacidades.add(new Capacidad("Comunica su comprensión sobre las formas y relaciones geométricas"));
-        capacidades.add(new Capacidad("Usa estrategias y procedimientos para orientarse en el espacio"));
-        comp_18.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_18);
-
-        capacidades.clear();
-
-        Competencia comp_19 = competenciaRepository.findByCode(19);
-        capacidades.add(new Capacidad("Problematiza situaciones para hacer indagación"));
-        capacidades.add(new Capacidad("Diseña estrategias para hacer indagación"));
-        capacidades.add(new Capacidad("Genera y registra datos o información"));
-        capacidades.add(new Capacidad("Analiza datos e información"));
-        capacidades.add(new Capacidad("Evalúa y comunica el proceso y resultado de su indagación"));
-        comp_19.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_19);
-
-        capacidades.clear();
-
-        Competencia comp_20 = competenciaRepository.findByCode(20);
-        capacidades.add(new Capacidad("Traduce cantidades a expresiones numéricas",
-                "Es transformar las relaciones entre los datos y condiciones de un problema, a una expresión" +
-                        "numérica (modelo) que reproduzca las relaciones entre estos; esta expresión se" +
-                        "comporta como un sistema compuesto por números, operaciones y sus" +
-                        "propiedades. Es plantear problemas a partir de una situación o una expresión" +
-                        "numérica dada. También implica evaluar si el resultado obtenido o la expresión" +
-                        "numérica formulada (modelo), cumplen las condiciones iniciales del problema."));
-        capacidades.add(new Capacidad("Comunica su comprensión sobre los números y las operaciones",
-                "Es expresar la comprensión de los conceptos numéricos, las operaciones y" +
-                        "propiedades, las unidades de medida, las relaciones que establece entre ellos;" +
-                        "usando lenguaje numérico y diversas representaciones; así como leer sus" +
-                        "representaciones e información con contenido numérico."));
-        capacidades.add(new Capacidad("Usa estrategias y procedimientos de estimación y cálculo",
-                "Es seleccionar, adaptar, combinar o crear una variedad de estrategias," +
-                        "procedimientos como el cálculo mental y escrito, la estimación, la aproximación" +
-                        "y medición, comparar cantidades; y emplear diversos recursos."));
-        capacidades.add(new Capacidad("Argumenta afirmaciones sobre las relaciones numéricas y las operaciones",
-                "Es elaborar afirmaciones sobre las posibles relaciones entre" +
-                        "números naturales, enteros, racionales, reales, sus operaciones y propiedades;" +
-                        "en base a comparaciones y experiencias en las que induce propiedades a partir" +
-                        "de casos particulares; así como explicarlas con analogías, justificarlas, validarlas" +
-                        "o refutarlas con ejemplos y contraejemplos."));
-        comp_20.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_20);
-
-        capacidades.clear();
-
-        Competencia comp_21 = competenciaRepository.findByCode(21);
-        capacidades.add(new Capacidad("Traduce datos y condiciones a expresiones algebraicas",
-                "Es transformar los datos, valores desconocidos, variables y relaciones de un " +
-                        "problema a una expresión gráfica o algebraica (modelo) que generalice la " +
-                        "interacción entre estos. Implica también evaluar el resultado o la " +
-                        "expresión formulada, con respecto a las condiciones de la situación; y " +
-                        "formular preguntas o problemas a partir de una situación o una expresión. "));
-        capacidades.add(new Capacidad("Comunica su comprensión sobre las relaciones algebraicas",
-                "Es expresar su comprensión de la noción, concepto o propiedades de los " +
-                        "patrones, funciones, ecuaciones e inecuaciones estableciendo relaciones " +
-                        "entre estas; usando lenguaje algebraico y diversas representaciones. Así " +
-                        "como interpretar información que presente contenido algebraico. "));
-        capacidades.add(new Capacidad("Usa estrategias y procedimientos para encontrar reglas generales",
-                "Es seleccionar, adaptar, combinar o crear, procedimientos, " +
-                        "estrategias y algunas propiedades para simplificar o transformar " +
-                        "ecuaciones, inecuaciones y expresiones simbólicas que le permitan " +
-                        "resolver ecuaciones, determinar dominios y rangos, representar rectas, " +
-                        "parábolas, y diversas funciones."));
-        capacidades.add(new Capacidad("Argumenta afirmaciones sobre relaciones de cambio y equivalencia",
-                "Es elaborar afirmaciones sobre variables, reglas " +
-                        "algebraicas y propiedades algebraicas, razonando de manera inductiva " +
-                        "para generalizar una regla y de manera deductiva probando y " +
-                        "comprobando propiedades y nuevas relaciones."));
-        comp_21.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_21);
-
-        capacidades.clear();
-
-        Competencia comp_22 = competenciaRepository.findByCode(22);
         capacidades.add(new Capacidad("Modela objetos con formas geométricas y sus transformaciones",
                 "Es construir un modelo que reproduzca las características de los objetos, su " +
                         "localización y movimiento, mediante formas geométricas, sus elementos y " +
@@ -1639,24 +1748,25 @@ public class DatabaseResource {
                 "Es comunicar su comprensión de las propiedades de las formas " +
                         "geométricas, sus transformaciones y la ubicación en un sistema de " +
                         "referencia; es también establecer relaciones entre estas formas, usando " +
-                        "lenguaje geométrico y representaciones gráficas o simbólicas."));
+                        "lenguaje geométrico y representaciones gráficas o simbólicas"));
         capacidades.add(new Capacidad("Usa estrategias y procedimientos para orientarse en el espacio",
                 "Es seleccionar, adaptar, combinar o crear, una variedad de estrategias, " +
                         "procedimientos y recursos para construir formas geométricas, trazar rutas, " +
                         "medir o estimar distancias y superficies, y transformar las formas " +
                         "bidimensionales y tridimensionales."));
         capacidades.add(new Capacidad("Argumenta afirmaciones sobre relaciones geométricas",
-                "Es elaborar afirmaciones sobre las posibles relaciones entre los elementos y las " +
+                "Es elaborar " +
+                        "afirmaciones sobre las posibles relaciones entre los elementos y las " +
                         "propiedades de las formas geométricas; en base a su exploración o " +
                         "visualización. Asimismo, justificarlas, validarlas o refutarlas, en base a su " +
                         "experiencia, ejemplos o contraejemplos, y conocimientos sobre " +
                         "propiedades geométricas; usando el razonamiento inductivo o deductivo."));
-        comp_22.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_22);
+        comp_17.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_17);
 
         capacidades.clear();
 
-        Competencia comp_23 = competenciaRepository.findByCode(23);
+        Competencia comp_18 = competenciaRepository.findByCode(18);
         capacidades.add(new Capacidad("Representa datos con gráficos y medidas estadísticas o probabilísticas",
                 "Es representar el comportamiento de un conjunto " +
                         "de datos, seleccionando tablas o gráficos estadísticos, medidas de " +
@@ -1679,12 +1789,12 @@ public class DatabaseResource {
                         "conclusiones, y sustentarlas en base a la información obtenida del " +
                         "procesamiento y análisis de datos, y de la revisión o valoración de " +
                         "los procesos."));
-        comp_23.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_23);
+        comp_18.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_18);
 
         capacidades.clear();
 
-        Competencia comp_24 = competenciaRepository.findByCode(24);
+        Competencia comp_19 = competenciaRepository.findByCode(19);
         capacidades.add(new Capacidad("Obtiene información del texto oral",
                 "El estudiante recupera y extrae información explícita " +
                         "expresada por los interlocutores."));
@@ -1723,12 +1833,12 @@ public class DatabaseResource {
                         "para construir una opinión personal o un juicio crítico sobre sus aspectos formales, " +
                         "contenidos e ideologías, y su relación con el contexto sociocultural, considerando los efectos " +
                         "que producen en los interlocutores."));
-        comp_24.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_24);
+        comp_19.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_19);
 
         capacidades.clear();
 
-        Competencia comp_25 = competenciaRepository.findByCode(25);
+        Competencia comp_20 = competenciaRepository.findByCode(20);
         capacidades.add(new Capacidad("Obtiene información del texto escrito",
                 "El estudiante localiza y selecciona " +
                         "información explícita en textos escritos con un propósito específico."));
@@ -1743,7 +1853,8 @@ public class DatabaseResource {
                         "de los textos así como su relación con el contexto sociocultural del lector y del " +
                         "texto."));
         capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto",
-                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el " +
+                "Los procesos " +
+                        "de reflexión y evaluación están relacionados porque ambos suponen que el " +
                         "estudiante se distancie de los textos escritos situados en épocas y lugares " +
                         "distintos, y que son presentados en diferentes soportes y formatos. Reflexionar " +
                         "implica comparar y contrastar aspectos formales y de contenido del texto con la " +
@@ -1752,25 +1863,24 @@ public class DatabaseResource {
                         "una opinión personal o un juicio crítico sobre aspectos formales, estéticos, " +
                         "contenidos e ideologías de los textos considerando los efectos que producen, la " +
                         "relación con otros textos, y el contexto sociocultural del texto y del lector."));
-        comp_25.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_25);
+        comp_20.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_20);
 
         capacidades.clear();
 
-        Competencia comp_26 = competenciaRepository.findByCode(26);
+        Competencia comp_21 = competenciaRepository.findByCode(21);
         capacidades.add(new Capacidad("Adecúa el texto a la situación comunicativa",
                 "El estudiante considera el " +
                         "propósito, destinatario, tipo de texto, género discursivo y registro que utilizará al " +
                         "escribir los textos, así como los contextos socioculturales que enmarcan la " +
                         "comunicación escrita."));
         capacidades.add(new Capacidad("Organiza y desarrolla las ideas de forma coherente y cohesionada",
-                "El " +
-                        "estudiante ordena lógicamente las ideas en torno a un tema, ampliándolas y " +
+                "El estudiante ordena lógicamente las ideas en torno a un tema, ampliándolas y " +
                         "complementándolas, estableciendo relaciones de cohesión entre ellas y utilizando " +
                         "un vocabulario pertinente."));
         capacidades.add(new Capacidad("Utiliza convenciones del lenguaje escrito de forma pertinente",
                 "El estudiante usa de forma apropiada recursos textuales para garantizar la claridad, " +
-                        "el uso estético del lenguaje y el sentido del texto escrito. "));
+                        "el uso estético del lenguaje y el sentido del texto escrito."));
         capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto escrito",
                 "El estudiante se distancia del texto que ha escrito para revisar de manera " +
                         "permanente el contenido, la coherencia, cohesión y adecuación a la situación " +
@@ -1778,15 +1888,15 @@ public class DatabaseResource {
                         "contrastar las características de los usos del lenguaje escrito y sus posibilidades, así " +
                         "como su repercusión en otras personas o su relación con otros textos según el " +
                         "contexto sociocultural."));
-        comp_26.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_26);
+        comp_21.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_21);
 
         capacidades.clear();
 
-        Competencia comp_27 = competenciaRepository.findByCode(27);
+        Competencia comp_22 = competenciaRepository.findByCode(22);
         capacidades.add(new Capacidad("Obtiene información del texto oral en inglés",
                 "El estudiante recupera y extrae información explícita " +
-                        "expresada por los interlocutores."));
+                        "expresada por los interlocutores"));
         capacidades.add(new Capacidad("Infiere e interpreta información del texto oral en inglés",
                 "El estudiante construye el sentido del texto. " +
                         "Para ello, infiere estableciendo diversas relaciones entre la información explícita e implícita con el " +
@@ -1821,12 +1931,12 @@ public class DatabaseResource {
                         "analizar y valorar los textos orales producidos para construir una opinión personal o un juicio crítico " +
                         "sobre sus aspectos formales, contenidos e ideologías, y su relación con el contexto sociocultural, " +
                         "considerando los efectos que producen en los interlocutores."));
-        comp_27.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_27);
+        comp_22.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_22);
 
         capacidades.clear();
 
-        Competencia comp_28 = competenciaRepository.findByCode(28);
+        Competencia comp_23 = competenciaRepository.findByCode(23);
         capacidades.add(new Capacidad("Obtiene información del texto escrito en inglés",
                 "El estudiante localiza y selecciona " +
                         "información explícita en textos escritos con un propósito específico."));
@@ -1839,7 +1949,8 @@ public class DatabaseResource {
                         "texto, y explicar el propósito, las intenciones del autor, así como su relación con el contexto " +
                         "sociocultural del lector y del texto."));
         capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto escrito en inglés",
-                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el " +
+                "Los " +
+                        "procesos de reflexión y evaluación están relacionados porque ambos suponen que el " +
                         "estudiante se distancie de los textos escritos situados en épocas y lugares distintos, y que " +
                         "son presentados en diferentes soportes y formatos. Reflexionar implica comparar y " +
                         "contrastar aspectos formales y de contenido del texto con la experiencia, el conocimiento " +
@@ -1847,12 +1958,12 @@ public class DatabaseResource {
                         "textos escritos para construir una opinión personal o un juicio crítico sobre aspectos " +
                         "formales, contenidos de los textos considerando los efectos que producen, la relación con " +
                         "otros textos, y el contexto sociocultural del texto y del lector."));
-        comp_28.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_28);
+        comp_23.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_23);
 
         capacidades.clear();
 
-        Competencia comp_29 = competenciaRepository.findByCode(29);
+        Competencia comp_24 = competenciaRepository.findByCode(24);
         capacidades.add(new Capacidad("Adecúa el texto en inglés a la situación comunicativa",
                 "El estudiante considera el propósito, " +
                         "destinatario, tipo de texto, género discursivo y registro que utilizará al escribir los textos, así " +
@@ -1871,13 +1982,12 @@ public class DatabaseResource {
                         "de mejorarlo. También implica analizar, comparar y contrastar las características de los usos " +
                         "del lenguaje escrito y sus posibilidades, así como su repercusión en otras personas o su " +
                         "relación con otros textos según el contexto sociocultural."));
-        comp_29.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_29);
-
+        comp_24.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_24);
 
         capacidades.clear();
 
-        Competencia comp_30 = competenciaRepository.findByCode(30);
+        Competencia comp_25 = competenciaRepository.findByCode(25);
         capacidades.add(new Capacidad("Se valora a sí mismo",
                 "Es decir, el estudiante reconoce sus características, cualidades, " +
                         "limitaciones y potencialidades que lo hacen ser quien es, que le permiten aceptarse, " +
@@ -1904,12 +2014,12 @@ public class DatabaseResource {
                         "violencia. También implica identificar y poner en práctica conductas de autocuidado frente " +
                         "a situaciones que ponen en riesgo su bienestar o que vulneran sus derechos sexuales y " +
                         "reproductivos."));
-        comp_30.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_30);
+        comp_25.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_25);
 
         capacidades.clear();
 
-        Competencia comp_31 = competenciaRepository.findByCode(31);
+        Competencia comp_26 = competenciaRepository.findByCode(26);
         capacidades.add(new Capacidad("Interactúa con todas las personas",
                 "Es decir, reconoce a todos como personas valiosas y con " +
                         "derechos, muestra preocupación por el otro, respeta las diferencias y se enriquecerse de " +
@@ -1942,12 +2052,12 @@ public class DatabaseResource {
                         "iniciativas vinculadas con el interés común y con la promoción y defensa de los derechos " +
                         "humanos, tanto en la escuela como en la comunidad. Para ello, se apropia y utiliza canales " +
                         "y mecanismos de participación democrática."));
-        comp_31.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_31);
+        comp_26.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_26);
 
         capacidades.clear();
 
-        Competencia comp_32 = competenciaRepository.findByCode(32);
+        Competencia comp_27 = competenciaRepository.findByCode(27);
         capacidades.add(new Capacidad("Interpreta críticamente fuentes diversas",
                 "Implica reconocer la diversidad de fuentes y su " +
                         "diferente utilidad para abordar un hecho o proceso histórico. Supone ubicarlas en su " +
@@ -1965,12 +2075,12 @@ public class DatabaseResource {
                         "cosmovisión y la época en la que vivieron. También es establecer las múltiples " +
                         "consecuencias de los procesos del pasado y sus implicancias en el presente, así como " +
                         "reconocer que este va construyendo nuestro futuro."));
-        comp_32.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_32);
+        comp_27.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_27);
 
         capacidades.clear();
 
-        Competencia comp_33 = competenciaRepository.findByCode(33);
+        Competencia comp_28 = competenciaRepository.findByCode(28);
         capacidades.add(new Capacidad("Comprende las relaciones entre los elementos naturales y sociales",
                 "Es explicar las dinámicas " +
                         "y transformaciones del espacio geográfico, a partir del reconocimiento de sus elementos " +
@@ -1985,12 +2095,12 @@ public class DatabaseResource {
                         "orientadas al cuidado del ambiente y a contribuir a la prevención de situaciones de riesgo " +
                         "de desastre. Esto supone analizar el impacto de las problemáticas ambientales y " +
                         "territoriales en la vida de las personas."));
-        comp_33.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_33);
+        comp_28.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_28);
 
         capacidades.clear();
 
-        Competencia comp_34 = competenciaRepository.findByCode(34);
+        Competencia comp_29 = competenciaRepository.findByCode(29);
         capacidades.add(new Capacidad("Comprende el funcionamiento del sistema económico y financiero",
                 "Supone identificar los " +
                         "roles de los diversos agentes que intervienen en el sistema, analizar las interacciones entre " +
@@ -2000,12 +2110,13 @@ public class DatabaseResource {
                         "económicos de manera sostenible, en función a sus necesidades y posibilidades. También " +
                         "implica asumir una posición crítica frente a los sistemas de producción y de consumo, así " +
                         "como ejercer sus derechos y responsabilidades como consumidor informado."));
-        comp_34.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_34);
+        comp_29.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_29);
+
 
         capacidades.clear();
 
-        Competencia comp_35 = competenciaRepository.findByCode(35);
+        Competencia comp_30 = competenciaRepository.findByCode(30);
         capacidades.add(new Capacidad("Percibe manifestaciones artístico-culturales",
                 "Consiste en usar los sentidos para " +
                         "observar, escuchar, describir y analizar las cualidades visuales, táctiles, sonoras y " +
@@ -2013,18 +2124,18 @@ public class DatabaseResource {
         capacidades.add(new Capacidad("Contextualiza las manifestaciones culturales",
                 "Es informarse acerca de la cultura en que " +
                         "se origina una manifestación artística para entender cómo el contexto social, cultural e " +
-                        "histórico de esta influye en su creación y la manera en que transmite sus significados."));
+                        "histórico de esta influye en su creación y la manera en que transmite sus significados"));
         capacidades.add(new Capacidad("Reflexiona creativa y críticamente",
                 "Supone interpretar las intenciones y significados de " +
                         "manifestaciones artístico-culturales que hayan visto o experimentado y emitir juicios de " +
                         "valor, entrelazando información obtenida a través de la percepción, el análisis y la " +
                         "comprensión de los contextos."));
-        comp_35.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_35);
+        comp_30.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_30);
 
         capacidades.clear();
 
-        Competencia comp_36 = competenciaRepository.findByCode(36);
+        Competencia comp_31 = competenciaRepository.findByCode(31);
         capacidades.add(new Capacidad("Explora y experimenta los lenguajes del arte",
                 "Significa experimentar, improvisar y desarrollar " +
                         "habilidades en el uso de los medios, materiales, herramientas y técnicas de los diversos " +
@@ -2032,17 +2143,17 @@ public class DatabaseResource {
         capacidades.add(new Capacidad("Aplica procesos creativos",
                 "Supone generar ideas, investigar, tomar decisiones y poner en " +
                         "práctica sus conocimientos para elaborar un proyecto artístico individual o colaborativo en " +
-                        "relación a una intención específica."));
+                        "relación a una intención específica"));
         capacidades.add(new Capacidad("Evalúa y socializa sus procesos y proyectos",
                 "Significa registrar sus experiencias, comunicar " +
                         "sus descubrimientos y compartir sus creaciones con otros, para profundizar en ellos y " +
                         "reflexionar sobre sus ideas y experiencias."));
-        comp_36.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_36);
+        comp_31.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_31);
 
         capacidades.clear();
 
-        Competencia comp_37 = competenciaRepository.findByCode(37);
+        Competencia comp_32 = competenciaRepository.findByCode(32);
         capacidades.add(new Capacidad("Problematiza situaciones para hacer indagación",
                 "Es plantear preguntas " +
                         "sobre hechos y fenómenos naturales, interpretar situaciones y formular " +
@@ -2064,12 +2175,12 @@ public class DatabaseResource {
                         "y dar a conocer las dificultades técnicas y los conocimientos logrados para " +
                         "cuestionar el grado de satisfacción que la respuesta da a la pregunta de " +
                         "indagación."));
-        comp_37.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_37);
+        comp_32.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_32);
 
         capacidades.clear();
 
-        Competencia comp_38 = competenciaRepository.findByCode(38);
+        Competencia comp_33 = competenciaRepository.findByCode(33);
         capacidades.add(new Capacidad("Comprende y usa conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
                 "Cuando es capaz de tener desempeños " +
                         "flexibles, es decir, establece relaciones entre varios conceptos y los transfiere " +
@@ -2082,19 +2193,19 @@ public class DatabaseResource {
                         "tomar decisiones, considerando saberes locales, evidencia empírica y " +
                         "científica, con la finalidad de mejorar su calidad de vida y conservar el " +
                         "ambiente."));
-        comp_38.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_38);
+        comp_33.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_33);
 
         capacidades.clear();
 
-        Competencia comp_39 = competenciaRepository.findByCode(39);
+        Competencia comp_34 = competenciaRepository.findByCode(34);
         capacidades.add(new Capacidad("Determina una alternativa de solución tecnológica",
                 "al detectar un problema " +
                         "y propone alternativas de solución creativas basadas en conocimientos " +
                         "científico, tecnológico y prácticas locales, evaluando su pertinencia para " +
                         "seleccionar una de ellas."));
         capacidades.add(new Capacidad("Diseña la alternativa de solución tecnológica",
-                "Es representar de manera " +
+                "es representar de manera " +
                         "gráfica o esquemática la estructura y funcionamiento de la solución " +
                         "tecnológica (especificaciones de diseño), usando conocimiento científico, " +
                         "tecnológico y prácticas locales, teniendo en cuenta los requerimientos del " +
@@ -2108,27 +2219,27 @@ public class DatabaseResource {
                         "responder a los requerimientos del problema, comunicar su funcionamiento y " +
                         "analizar sus posibles impactos, en el ambiente y la sociedad, tanto en su " +
                         "proceso de elaboración como de uso."));
-        comp_39.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_39);
+        comp_34.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_34);
 
         capacidades.clear();
 
-        Competencia comp_40 = competenciaRepository.findByCode(40);
+        Competencia comp_35 = competenciaRepository.findByCode(35);
         capacidades.add(new Capacidad("Comprende su cuerpo",
-                "Es decir interioriza su cuerpo en estado estático o en " +
+                "es decir interioriza su cuerpo en estado estático o en " +
                         "movimiento en relación al espacio, el tiempo, los objetos y demás personas de su " +
                         "entorno, representando mentalmente su cuerpo y desarrollando su identidad."));
         capacidades.add(new Capacidad("Se expresa corporalmente",
-                "Usa el lenguaje corporal para comunicar emociones, " +
+                "usa el lenguaje corporal para comunicar emociones, " +
                         "sentimientos y pensamientos. Implica utilizar el tono, los gestos, mímicas, posturas y " +
                         "movimientos para expresarse, desarrollando la creatividad al usar todos los recursos " +
                         "que ofrece el cuerpo y el movimiento."));
-        comp_40.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_40);
+        comp_35.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_35);
 
         capacidades.clear();
 
-        Competencia comp_41 = competenciaRepository.findByCode(41);
+        Competencia comp_36 = competenciaRepository.findByCode(36);
         capacidades.add(new Capacidad("Comprende las relaciones entre la actividad física, alimentación, postura e higiene corporal y la salud",
                 "Es analizar y comprender los procesos vinculados con la " +
                         "alimentación, la postura, la higiene corporal y la práctica de actividad física y cómo estos " +
@@ -2136,17 +2247,17 @@ public class DatabaseResource {
                         "estado de bienestar integral (físico, psicológico y emocional), según sus recursos y " +
                         "entorno."));
         capacidades.add(new Capacidad("Incorpora prácticas que mejoran su calidad de vida",
-                "Es asumir una actitud crítica sobre " +
+                "es asumir una actitud crítica sobre " +
                         "la importancia de hábitos saludables y sus beneficios vinculados con la mejora de la " +
                         "calidad de vida. Esto supone la planificación de rutinas, dietas o planes que pongan en " +
                         "práctica sus conocimientos sobre alimentación, higiene corporal, posturas y actividad " +
                         "física para la salud según sus propias necesidades, recursos y entorno."));
-        comp_41.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_41);
+        comp_36.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_36);
 
         capacidades.clear();
 
-        Competencia comp_42 = competenciaRepository.findByCode(42);
+        Competencia comp_37 = competenciaRepository.findByCode(37);
         capacidades.add(new Capacidad("Se relaciona utilizando sus habilidades sociomotrices",
                 "supone interactuar de manera " +
                         "asertiva con los demás en la práctica lúdica y deportiva experimentando el placer y " +
@@ -2158,28 +2269,16 @@ public class DatabaseResource {
                         "las potencialidades de cada miembro del equipo para el logro de un objetivo común, " +
                         "desarrollando y aplicando reglas y soluciones tácticas de juego en actividades físicas de " +
                         "colaboración, cooperación y oposición."));
-        comp_42.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_42);
-
-//        capacidades.clear();
-
-        Competencia comp_43 = competenciaRepository.findByCode(43);
-//        capacidades.add(new Capacidad(comp_43, "",
-//                ""));
-//        capacidades.add(new Capacidad(comp_43, "",
-//                ""));
-//
-//        capacidades.clear();
-
-        Competencia comp_44 = competenciaRepository.findByCode(44);
-//        capacidades.add(new Capacidad(comp_44, "",
-//                ""));
-//        capacidades.add(new Capacidad(comp_44, "",
-//                ""));
+        comp_37.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_37);
 
         capacidades.clear();
 
-        Competencia comp_45 = competenciaRepository.findByCode(45);
+        /**
+         * Competencias 38 y 39 son de Religión no hay capacidades.
+         */
+
+        Competencia comp_40 = competenciaRepository.findByCode(40);
         capacidades.add(new Capacidad("Obtiene información del texto oral",
                 "El estudiante recupera y extrae información explícita expresada " +
                         "por los interlocutores."));
@@ -2216,12 +2315,12 @@ public class DatabaseResource {
                         "producidos para construir una opinión personal o un juicio crítico sobre sus aspectos formales, contenidos " +
                         "e ideologías, y su relación con el contexto sociocultural, considerando los efectos que producen en los " +
                         "interlocutores."));
-        comp_45.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_45);
+        comp_40.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_40);
 
         capacidades.clear();
 
-        Competencia comp_46 = competenciaRepository.findByCode(46);
+        Competencia comp_41 = competenciaRepository.findByCode(41);
         capacidades.add(new Capacidad("Obtiene información del texto escrito",
                 "El estudiante localiza y selecciona " +
                         "información explícita en textos escritos con un propósito específico."));
@@ -2236,7 +2335,8 @@ public class DatabaseResource {
                         "de los textos así como su relación con el contexto sociocultural del lector y del " +
                         "texto."));
         capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto",
-                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el " +
+                "Los procesos " +
+                        "de reflexión y evaluación están relacionados porque ambos suponen que el " +
                         "estudiante se distancie de los textos escritos situados en épocas y lugares " +
                         "distintos, y que son presentados en diferentes soportes y formatos. Reflexionar " +
                         "implica comparar y contrastar aspectos formales y de contenido del texto con la " +
@@ -2245,12 +2345,12 @@ public class DatabaseResource {
                         "una opinión personal o un juicio crítico sobre aspectos formales, estéticos, " +
                         "contenidos e ideologías de los textos considerando los efectos que producen, la " +
                         "relación con otros textos, y el contexto sociocultural del texto y del lector."));
-        comp_46.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_46);
+        comp_41.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_41);
 
         capacidades.clear();
 
-        Competencia comp_47 = competenciaRepository.findByCode(47);
+        Competencia comp_42 = competenciaRepository.findByCode(42);
         capacidades.add(new Capacidad("Adecúa el texto a la situación comunicativa",
                 "El estudiante considera el " +
                         "propósito, destinatario, tipo de texto, género discursivo y registro que utilizará al " +
@@ -2270,372 +2370,324 @@ public class DatabaseResource {
                         "contrastar las características de los usos del lenguaje escrito y sus posibilidades, así " +
                         "como su repercusión en otras personas o su relación con otros textos según el " +
                         "contexto sociocultural."));
+        comp_42.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_42);
+
+        capacidades.clear();
+
+        Competencia comp_43 = competenciaRepository.findByCode(43);
+        capacidades.add(new Capacidad( "Traduce cantidades a expresiones numéricas",
+                "es transformar las relaciones entre " +
+                        "datos y condiciones de un problema a una expresión numérica (modelo) que " +
+                        "reproduzca las relaciones entre estos; esta expresión se comporta como un sistema " +
+                        "compuesto por números, operaciones y sus propiedades. Es plantear problemas a " +
+                        "partir de una situación o una expresión numérica dada. También implica evaluar " +
+                        "si el resultado obtenido o la expresión numérica formulada (modelo), cumplen las " +
+                        "condiciones iniciales del problema."));
+        capacidades.add(new Capacidad("Comunica su comprensión sobre los números y las operaciones",
+                "Es expresa la comprensión de los conceptos numéricos, las operaciones y propiedades, las unidades " +
+                        "de medida, las relaciones que establece entre ellos; usando lenguaje numérico " +
+                        "y diversas representaciones; así como leer sus representaciones e información con " +
+                        "contenido numérico."));
+        capacidades.add(new Capacidad( "Usa estrategias y procedimientos de estimación y cálculo",
+                "Es seleccionar, adaptar, combinar o crear una variedad de estrategias, procedimientos como el cálculo mental " +
+                        "y escrito, la estimación, la aproximación y medición, comparar cantidades; y emplear " +
+                        "diversos recursos."));
+        capacidades.add(new Capacidad("Argumenta afirmaciones sobre las relaciones numéricas y las operaciones",
+                "Es elaborar afirmaciones sobre las posibles relaciones entre números naturales, " +
+                        "enteros, racionales, reales, sus operaciones y propiedades; basado en comparaciones " +
+                        "y experiencias en las que induce propiedades a partir de casos particulares; así " +
+                        "como explicarlas con analogías, justificarlas, validarlas o refutarlas con ejemplos y " +
+                        "contraejemplos"));
+        comp_43.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_43);
+
+        capacidades.clear();
+
+        Competencia comp_44 = competenciaRepository.findByCode(44);
+        capacidades.add(new Capacidad("Traduce datos y condiciones a expresiones algebraicas y gráficas",
+                "Significa transformar los datos, valores desconocidos, variables y relaciones de un problema a una expresión gráfica " +
+                        "o algebraica (modelo) que generalice la interacción entre estos. Implica también evaluar el " +
+                        "resultado o la expresión formulada con respecto a las condiciones de la situación; y formular " +
+                        "preguntas o problemas a partir de una situación o una expresión."));
+        capacidades.add(new Capacidad("Comunica su comprensión sobre las relaciones algebraicas",
+                "Significa expresar su comprensión de la noción, concepto o propiedades de los patrones, funciones, ecuaciones " +
+                        "e inecuaciones estableciendo relaciones entre estas; usando lenguaje algebraico y diversas " +
+                        "representaciones. Así como interpretar información que presente contenido algebraico."));
+        capacidades.add(new Capacidad("Usa estrategias y procedimientos para encontrar equivalencias y reglas generales",
+                "Es seleccionar, adaptar, combinar o crear, procedimientos, estrategias y algunas propiedades " +
+                        "para simplificar o transformar ecuaciones, inecuaciones y expresiones simbólicas que le " +
+                        "permitan resolver ecuaciones, determinar dominios y rangos, representar rectas, parábolas, y " +
+                        "diversas funciones."));
+        capacidades.add(new Capacidad("Argumenta afirmaciones sobre relaciones de cambio y equivalencia",
+                "Significa elaborar afirmaciones sobre variables, reglas algebraicas y propiedades algebraicas, razonando de " +
+                        "manera inductiva para generalizar una regla y de manera deductiva probando y comprobando " +
+                        "propiedades y nuevas relaciones."));
+        comp_44.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_44);
+
+        capacidades.clear();
+
+        Competencia comp_45 = competenciaRepository.findByCode(45);
+        capacidades.add(new Capacidad("Modela objetos con formas geométricas y sus transformaciones",
+                "Es contruir un modelo que reproduzca las características de los objetos, su localización y movimiento, mediante " +
+                        "formas geométricas, sus elementos y propiedades; la ubicación y transformaciones en el " +
+                        "plano. Es también evaluar si el modelo cumple con las condiciones dadas en el problema."));
+        capacidades.add(new Capacidad("Comunica su comprensión sobre las formas y relaciones geométricas",
+                "Es comunicar su comprensión de las propiedades de las formas geométricas, sus transformaciones y la " +
+                        "ubicación en un sistema de referencia; es también establecer relaciones entre estas formas, " +
+                        "usando lenguaje geométrico y representaciones gráficas o simbólicas."));
+        capacidades.add(new Capacidad("Usa estrategias y procedimientos para medir y orientarse en el espacio",
+                "Es seleccionar, adaptar, combinar o crear, una variedad de estrategias, procedimientos y recursos para " +
+                        "construir formas geométricas, trazar rutas, medir o estimar distancias y superficies, y " +
+                        "transformar las formas bidimensionales y tridimensionales."));
+        capacidades.add(new Capacidad("Argumenta afirmaciones sobre relaciones geométricas",
+                "Es elaborar afirmaciones sobre las posibles relaciones entre los elementos y las propiedades de las formas geométricas a partir " +
+                        "de su exploración o visualización. Asimismo, justificarlas, validarlas o refutarlas, basado en " +
+                        "su experiencia, ejemplos o contraejemplos, y conocimientos sobre propiedades geométricas; " +
+                        "usando el razonamiento inductivo o deductivo."));
+        comp_45.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_45);
+
+        capacidades.clear();
+
+        Competencia comp_46 = competenciaRepository.findByCode(46);
+        capacidades.add(new Capacidad("Representa datos con gráficos y medidas estadísticas o probabilísticas",
+                "Es representar el comportamiento de un conjunto de datos, seleccionando tablas o gráficos estadísticos, " +
+                        "medidas de tendencia central, de localización o dispersión. Reconocer variables de la población " +
+                        "o la muestra al plantear un tema de estudio. Así también implica el análisis de situaciones " +
+                        "aleatorias y representar la ocurrencia de sucesos mediante el valor de la probabilidad."));
+        capacidades.add(new Capacidad("Comunica su comprensión de los conceptos estadísticos y probabilísticos",
+                "Es comunicar su comprensión de conceptos estadísticos y probabilísticos en relación a la situación. Leer, " +
+                        "describir e interpretar información estadística contenida en gráficos o tablas provenientes de " +
+                        "diferentes fuentes."));
+        capacidades.add(new Capacidad("Usa estrategias y procedimientos para recopilar y procesar datos",
+                "Es seleccionar, adaptar, combinar o crear una variedad de procedimientos, estrategias y recursos para recopilar, " +
+                        "procesar y analizar datos, así como el uso de técnicas de muestreo y el cálculo de las medidas " +
+                        "estadísticas y probabilísticas."));
+        capacidades.add(new Capacidad("Sustenta conclusiones o decisiones con base en la información obtenida",
+                "Es tomar decisiones, hacer predicciones o elaborar conclusiones y sustentarlas con base en la " +
+                        "información obtenida del procesamiento y análisis de datos, así como de la revisión o " +
+                        "valoración de los procesos."));
+        comp_46.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_46);
+
+        capacidades.clear();
+
+        Competencia comp_47 = competenciaRepository.findByCode(47);
+        capacidades.add(new Capacidad("Obtiene información del texto oral",
+                "el estudiante recupera y extrae información " +
+                        "explícita expresada por los interlocutores"));
+        capacidades.add(new Capacidad("Infiere e interpreta información del texto oral",
+                "el estudiante construye el sentido del " +
+                        "texto. Para ello, infiere estableciendo diversas relaciones entre la información explícita " +
+                        "e implícita con el fin de deducir nueva información y completar los vacíos del texto " +
+                        "oral. A partir de estas inferencias, el estudiante interpreta integrando la información " +
+                        "explícita e implícita, los recursos verbales, no verbales y paraverbales para construir " +
+                        "el sentido global y profundo del texto oral, y explicar el propósito, el uso estético del " +
+                        "lenguaje, las intenciones e ideologías de los interlocutores, así como su relación con el " +
+                        "contexto sociocultural."));
+        capacidades.add(new Capacidad("Adecúa, organiza y desarrolla las ideas de forma coherente y cohesionada",
+                "el estudiante expresa sus ideas adaptándose al propósito, destinatario, características " +
+                        "del tipo de texto, género discursivo y registro, considerando las normas y modos " +
+                        "de cortesía, así como los contextos socioculturales que enmarcan la comunicación. " +
+                        "Asimismo, expresa las ideas en torno a un tema de forma lógica, relacionándolas " +
+                        "mediante diversos recursos cohesivos para construir el sentido de distintos tipos de " +
+                        "textos y géneros discursivos."));
+        capacidades.add(new Capacidad("Utiliza recursos no verbales y paraverbales de forma estratégica",
+                "el estudiante emplea variados recursos no verbales (como gestos o movimientos corporales) o " +
+                        "paraverbales (como el tono de la voz o silencios) según la situación comunicativa para " +
+                        "enfatizar o matizar significados y producir determinados efectos en los interlocutores"));
         comp_47.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_47);
 
         capacidades.clear();
 
         Competencia comp_48 = competenciaRepository.findByCode(48);
-        capacidades.add(new Capacidad("Traduce cantidades a expresiones numéricas",
-                "Es transformar las relaciones " +
-                        "entre los datos y condiciones de un problema, a una expresión numérica (modelo) " +
-                        "que reproduzca las relaciones entre estos; esta expresión se comporta como un " +
-                        "sistema compuesto por números, operaciones y sus propiedades. Es plantear " +
-                        "problemas a partir de una situación o una expresión numérica dada. También " +
-                        "implica evaluar si el resultado obtenido o la expresión numérica formulada " +
-                        "(modelo), cumplen las condiciones iniciales del problema."));
-        capacidades.add(new Capacidad("Comunica su comprensión sobre los números y las operaciones",
-                "Es " +
-                        "expresar la comprensión de los conceptos numéricos, las operaciones y " +
-                        "propiedades, las unidades de medida, las relaciones que establece entre ellos; " +
-                        "usando lenguaje numérico y diversas representaciones; así como leer sus " +
-                        "representaciones e información con contenido numérico."));
-        capacidades.add(new Capacidad("Usa estrategias y procedimientos de estimación y cálculo",
-                "Es seleccionar, " +
-                        "adaptar, combinar o crear una variedad de estrategias, procedimientos como el " +
-                        "cálculo mental y escrito, la estimación, la aproximación y medición, comparar " +
-                        "cantidades; y emplear diversos recursos."));
-        capacidades.add(new Capacidad("Argumenta afirmaciones sobre las relaciones numéricas y las operaciones",
-                "Es elaborar afirmaciones sobre las posibles relaciones entre números naturales, " +
-                        "enteros, racionales, reales, sus operaciones y propiedades; en " +
-                        " base a " +
-                        "comparaciones y experiencias en las que induce propiedades a partir de casos " +
-                        "particulares; así como explicarlas con analogías, justificarlas, validarlas o refutarlas " +
-                        "con ejemplos y contraejemplos."));
+        capacidades.add(new Capacidad("Obtiene información del texto escrito",
+                "el estudiante localiza y selecciona información " +
+                        "en textos escritos con un propósito específico."));
+        capacidades.add(new Capacidad("Infiere e interpreta información del texto",
+                "el estudiante construye el sentido del texto. " +
+                        "ello, infiere estableciendo diversas relaciones entre la información explícita e implícita " +
+                        "con el fin de deducir nueva información y completar los vacíos del texto. A partir de estas " +
+                        "inferencias, el estudiante interpreta integrando la información explícita e implícita, así como " +
+                        "los recursos textuales, para construir el sentido global y profundo del texto, y explicar el " +
+                        "propósito, el uso estético del lenguaje, las intenciones del autor, las ideologías de los textos así " +
+                        "como su relación con el contexto sociocultural del lector y del texto."));
+        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto",
+                "los procesos de reflexión " +
+                        "evaluación están relacionados porque ambos suponen que el estudiante se distancie de los " +
+                        "textos escritos situados en épocas y lugares distintos, y que son presentados en diferentes " +
+                        "soportes y formatos. Reflexionar implica comparar y contrastar aspectos formales y de " +
+                        "contenido del texto con la experiencia, el conocimiento formal del lector y diversas fuentes de " +
+                        "información. Evaluar implica analizar y valorar los textos escritos para construir una opinión " +
+                        "personal o un juicio crítico sobre aspectos formales, estéticos, contenidos e ideologías de " +
+                        "los textos considerando los efectos que producen, la relación con otros textos, y el contexto " +
+                        "sociocultural del texto y del lector."));
         comp_48.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_48);
 
         capacidades.clear();
 
         Competencia comp_49 = competenciaRepository.findByCode(49);
-        capacidades.add(new Capacidad("Traduce datos y condiciones a expresiones algebraicas",
-                "Es transformar los datos, valores desconocidos, variables y relaciones de un " +
-                        "problema a una expresión gráfica o algebraica (modelo) que generalice la " +
-                        "interacción entre estos. Implica también evaluar el resultado o la expresión " +
-                        "formulada, con respecto a las condiciones de la situación; y formular " +
-                        "preguntas o problemas a partir de una situación o una expresión. "));
-        capacidades.add(new Capacidad("Comunica su comprensión sobre las relaciones algebraicas",
-                "Es expresar su comprensión de la noción, concepto o propiedades de los " +
-                        "patrones, funciones, ecuaciones e inecuaciones estableciendo relaciones " +
-                        "entre estas; usando lenguaje algebraico y diversas representaciones. Así " +
-                        "como interpretar información que presente contenido algebraico."));
-        capacidades.add(new Capacidad("Usa estrategias y procedimientos para encontrar reglas generales",
-                "Es seleccionar, adaptar, combinar o crear, procedimientos, estrategias y " +
-                        "algunas propiedades para simplificar o transformar ecuaciones, inecuaciones " +
-                        "y expresiones simbólicas que le permitan resolver ecuaciones, determinar " +
-                        "dominios y rangos, representar rectas, parábolas, y diversas funciones."));
-        capacidades.add(new Capacidad("Argumenta afirmaciones sobre relaciones de cambio y equivalencia",
-                "Es elaborar afirmaciones sobre variables, reglas algebraicas y propiedades " +
-                        "algebraicas, razonando de manera inductiva para generalizar una regla y de " +
-                        "manera deductiva probando y comprobando propiedades y nuevas " +
-                        "relaciones."));
+        capacidades.add(new Capacidad("Adecúa el texto a la situación comunicativa",
+                "el estudiante considera el propósito, " +
+                        "tipo de texto, género discursivo y registro que utilizará al escribir los textos, así " +
+                        "como los contextos socioculturales que enmarcan la comunicación escrita."));
+        capacidades.add(new Capacidad("Organiza y desarrolla las ideas de forma coherente y cohesionada",
+                "el estudiante ordena " +
+                        "lógicamente las ideas en torno a un tema, ampliándolas y complementándolas, estableciendo " +
+                        "relaciones de cohesión entre ellas y utilizando un vocabulario pertinente."));
+        capacidades.add(new Capacidad("Utiliza convenciones del lenguaje escrito de forma pertinente",
+                "el estudiante usa de forma " +
+                        " apropiada " +
+                        "recursos textuales, gramaticales y ortográficos para garantizar la claridad, el uso " +
+                        "estético del lenguaje y el sentido del texto escrito."));
+        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto escrito",
+                "el estudiante " +
+                        "se distancia del texto que ha escrito para revisar de manera permanente el contenido, la " +
+                        "coherencia, cohesión y adecuación a la situación comunicativa con la finalidad de mejorarlo. " +
+                        "También implica analizar, comparar y contrastar las características de los usos del lenguaje " +
+                        "escrito y sus posibilidades, así como su repercusión en otras personas o su relación con otros " +
+                        "textos según el contexto sociocultural."));
         comp_49.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_49);
 
         capacidades.clear();
 
         Competencia comp_50 = competenciaRepository.findByCode(50);
-        capacidades.add(new Capacidad("Modela objetos con formas geométricas y sus transformaciones",
-                "Es construir un modelo que reproduzca las características de los objetos, su " +
-                        "localización y movimiento, mediante formas geométricas, sus elementos y " +
-                        "propiedades; la ubicación y transformaciones en el plano. Es también evaluar " +
-                        "si el modelo cumple con las condiciones dadas en el problema. "));
-        capacidades.add(new Capacidad("Comunica su comprensión sobre las formas y relaciones geométricas",
-                "Es comunicar su comprensión de las propiedades de las formas geométricas, sus " +
-                        "transformaciones y la ubicación en un sistema de referencia; es también " +
-                        "establecer relaciones entre estas formas, usando lenguaje geométrico y " +
-                        "representaciones gráficas o simbólicas."));
-        capacidades.add(new Capacidad("Usa estrategias y procedimientos para orientarse en el espacio",
-                "Es seleccionar, adaptar, combinar o crear, una variedad de " +
-                        " estrategias, procedimientos y recursos para construir formas geométricas, " +
-                        " trazar rutas, medir o estimar distancias y superficies, y transformar " +
-                        " las formas bidimensionales y tridimensionales."));
-        capacidades.add(new Capacidad("Argumenta afirmaciones sobre relaciones geométricas",
-                "Es elaborar afirmaciones sobre las posibles relaciones entre los elementos y las " +
-                        "propiedades de las formas geométricas; en base a su exploración o " +
-                        "visualización. Asimismo, justificarlas, validarlas o refutarlas, en base a su " +
-                        "experiencia, ejemplos o contraejemplos, y conocimientos sobre propiedades " +
-                        "geométricas; usando el razonamiento inductivo o deductivo."));
+        capacidades.add(new Capacidad("Obtiene información de textos orales",
+                "consiste en recuperar y extraer información explícita expresada por los interlocutores."));
+        capacidades.add(new Capacidad("Infiere e interpreta información de textos orales",
+                "el estudiante construye el sentido " +
+                        "del texto a partir de relacionar información explícita e implícita para deducir una " +
+                        "nueva información o completar los vacíos del texto oral. A partir de estas inferencias, " +
+                        "el estudiante interpreta el sentido del texto, los recursos verbales, no verbales y gestos, " +
+                        "el uso estético del lenguaje y las intenciones de los interlocutores con los que se " +
+                        "relaciona en un contexto sociocultural determinado"));
+        capacidades.add(new Capacidad("Adecúa, organiza y desarrolla las ideas de forma coherente y cohesionada",
+                "Consiste en desarrollar ideas adecuándolas al propósito, destinatario, características del tipo de " +
+                        "texto, registro y contexto, considerando las normas y modos de cortesía. Organiza la " +
+                        "información en torno a un tema y usa diversos recursos cohesivos para relacionar las " +
+                        "ideas del texto oral"));
         comp_50.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_50);
 
         capacidades.clear();
 
         Competencia comp_51 = competenciaRepository.findByCode(51);
-        capacidades.add(new Capacidad("Representa datos con gráficos y medidas estadísticas o probabilísticas",
-                "Es representar el comportamiento de un conjunto de " +
-                        "datos, seleccionando tablas o gráficos estadísticos, medidas de " +
-                        "tendencia central, de localización o dispersión. Reconocer variables de " +
-                        "la población o la muestra al plantear un tema de estudio. Así también " +
-                        "implica el análisis de situaciones aleatorias y representar la ocurrencia " +
-                        "de sucesos mediante el valor de la probabilidad."));
-        capacidades.add(new Capacidad("Comunica la comprensión de los conceptos estadísticos y probabilísticos",
-                "Es comunicar su comprensión de conceptos " +
-                        "estadísticos y probabilísticos en relación a la situación. Leer, describir " +
-                        "e interpretar información estadística contenida en gráficos o tablas " +
-                        "provenientes de diferentes fuentes."));
-        capacidades.add(new Capacidad("Usa estrategias y procedimientos para recopilar y procesar datos",
-                "Es seleccionar, adaptar, combinar o crear una variedad de " +
-                        "procedimientos, estrategias y recursos para recopilar, procesar y " +
-                        "analizar datos, así como el uso de técnicas de muestreo y el cálculo de " +
-                        "las medidas estadísticas y probabilísticas."));
-        capacidades.add(new Capacidad("Sustenta conclusiones o decisiones en base a información obtenida",
-                "Es tomar decisiones, hacer predicciones o elaborar conclusiones, y " +
-                        "sustentarlas en base a la información obtenida del procesamiento y " +
-                        "análisis de datos, y de la revisión o valoración de los procesos."));
+        capacidades.add(new Capacidad("Obtiene información del texto escrito",
+                "El estudiante localiza y selecciona información " +
+                        "explícita en textos escritos con un propósito específico."));
+        capacidades.add(new Capacidad("Infiere e interpreta información del texto escrito",
+                "el estudiante construye el sentido " +
+                        "del texto. Para ello, establece relaciones entre la información explícita e implícita de éste " +
+                        "para deducir una nueva información o completar los vacíos del texto escrito. A partir de " +
+                        "estas deducciones, el estudiante interpreta la relación entre la información implícita y la " +
+                        "información explícita, así como los recursos textuales, para construir el sentido global y " +
+                        "profundo del texto, y explicar el propósito, el uso estético del lenguaje, las intenciones del " +
+                        "autor, así como la relación con el contexto sociocultural del lector y del texto."));
+        capacidades.add(new Capacidad("Reflaxiona y evalúa la forma, el contenido y el contexto del texto escrito",
+                "Los procesos " +
+                        "de reflexión y evaluación están relacionados porque ambos suponen que el estudiante se " +
+                        "distancie de los textos escritos situados en épocas y lugares distintos, y que son presentados " +
+                        "en diferentes soportes y formatos. Para ello, compara y contrasta aspectos formales y de " +
+                        "contenido del texto con la experiencia, el conocimiento formal del lector y diversas fuentes " +
+                        "de información. Asimismo, emite una opinión personal sobre aspectos formales, estéticos, " +
+                        "contenidos de los textos considerando los efectos que producen, la relación con otros textos, " +
+                        "y el contexto sociocultural del texto y del lector"));
+
         comp_51.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_51);
 
         capacidades.clear();
 
         Competencia comp_52 = competenciaRepository.findByCode(52);
-        capacidades.add(new Capacidad("Obtiene información del texto oral",
-                "El estudiante recupera y extrae información explícita " +
-                        "expresada por los interlocutores."));
-        capacidades.add(new Capacidad("Infiere e interpreta información del texto oral",
-                "El estudiante construye el sentido del texto. " +
-                        "Para ello, infiere estableciendo diversas relaciones entre la información explícita e implícita " +
-                        "con el fin de deducir nueva información y completar los vacíos del texto oral. A partir de " +
-                        "estas inferencias, el estudiante interpreta integrando la información explícita e implícita, los " +
-                        "recursos verbales, no verbales y paraverbales para construir el sentido global y profundo del " +
-                        "texto oral, y explicar el propósito, el uso estético del lenguaje, las intenciones e ideologías de " +
-                        "los interlocutores, así como su relación con el contexto sociocultural."));
-        capacidades.add(new Capacidad("Adecúa, organiza y desarrolla las ideas de forma coherente y cohesionada",
+        capacidades.add(new Capacidad("Adecúa el texto a la situación comunicativa",
+                "el estudiante considera el propósito, " +
+                        "destinatario, tipo de texto, género discursivo y registro que utilizará al escribir los textos, así " +
+                        "como los contextos socioculturales que enmarcan la comunicación escrita."));
+        capacidades.add(new Capacidad("Organiza y desarrolla las ideas de forma coherente y cohesionada",
+                "el estudiante ordena " +
+                        "lógicamente las ideas en torno a un tema, ampliándolas y complementándolas, estableciendo " +
+                        "relaciones de cohesión entre ellas y utilizando un vocabulario pertinente."));
+        capacidades.add(new Capacidad("Utiliza convenciones del lenguaje escrito de forma pertinente",
+                "el estudiante usa de forma " +
+                        "apropiada recursos textuales para garantizar la claridad, el uso estético del lenguaje y el " +
+                        "sentido del texto escrito."));
+        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y el contexto del texto escrito",
                 "El estudiante " +
-                        "expresa sus ideas adaptándose al propósito, destinatario, características del tipo de texto, " +
-                        "género discursivo y registro, considerando las normas y modos de cortesía, así como los " +
-                        "contextos socioculturales que enmarcan la comunicación. Asimismo, expresa las ideas en " +
-                        "torno a un tema de forma lógica, relacionándolas mediante diversos recursos cohesivos para " +
-                        "construir el sentido de distintos tipos de textos y géneros discursivos."));
-        capacidades.add(new Capacidad("Utiliza recursos no verbales y paraverbales de forma estratégica",
-                "El estudiante emplea " +
-                        "variados recursos no verbales (como gestos o movimientos corporales) o paraverbales (como " +
-                        "el tono de la voz o silencios) según la situación comunicativa para enfatizar o matizar " +
-                        "significados y producir determinados efectos en los interlocutores."));
-        capacidades.add(new Capacidad("Interactúa estratégicamente con distintos interlocutores",
-                "El estudiante intercambia los " +
-                        "roles de hablante y oyente alternada y dinámicamente, participando de forma pertinente, " +
-                        "oportuna y relevante para lograr su propósito comunicativo."));
-        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto oral",
-                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el estudiante se " +
-                        "distancie de los textos orales en los que participa. Para ello, reflexiona como oyente y " +
-                        "hablante, que supone distanciarse de los textos orales en que participa de forma presencial " +
-                        "o a través de medios audiovisuales, comparando y contrastando aspectos formales y de " +
-                        "contenido, con la experiencia, el contexto, el conocimiento formal y diversas fuentes de " +
-                        "información. Asimismo, evalúa, que implica analizar y valorar los textos orales producidos " +
-                        "para construir una opinión personal o un juicio crítico sobre sus aspectos formales, " +
-                        "contenidos e ideologías, y su relación con el contexto sociocultural, considerando los efectos " +
-                        "que producen en los interlocutores."));
+                        "se distancia del texto que ha escrito para revisar de manera permanente el contenido, la " +
+                        "coherencia, cohesión y adecuación a la situación comunicativa con la finalidad de mejorarlo. " +
+                        "También implica analizar, comparar y contrastar las características de los usos del lenguaje " +
+                        "escrito y sus posibilidades, así como su repercusión en otras personas o su relación con otros " +
+                        "textos según el contexto sociocultural."));
         comp_52.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_52);
 
         capacidades.clear();
 
         Competencia comp_53 = competenciaRepository.findByCode(53);
-        capacidades.add(new Capacidad("Obtiene información del texto escrito",
-                "El estudiante localiza y selecciona " +
-                        "información explícita en textos escritos con un propósito específico."));
-        capacidades.add(new Capacidad("Infiere e interpreta información del texto",
-                "El estudiante construye el sentido " +
-                        "del texto. Para ello, infiere estableciendo diversas relaciones entre la " +
-                        "información explícita e implícita con el fin de deducir nueva información y " +
-                        "completar los vacíos del texto. A partir de estas inferencias, el estudiante " +
-                        "interpreta integrando la información explícita e implícita, así como los recursos " +
-                        "textuales, para construir el sentido global y profundo del texto, y explicar el " +
-                        "propósito, el uso estético del lenguaje, las intenciones del autor, las ideologías " +
-                        "de los textos así como su relación con el contexto sociocultural del lector y del " +
-                        "texto."));
-        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto",
-                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el " +
-                        "estudiante se distancie de los textos escritos situados en épocas y lugares " +
-                        "distintos, y que son presentados en diferentes soportes y formatos. Reflexionar " +
-                        "implica comparar y contrastar aspectos formales y de contenido del texto con la " +
-                        "experiencia, el conocimiento formal del lector y diversas fuentes de " +
-                        "información. Evaluar implica analizar y valorar los textos escritos para construir " +
-                        "una opinión personal o un juicio crítico sobre aspectos formales, estéticos, " +
-                        "contenidos e ideologías de los textos considerando los efectos que producen, la " +
-                        "relación con otros textos, y el contexto sociocultural del texto y del lector."));
+        capacidades.add(new Capacidad("Percibe manifestaciones artístico-culturales",
+                "Consiste en usar los sentidos para " +
+                        "observar, escuchar, describir y analizar las cualidades visuales, táctiles, sonoras y kinestésicas " +
+                        "de diversas manifestaciones artístico-culturales."));
+        capacidades.add(new Capacidad("Contextualiza manifestaciones artístico-culturales",
+                "Es informarse acerca de la cultura " +
+                        "en que se origina una manifestación artística para entender cómo el contexto social, cultural " +
+                        "e histórico de esta influye en su creación y la manera en que transmite sus significados."));
+        capacidades.add(new Capacidad("Reflexiona creativa y críticamente sobre manifestaciones artístico-culturales",
+                "Supone interpretar las intenciones y significados de manifestaciones artístico-culturales " +
+                        "que hayan visto o experimentado y emitir juicios de valor, entrelazando información " +
+                        "obtenida a través de la percepción, el análisis y la comprensión de los contextos."));
         comp_53.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_53);
 
         capacidades.clear();
 
         Competencia comp_54 = competenciaRepository.findByCode(54);
-        capacidades.add(new Capacidad("Adecúa el texto a la situación comunicativa",
-                "El estudiante considera el " +
-                        "propósito, destinatario, tipo de texto, género discursivo y registro que utilizará al " +
-                        "escribir los textos, así como los contextos socioculturales que enmarcan la " +
-                        "comunicación escrita."));
-        capacidades.add(new Capacidad("Organiza y desarrolla las ideas de forma coherente y cohesionada",
-                "El estudiante ordena lógicamente las ideas en torno a un tema, ampliándolas y " +
-                        "complementándolas, estableciendo relaciones de cohesión entre ellas y utilizando " +
-                        "un vocabulario pertinente. "));
-        capacidades.add(new Capacidad("Utiliza convenciones del lenguaje escrito de forma pertinente",
-                "El estudiante usa de forma apropiada recursos textuales para garantizar la claridad, " +
-                        "el uso estético del lenguaje y el sentido del texto escrito. "));
-        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto escrito",
-                "El estudiante se distancia del texto que ha escrito para revisar de manera " +
-                        "permanente el contenido, la coherencia, cohesión y adecuación a la situación " +
-                        "comunicativa con la finalidad de mejorarlo. También implica analizar, comparar y " +
-                        "contrastar las características de los usos del lenguaje escrito y sus posibilidades, así " +
-                        "como su repercusión en otras personas o su relación con otros textos según el " +
-                        "contexto sociocultural."));
+        capacidades.add(new Capacidad("Explora y experimenta los lenguajes artísticos",
+                "significa experimentar, improvisar y " +
+                        "desarrollar habilidades en el uso de los medios, materiales, herramientas y técnicas de los " +
+                        "diversos lenguajes del arte."));
+        capacidades.add(new Capacidad("Aplica procesos creativos",
+                "supone generar ideas, investigar, tomar decisiones y poner en " +
+                        "práctica sus conocimientos para elaborar un proyecto artístico individual o colaborativo en " +
+                        "relación a una intención específica."));
+        capacidades.add(new Capacidad("Evalúa y comunica sus procesos y proyectos",
+                "significa registrar sus experiencias, " +
+                        "comunicar sus descubrimientos y compartir sus creaciones con otros, para profundizar en " +
+                        "ellos y reflexionar sobre sus ideas y experiencias."));
         comp_54.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_54);
 
         capacidades.clear();
 
         Competencia comp_55 = competenciaRepository.findByCode(55);
-        capacidades.add(new Capacidad("Obtiene información del texto oral en inglés",
-                "El estudiante recupera y extrae información explícita " +
-                        "expresada por los interlocutores."));
-        capacidades.add(new Capacidad("Infiere e interpreta información del texto oral en inglés",
-                "El estudiante construye el sentido del texto. " +
-                        "Para ello, infiere estableciendo diversas relaciones entre la información explícita e implícita con el " +
-                        "fin de deducir nueva información y completar los vacíos del texto oral. A partir de estas inferencias, " +
-                        "el estudiante interpreta integrando la información explícita e implícita, los recursos verbales, no " +
-                        "verbales y paraverbales para construir el sentido global y profundo del texto oral, y explicar el " +
-                        "propósito, el uso estético del lenguaje, las intenciones e ideologías de los interlocutores, así como " +
-                        "su relación con el contexto sociocultural."));
-        capacidades.add(new Capacidad("Adecúa, organiza y desarrolla el texto en inglés de forma coherente y cohesionada",
-                "El estudiante expresa sus ideas adaptándose al propósito, destinatario, características del tipo de texto, género " +
-                        "discursivo y registro, considerando las normas y modos de cortesía, así como los contextos " +
-                        "socioculturales que enmarcan la comunicación. Asimismo, expresa las ideas en torno a un tema de " +
-                        "forma lógica, relacionándolas mediante diversos recursos cohesivos para construir el sentido de " +
-                        "distintos tipos de textos y géneros discursivos."));
-        capacidades.add(new Capacidad("Utiliza recursos no verbales y paraverbales de forma estratégica",
-                "El estudiante emplea variados " +
-                        "recursos no verbales (como gestos o movimientos corporales) o paraverbales (como el tono de la " +
-                        "voz o silencios) según la situación comunicativa para enfatizar o matizar significados y producir " +
-                        "determinados efectos en los interlocutores."));
-        capacidades.add(new Capacidad("Interactúa estratégicamente en inglés con distintos interlocutores",
-                "El estudiante intercambia los " +
-                        "roles de hablante y oyente alternada y dinámicamente, participando de forma pertinente, oportuna " +
-                        "y relevante para lograr su propósito comunicativo. "));
-        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto oral en inglés",
-                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el estudiante se distancie de " +
-                        "los textos orales en los que participa. Para ello, reflexiona como oyente y hablante, que supone " +
-                        "distanciarse de los textos orales en que participa de forma presencial o a través de medios " +
-                        "audiovisuales, comparando y contrastando aspectos formales y de contenido, con la experiencia, el " +
-                        "contexto, el conocimiento formal y diversas fuentes de información. Asimismo, evalúa, que implica " +
-                        "analizar y valorar los textos orales producidos para construir una opinión personal o un juicio crítico " +
-                        "sobre sus aspectos formales, contenidos e ideologías, y su relación con el contexto sociocultural, " +
-                        "considerando los efectos que producen en los interlocutores."));
+        capacidades.add(new Capacidad("Interpreta críticamente fuentes diversas",
+                "es reconocer la diversidad de fuentes y su " +
+                        "diferente utilidad para abordar un hecho o proceso histórico. Supone ubicarlas en su " +
+                        "contexto y comprender, de manera crítica, que estas reflejan una perspectiva particular y " +
+                        "tienen diferentes grados de fiabilidad. También implica recurrir a múltiples fuentes."));
+        capacidades.add(new Capacidad("Comprende el tiempo histórico",
+                "es usar las nociones relativas al tiempo de manera " +
+                        "pertinente, reconociendo que los sistemas de medición temporal son convenciones que " +
+                        "dependen de distintas tradiciones culturales y que el tiempo histórico tiene diferentes " +
+                        "duraciones. Asimismo, implica ordenar los hechos y procesos históricos cronológicamente " +
+                        "y explicar los cambios, permanencias y simultaneidades que se dan en ellos."));
+        capacidades.add(new Capacidad("Elabora explicaciones sobre procesos históricos",
+                "es jerarquizar las causas de los " +
+                        "procesos históricos relacionando las motivaciones de sus protagonistas con su cosmovisión " +
+                        "y la época en la que vivieron. También es establecer las múltiples consecuencias de los " +
+                        "procesos del pasado y sus implicancias en el presente, así como reconocer que este va " +
+                        "construyendo nuestro futuro."));
         comp_55.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
         competenciaRepository.save(comp_55);
 
         capacidades.clear();
 
         Competencia comp_56 = competenciaRepository.findByCode(56);
-        capacidades.add(new Capacidad("Obtiene información del texto escrito en inglés",
-                "El estudiante localiza y selecciona " +
-                        "información explícita en textos escritos con un propósito específico."));
-        capacidades.add(new Capacidad("Infiere e interpreta información del texto escrito en inglés",
-                "El estudiante construye el " +
-                        "sentido del texto. Para ello, infiere estableciendo diversas relaciones entre la información " +
-                        "explícita e implícita con el fin de deducir nueva información y completar los vacíos del texto. " +
-                        "A partir de estas inferencias, el estudiante interpreta integrando la información explícita e " +
-                        "implícita, así como los recursos textuales, para construir el sentido global y profundo del " +
-                        "texto, y explicar el propósito, las intenciones del autor, así como su relación con el contexto " +
-                        "sociocultural del lector y del texto."));
-        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto escrito en inglés",
-                "Los procesos de reflexión y evaluación están relacionados porque ambos suponen que el " +
-                        "estudiante se distancie de los textos escritos situados en épocas y lugares distintos, y que " +
-                        "son presentados en diferentes soportes y formatos. Reflexionar implica comparar y " +
-                        "contrastar aspectos formales y de contenido del texto con la experiencia, el conocimiento " +
-                        "formal del lector y diversas fuentes de información. Evaluar implica analizar y valorar los " +
-                        "textos escritos para construir una opinión personal o un juicio crítico sobre aspectos " +
-                        "formales, contenidos de los textos considerando los efectos que producen, la relación con " +
-                        "otros textos, y el contexto sociocultural del texto y del lector."));
-        comp_56.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_56);
-
-        capacidades.clear();
-
-        Competencia comp_57 = competenciaRepository.findByCode(57);
-        capacidades.add(new Capacidad("Adecúa el texto en inglés a la situación comunicativa",
-                "El estudiante considera el propósito, " +
-                        "destinatario, tipo de texto, género discursivo y registro que utilizará al escribir los textos, así " +
-                        "como los contextos socioculturales que enmarcan la comunicación escrita."));
-        capacidades.add(new Capacidad("Organiza y desarrolla las ideas en inglés de forma coherente y cohesionada",
-                "El estudiante " +
-                        "ordena lógicamente las ideas en torno a un tema, ampliándolas y complementándolas, " +
-                        "estableciendo relaciones de cohesión entre ellas y utilizando un vocabulario pertinente."));
-        capacidades.add(new Capacidad("Utiliza convenciones del lenguaje escrito en inglés de forma pertinente",
-                "El estudiante usa de forma apropiada recursos textuales para garantizar la claridad, el uso estético del lenguaje " +
-                        "y el sentido del texto escrito."));
-        capacidades.add(new Capacidad("Reflexiona y evalúa la forma, el contenido y contexto del texto escrito en inglés",
-                "El estudiante se distancia del texto que ha escrito para revisar de manera permanente el " +
-                        "contenido, la coherencia, cohesión y adecuación a la situación comunicativa con la finalidad " +
-                        "de mejorarlo. También implica analizar, comparar y contrastar las características de los usos " +
-                        "del lenguaje escrito y sus posibilidades, así como su repercusión en otras personas o su " +
-                        "relación con otros textos según el contexto sociocultural."));
-        comp_57.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_57);
-
-        capacidades.clear();
-
-        Competencia comp_58 = competenciaRepository.findByCode(58);
-        capacidades.add(new Capacidad("Percibe manifestaciones artístico-culturales",
-                "Consiste en usar los sentidos para " +
-                        "observar, escuchar, describir y analizar las cualidades visuales, táctiles, sonoras y " +
-                        "kinestésicas de diversas manifestaciones artístico-culturales."));
-        capacidades.add(new Capacidad("Contextualiza las manifestaciones culturales",
-                "Es informarse acerca de la cultura en que " +
-                        "se origina una manifestación artística para entender cómo el contexto social, cultural e " +
-                        "histórico de esta influye en su creación y la manera en que transmite sus significados."));
-        capacidades.add(new Capacidad("Reflexiona creativa y críticamente",
-                "Supone interpretar las intenciones y significados de " +
-                        "manifestaciones artístico-culturales que hayan visto o experimentado y emitir juicios de " +
-                        "valor, entrelazando información obtenida a través de la percepción, el análisis y la " +
-                        "comprensión de los contextos."));
-        comp_58.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_58);
-
-        capacidades.clear();
-
-        Competencia comp_59 = competenciaRepository.findByCode(59);
-        capacidades.add(new Capacidad("Explora y experimenta los lenguajes del arte",
-                "Significa experimentar, improvisar y desarrollar " +
-                        "habilidades en el uso de los medios, materiales, herramientas y técnicas de los diversos " +
-                        "lenguajes del arte."));
-        capacidades.add(new Capacidad("Aplica procesos creativos",
-                "Supone generar ideas, investigar, tomar decisiones y poner en " +
-                        "práctica sus conocimientos para elaborar un proyecto artístico individual o colaborativo en " +
-                        "relación a una intención específica."));
-        capacidades.add(new Capacidad("Evalúa y socializa sus procesos y proyectos",
-                "Significa registrar sus experiencias, comunicar " +
-                        "sus descubrimientos y compartir sus creaciones con otros, para profundizar en ellos y " +
-                        "reflexionar sobre sus ideas y experiencias."));
-        comp_59.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_59);
-
-        capacidades.clear();
-
-        Competencia comp_60 = competenciaRepository.findByCode(60);
-        capacidades.add(new Capacidad("Interpreta críticamente fuentes diversas",
-                "Es reconocer la diversidad de fuentes y su " +
-                        "diferente utilidad para abordar un hecho o proceso histórico. Supone ubicarlas en su " +
-                        "contexto y comprender, de manera crítica, que estas reflejan una perspectiva particular y " +
-                        "tienen diferentes grados de fiabilidad. También implica recurrir a múltiples fuentes."));
-        capacidades.add(new Capacidad("Comprende el tiempo histórico",
-                "Es usar las nociones relativas al tiempo de manera " +
-                        "pertinente, reconociendo que los sistemas de medición temporal son convenciones que " +
-                        "dependen de distintas tradiciones culturales y que el tiempo histórico tiene diferentes " +
-                        "duraciones. Asimismo, implica ordenar los hechos y procesos históricos cronológicamente " +
-                        "y explicar los cambios y permanencias que se dan en ellos."));
-        capacidades.add(new Capacidad("Elabora explicaciones sobre procesos históricos",
-                "Es jerarquizar las causas de los procesos " +
-                        "históricos relacionando las motivaciones de sus protagonistas con su cosmovisión y la " +
-                        "época en la que vivieron. También es establecer las múltiples consecuencias de los " +
-                        "procesos del pasado y sus implicancias en el presente, así como reconocer que este va " +
-                        "construyendo nuestro futuro."));
-        comp_60.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_60);
-
-        capacidades.clear();
-
-        Competencia comp_61 = competenciaRepository.findByCode(61);
         capacidades.add(new Capacidad("Comprende las relaciones entre los elementos naturales y sociales",
                 "Es explicar las dinámicas " +
                         "y transformaciones del espacio geográfico, a partir del reconocimiento de sus elementos " +
@@ -2650,13 +2702,13 @@ public class DatabaseResource {
                         "orientadas al cuidado del ambiente y a contribuir a la prevención de situaciones de riesgo " +
                         "de desastre. Esto supone analizar el impacto de las problemáticas ambientales y " +
                         "territoriales en la vida de las personas."));
-        comp_61.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_61);
+        comp_56.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_56);
 
         capacidades.clear();
 
-        Competencia comp_62 = competenciaRepository.findByCode(62);
-        capacidades.add(new Capacidad("Comprende el funcionamiento del sistema económico y financiero",
+        Competencia comp_57 = competenciaRepository.findByCode(57);
+        capacidades.add(new Capacidad("Comprende las relaciones entre los elementos del sistema económico y financiero",
                 "Supone identificar los " +
                         "roles de los diversos agentes que intervienen en el sistema, analizar las interacciones entre " +
                         "ellos y comprender el rol del Estado en dichas interrelaciones."));
@@ -2665,12 +2717,12 @@ public class DatabaseResource {
                         "económicos de manera sostenible, en función a sus necesidades y posibilidades. También " +
                         "implica asumir una posición crítica frente a los sistemas de producción y de consumo, así " +
                         "como ejercer sus derechos y responsabilidades como consumidor informado."));
-        comp_62.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_62);
+        comp_57.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_57);
 
         capacidades.clear();
 
-        Competencia comp_63 = competenciaRepository.findByCode(63);
+        Competencia comp_58 = competenciaRepository.findByCode(58);
         capacidades.add(new Capacidad("Se valora a sí mismo",
                 "es decir, el estudiante reconoce sus características, cualidades, " +
                         "limitaciones y potencialidades que lo hacen ser quien es, que le permiten aceptarse, " +
@@ -2698,12 +2750,12 @@ public class DatabaseResource {
                         "armoniosas y libres de violencia. También implica identificar y poner en práctica " +
                         "conductas de autocuidado frente a situaciones que ponen en riesgo su bienestar o que " +
                         "vulneran sus derechos sexuales y reproductivos."));
-        comp_63.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_63);
+        comp_58.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_58);
 
         capacidades.clear();
 
-        Competencia comp_64 = competenciaRepository.findByCode(64);
+        Competencia comp_59 = competenciaRepository.findByCode(59);
         capacidades.add(new Capacidad("Interactúa con todas las personas",
                 "es decir, reconoce a todos como personas valiosas y " +
                         "con derechos, muestra preocupación por el otro, respeta las diferencias y se enriquecerse " +
@@ -2737,12 +2789,12 @@ public class DatabaseResource {
                         "iniciativas vinculadas con el interés común y con la promoción y defensa de los derechos " +
                         "humanos, tanto en la escuela como en la comunidad. Para ello, se apropia y utiliza canales " +
                         "y mecanismos de participación democrática."));
-        comp_64.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_64);
+        comp_59.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_59);
 
         capacidades.clear();
 
-        Competencia comp_65 = competenciaRepository.findByCode(65);
+        Competencia comp_60 = competenciaRepository.findByCode(60);
         capacidades.add(new Capacidad("Comprende su cuerpo",
                 "es decir interioriza su cuerpo en estado estático o en " +
                         "movimiento en relación al espacio, el tiempo, los objetos y demás personas de su " +
@@ -2752,12 +2804,12 @@ public class DatabaseResource {
                         "sentimientos y pensamientos. Implica utilizar el tono, los gestos, mímicas, posturas y " +
                         "movimientos para expresarse, desarrollando la creatividad al usar todos los recursos " +
                         "que ofrece el cuerpo y el movimiento."));
-        comp_65.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_65);
+        comp_60.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_60);
 
         capacidades.clear();
 
-        Competencia comp_66 = competenciaRepository.findByCode(66);
+        Competencia comp_61 = competenciaRepository.findByCode(61);
         capacidades.add(new Capacidad("Comprende las relaciones entre la actividad física, alimentación, postura e higiene corporal y la salud",
                 "es analizar y comprender los procesos vinculados con la " +
                         "alimentación, la postura, la higiene corporal y la práctica de actividad física y cómo estos " +
@@ -2770,12 +2822,12 @@ public class DatabaseResource {
                         "calidad de vida. Esto supone la planificación de rutinas, dietas o planes que pongan en " +
                         "práctica sus conocimientos sobre alimentación, higiene corporal, posturas y actividad " +
                         "física para la salud según sus propias necesidades, recursos y entorno."));
-        comp_66.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_66);
+        comp_61.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_61);
 
         capacidades.clear();
 
-        Competencia comp_67 = competenciaRepository.findByCode(67);
+        Competencia comp_62 = competenciaRepository.findByCode(62);
         capacidades.add(new Capacidad("Se relaciona utilizando sus habilidades sociomotrices",
                 "supone interactuar de manera " +
                         "asertiva con los demás en la práctica lúdica y deportiva experimentando el placer y " +
@@ -2787,12 +2839,12 @@ public class DatabaseResource {
                         "las potencialidades de cada miembro del equipo para el logro de un objetivo común, " +
                         "desarrollando y aplicando reglas y soluciones tácticas de juego en actividades físicas de " +
                         "colaboración, cooperación y oposición."));
-        comp_67.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_67);
+        comp_62.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_62);
 
         capacidades.clear();
 
-        Competencia comp_68 = competenciaRepository.findByCode(68);
+        Competencia comp_63 = competenciaRepository.findByCode(63);
         capacidades.add(new Capacidad("Conoce a Dios y asume su identidad religiosa como persona digna, libre y trascendente",
                 "El estudiante entiende y experimenta que Dios es Amor, comprende que Dios es su Padre y " +
                         "creador, que lo ama y le ha dado la vida para ser feliz. "));
@@ -2802,12 +2854,12 @@ public class DatabaseResource {
                         "ser humano, con las concepciones de la vida presentes en la cultura, y con los problemas " +
                         "morales fundamentales en los que hoy se ve envuelta la humanidad. También expresa con " +
                         "libertad su fe respetando las diversas creencias y expresiones religiosas de los demás."));
-        comp_68.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_68);
+        comp_63.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_63);
 
         capacidades.clear();
 
-        Competencia comp_69 = competenciaRepository.findByCode(69);
+        Competencia comp_64 = competenciaRepository.findByCode(64);
         capacidades.add(new Capacidad("Transforma su entorno desde el encuentro personal y comunitario con Dios y desde la fe que profesa",
                 "Los estudiantes deben asumir con renovado entusiasmo y decisión, el reto de " +
                         "contribuir a la gestación de una nueva sociedad, más justa, más solidaria, más fraterna y " +
@@ -2817,12 +2869,12 @@ public class DatabaseResource {
                         "conciencia moral cristiana: verdad, bondad y misericordia en situaciones concretas de la " +
                         "convivencia humana. Toman decisiones razonables en coherencia con los principios " +
                         "evangélicos y su escala de valores morales."));
-        comp_69.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_69);
+        comp_64.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_64);
 
         capacidades.clear();
 
-        Competencia comp_70 = competenciaRepository.findByCode(70);
+        Competencia comp_65 = competenciaRepository.findByCode(65);
         capacidades.add(new Capacidad("Problematiza situaciones para hacer indagación",
                 "Es plantear preguntas sobre " +
                         "hechos y fenómenos naturales, interpretar situaciones y formular hipótesis."));
@@ -2842,12 +2894,12 @@ public class DatabaseResource {
                 "Es identificar y " +
                         "dar a conocer las dificultades técnicas y los conocimientos logrados para cuestionar " +
                         "el grado de satisfacción que la respuesta da a la pregunta de indagación."));
-        comp_70.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_70);
+        comp_65.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_65);
 
         capacidades.clear();
 
-        Competencia comp_71 = competenciaRepository.findByCode(71);
+        Competencia comp_66 = competenciaRepository.findByCode(66);
         capacidades.add(new Capacidad("Comprende y usa conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo",
                 "Cuando es capaz de tener desempeños flexibles, " +
                         "es decir, establece relaciones entre varios conceptos y los transfiere a nuevas " +
@@ -2860,12 +2912,12 @@ public class DatabaseResource {
                         "desarrollo tecnológico, con el fin de asumir una postura crítica o tomar decisiones, " +
                         "considerando saberes locales, evidencia empírica y científica, con la finalidad de " +
                         "mejorar su calidad de vida y conservar el ambiente."));
-        comp_71.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_71);
+        comp_66.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_66);
 
         capacidades.clear();
 
-        Competencia comp_72 = competenciaRepository.findByCode(72);
+        Competencia comp_67 = competenciaRepository.findByCode(67);
         capacidades.add(new Capacidad("Determina una alternativa de solución tecnológica",
                 "al detectar un problema y " +
                         "propone alternativas de solución creativas basadas en conocimientos científico, " +
@@ -2886,12 +2938,12 @@ public class DatabaseResource {
                         "requerimientos del problema, comunicar su funcionamiento y analizar sus " +
                         "posibles impactos, en el ambiente y la sociedad, tanto en su proceso de " +
                         "elaboración como de uso."));
-        comp_72.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_72);
+        comp_67.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_67);
 
         capacidades.clear();
 
-        Competencia comp_73 = competenciaRepository.findByCode(73);
+        Competencia comp_68 = competenciaRepository.findByCode(68);
         capacidades.add(new Capacidad("Crea propuestas de valor",
                 "Genera alternativas de solución creativas e innovadoras a " +
                         "través de un bien o servicio que resuelva una necesidad no satisfecha o un problema " +
@@ -2921,12 +2973,12 @@ public class DatabaseResource {
                         "incorporar mejoras al diseño del proyecto. Es además analizar los posibles impactos en " +
                         "el ambiente y la sociedad, y formular estrategias que permitan la sostenibilidad del " +
                         "proyecto en el tiempo."));
-        comp_73.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_73);
+        comp_68.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_68);
 
         capacidades.clear();
 
-        Competencia comp_74 = competenciaRepository.findByCode(74);
+        Competencia comp_69 = competenciaRepository.findByCode(69);
         capacidades.add(new Capacidad("Obtiene información del texto oral",
                 "El estudiante recupera y extrae información explícita expresada " +
                         "por los interlocutores."));
@@ -2963,12 +3015,12 @@ public class DatabaseResource {
                         "producidos para construir una opinión personal o un juicio crítico sobre sus aspectos formales, contenidos " +
                         "e ideologías, y su relación con el contexto sociocultural, considerando los efectos que producen en los " +
                         "interlocutores."));
-        comp_74.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_74);
+        comp_69.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_69);
 
         capacidades.clear();
 
-        Competencia comp_75 = competenciaRepository.findByCode(75);
+        Competencia comp_70 = competenciaRepository.findByCode(70);
         capacidades.add(new Capacidad("Obtiene información del texto escrito",
                 "El estudiante localiza y selecciona " +
                         "información explícita en textos escritos con un propósito específico."));
@@ -2993,12 +3045,12 @@ public class DatabaseResource {
                         "una opinión personal o un juicio crítico sobre aspectos formales, estéticos, " +
                         "contenidos e ideologías de los textos considerando los efectos que producen, la " +
                         "relación con otros textos, y el contexto sociocultural del texto y del lector."));
-        comp_75.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_75);
+        comp_70.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_70);
 
         capacidades.clear();
 
-        Competencia comp_76 = competenciaRepository.findByCode(76);
+        Competencia comp_71 = competenciaRepository.findByCode(71);
         capacidades.add(new Capacidad("Adecúa el texto a la situación comunicativa",
                 "El estudiante considera el " +
                         "propósito, destinatario, tipo de texto, género discursivo y registro que utilizará al " +
@@ -3018,8 +3070,8 @@ public class DatabaseResource {
                         "contrastar las características de los usos del lenguaje escrito y sus posibilidades, así " +
                         "como su repercusión en otras personas o su relación con otros textos según el " +
                         "contexto sociocultural."));
-        comp_76.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
-        competenciaRepository.save(comp_76);
+        comp_71.getCapacidades().addAll(capacidadRepository.saveAll(capacidades));
+        competenciaRepository.save(comp_71);
 
     }
 

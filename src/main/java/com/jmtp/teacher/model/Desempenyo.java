@@ -9,6 +9,7 @@ import java.util.List;
 @Document(collection = "desempenyo")
 public class Desempenyo extends AbstractDocument {
 
+    private int gradoBaseCode;
     @Nullable
     private List<String> tag = new ArrayList<>();
     private String description;
@@ -18,6 +19,19 @@ public class Desempenyo extends AbstractDocument {
 
     public Desempenyo(String description) {
         this.description = description;
+    }
+
+    public Desempenyo(int gradoBaseCode, String description) {
+        this.gradoBaseCode = gradoBaseCode;
+        this.description = description;
+    }
+
+    public int getGradoBaseCode() {
+        return gradoBaseCode;
+    }
+
+    public void setGradoBaseCode(int gradoBaseCode) {
+        this.gradoBaseCode = gradoBaseCode;
     }
 
     public String getDescription() {

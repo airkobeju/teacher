@@ -12,6 +12,7 @@ public class Grado extends AbstractDocument {
 
     @DBRef
     private Ciclo ciclo;
+
     /**
      * Ejemplo: "1ro" de primaria o "2do" de Secundaria
      */

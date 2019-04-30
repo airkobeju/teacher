@@ -28,4 +28,10 @@ public class CompetenciaController {
     public Competencia getCompetencia(@PathVariable(name = "competenciaId") String id){
         return competenciaRepository.findById(id).get();
     }
+
+    @GetMapping("/code/{competenciaCode}")
+    public Competencia getCompetenciaByCode(@PathVariable(name = "competenciaCode") Integer code){
+        return competenciaRepository.findByCode(code);
+    }
+
 }
